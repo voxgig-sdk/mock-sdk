@@ -1,0 +1,83 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 11
+  metrics: count: path: 9
+  metrics: count: method: 13
+
+  entity: cart: {
+    path: "/public/carts": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: coupon: {
+    path: "/public/coupons": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: create_custom_resource_item: {
+    path: "/{resource}": {
+      rename: param: "resource": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: delete_custom_resource_item: {
+    path: "/{resource}/{id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: get_custom_resource: {
+    path: "/{resource}": {
+      rename: param: "resource": *"id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: get_custom_resource_item_by_id: {
+    path: "/{resource}/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: patch_custom_resource_item: {
+    path: "/{resource}/{id}": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: product: {
+    path: "/public/products": {
+      op: list: method: *GET
+    }
+    path: "/public/products/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: status: {
+    path: "/public/status": {
+      op: load: method: *GET
+    }
+    path: "/public/status/{code}": {
+      rename: param: "code": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: update_custom_resource_item: {
+    path: "/{resource}/{id}": {
+      op: update: method: *PUT
+    }
+  }
+
+  entity: user: {
+    path: "/public/users": {
+      op: list: method: *GET
+    }
+  }
+
+}

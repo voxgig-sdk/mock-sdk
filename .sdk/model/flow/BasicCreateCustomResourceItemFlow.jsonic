@@ -1,0 +1,22 @@
+# BasicCreateCustomResourceItemFlow
+
+main: kit: flow: BasicCreateCustomResourceItemFlow:
+{
+  entity: "create_custom_resource_item",
+  kind: "basic",
+  name: "BasicCreateCustomResourceItemFlow",
+  step: [
+    {
+      input: {
+        ref: "create_custom_resource_item_ref01"
+      }
+
+      match: {
+        resource: "resource01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCreateCustomResourceItemFlow"
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "update_custom_resource_item": {
+      "UPDATE_CUSTOM_RESOURCE_ITEM00": {
+        "resource": "RESOURCE01",
+        "id": "UPDATE_CUSTOM_RESOURCE_ITEM00"
+      },
+      "UPDATE_CUSTOM_RESOURCE_ITEM01": {
+        "resource": "RESOURCE01",
+        "id": "UPDATE_CUSTOM_RESOURCE_ITEM01"
+      },
+      "UPDATE_CUSTOM_RESOURCE_ITEM02": {
+        "resource": "RESOURCE01",
+        "id": "UPDATE_CUSTOM_RESOURCE_ITEM02"
+      }
+    }
+  },
+  "new": {
+    "update_custom_resource_item": {
+      "update_custom_resource_item_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# BasicDeleteCustomResourceItemFlow
+
+main: kit: flow: BasicDeleteCustomResourceItemFlow:
+{
+  entity: "delete_custom_resource_item",
+  kind: "basic",
+  name: "BasicDeleteCustomResourceItemFlow",
+  step: [
+    {
+      input: {
+        ref: "delete_custom_resource_item_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "delete_custom_resource_item01",
+        resource: "resource01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicDeleteCustomResourceItemFlow"
+}

@@ -1,0 +1,32 @@
+# BasicUpdateCustomResourceItemFlow
+
+main: kit: flow: BasicUpdateCustomResourceItemFlow:
+{
+  entity: "update_custom_resource_item",
+  kind: "basic",
+  name: "BasicUpdateCustomResourceItemFlow",
+  step: [
+    {
+      data: {
+        resource: "resource01"
+      }
+
+      input: {
+        ref: "update_custom_resource_item_ref01",
+        srcdatavar: "update_custom_resource_item_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-update_custom_resource_item_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUpdateCustomResourceItemFlow"
+}

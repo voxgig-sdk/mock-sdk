@@ -1,0 +1,26 @@
+# BasicGetCustomResourceFlow
+
+main: kit: flow: BasicGetCustomResourceFlow:
+{
+  entity: "get_custom_resource",
+  kind: "basic",
+  name: "BasicGetCustomResourceFlow",
+  step: [
+    {
+      match: {
+        resource: "resource01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "get_custom_resource_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetCustomResourceFlow"
+}

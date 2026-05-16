@@ -1,0 +1,33 @@
+# BasicGetCustomResourceItemByIdFlow
+
+main: kit: flow: BasicGetCustomResourceItemByIdFlow:
+{
+  entity: "get_custom_resource_item_by_id",
+  kind: "basic",
+  name: "BasicGetCustomResourceItemByIdFlow",
+  step: [
+    {
+      input: {
+        ref: "get_custom_resource_item_by_id_ref01",
+        srcdatavar: "get_custom_resource_item_by_id_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "get_custom_resource_item_by_id01",
+        resource: "resource01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_custom_resource_item_by_id_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetCustomResourceItemByIdFlow"
+}

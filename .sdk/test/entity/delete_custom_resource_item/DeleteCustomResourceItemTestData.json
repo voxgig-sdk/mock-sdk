@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "delete_custom_resource_item": {
+      "DELETE_CUSTOM_RESOURCE_ITEM00": {
+        "resource": "RESOURCE01",
+        "id": "DELETE_CUSTOM_RESOURCE_ITEM00"
+      },
+      "DELETE_CUSTOM_RESOURCE_ITEM01": {
+        "resource": "RESOURCE01",
+        "id": "DELETE_CUSTOM_RESOURCE_ITEM01"
+      },
+      "DELETE_CUSTOM_RESOURCE_ITEM02": {
+        "resource": "RESOURCE01",
+        "id": "DELETE_CUSTOM_RESOURCE_ITEM02"
+      }
+    }
+  },
+  "new": {
+    "delete_custom_resource_item": {
+      "delete_custom_resource_item_ref01": {}
+    }
+  }
+}

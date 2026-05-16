@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "get_custom_resource_item_by_id": {
+      "GET_CUSTOM_RESOURCE_ITEM_BY_ID00": {
+        "resource": "RESOURCE01",
+        "id": "GET_CUSTOM_RESOURCE_ITEM_BY_ID00"
+      },
+      "GET_CUSTOM_RESOURCE_ITEM_BY_ID01": {
+        "resource": "RESOURCE01",
+        "id": "GET_CUSTOM_RESOURCE_ITEM_BY_ID01"
+      },
+      "GET_CUSTOM_RESOURCE_ITEM_BY_ID02": {
+        "resource": "RESOURCE01",
+        "id": "GET_CUSTOM_RESOURCE_ITEM_BY_ID02"
+      }
+    }
+  },
+  "new": {
+    "get_custom_resource_item_by_id": {
+      "get_custom_resource_item_by_id_ref01": {}
+    }
+  }
+}

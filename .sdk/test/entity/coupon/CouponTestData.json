@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "coupon": {
+      "COUPON00": {
+        "code": "s1e",
+        "discount": 31,
+        "id": "COUPON00"
+      },
+      "COUPON01": {
+        "code": "s3c",
+        "discount": 61,
+        "id": "COUPON01"
+      },
+      "COUPON02": {
+        "code": "s5a",
+        "discount": 91,
+        "id": "COUPON02"
+      }
+    }
+  },
+  "new": {
+    "coupon": {
+      "coupon_ref01": {
+        "code": "s78",
+        "discount": 121
+      }
+    }
+  }
+}

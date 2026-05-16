@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "cart": {
+      "CART00": {
+        "id": "CART00",
+        "item": []
+      },
+      "CART01": {
+        "id": "CART01",
+        "item": []
+      },
+      "CART02": {
+        "id": "CART02",
+        "item": []
+      }
+    }
+  },
+  "new": {
+    "cart": {
+      "cart_ref01": {
+        "item": []
+      }
+    }
+  }
+}

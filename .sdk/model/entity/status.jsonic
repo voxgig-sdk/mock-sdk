@@ -1,0 +1,64 @@
+# Entity: status
+
+main: kit: entity: status: {
+
+  alias: field: {}
+
+  name: "status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "code"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/public/status/{code}"
+          parts: [
+            "public"
+            "status"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              code: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/public/status"
+          parts: [
+            "public"
+            "status"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

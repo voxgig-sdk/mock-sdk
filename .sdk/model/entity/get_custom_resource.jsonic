@@ -1,0 +1,50 @@
+# Entity: get_custom_resource
+
+main: kit: entity: get_custom_resource: {
+
+  alias: field: {}
+
+  name: "get_custom_resource"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "resource"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{resource}"
+          parts: [
+            "{id}"
+          ]
+          rename: {
+            param: {
+              resource: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

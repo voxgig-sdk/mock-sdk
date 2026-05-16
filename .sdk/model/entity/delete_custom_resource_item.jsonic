@@ -1,0 +1,54 @@
+# Entity: delete_custom_resource_item
+
+main: kit: entity: delete_custom_resource_item: {
+
+  alias: field: {}
+
+  name: "delete_custom_resource_item"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "resource"
+                orig: "resource"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/{resource}/{id}"
+          parts: [
+            "{resource}"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+              "resource"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

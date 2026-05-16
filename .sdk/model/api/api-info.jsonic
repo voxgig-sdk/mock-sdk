@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "JSONing"
+        url: "https://jsoning.com/api/"
+      }
+      description: "This API allows users to create a customizable mock API for testing and prototyping. Users can define resources and rules to specify how the API handles requests and responses. It is free and open-source, enabling easy setup for local installations."
+      servers: [
+        {
+          description: "Public Mock API Server"
+          url: "https://api.jsoning.com/mock"
+        }
+      ]
+      title: "Mock API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "patch_custom_resource_item": {
+      "PATCH_CUSTOM_RESOURCE_ITEM00": {
+        "resource": "RESOURCE01",
+        "id": "PATCH_CUSTOM_RESOURCE_ITEM00"
+      },
+      "PATCH_CUSTOM_RESOURCE_ITEM01": {
+        "resource": "RESOURCE01",
+        "id": "PATCH_CUSTOM_RESOURCE_ITEM01"
+      },
+      "PATCH_CUSTOM_RESOURCE_ITEM02": {
+        "resource": "RESOURCE01",
+        "id": "PATCH_CUSTOM_RESOURCE_ITEM02"
+      }
+    }
+  },
+  "new": {
+    "patch_custom_resource_item": {
+      "patch_custom_resource_item_ref01": {}
+    }
+  }
+}

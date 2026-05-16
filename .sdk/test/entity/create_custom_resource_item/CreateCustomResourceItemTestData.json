@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "create_custom_resource_item": {
+      "CREATE_CUSTOM_RESOURCE_ITEM00": {
+        "id": "CREATE_CUSTOM_RESOURCE_ITEM00"
+      },
+      "CREATE_CUSTOM_RESOURCE_ITEM01": {
+        "id": "CREATE_CUSTOM_RESOURCE_ITEM01"
+      },
+      "CREATE_CUSTOM_RESOURCE_ITEM02": {
+        "id": "CREATE_CUSTOM_RESOURCE_ITEM02"
+      }
+    }
+  },
+  "new": {
+    "create_custom_resource_item": {
+      "create_custom_resource_item_ref01": {}
+    }
+  }
+}

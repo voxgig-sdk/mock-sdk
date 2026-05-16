@@ -1,0 +1,1262 @@
+{
+  "name": "mock",
+  "origin": "voxgig-sdk",
+  "def": "mock_0.1.0.json",
+  "main": {
+    "kit": {
+      "info": {
+        "contact": {
+          "name": "JSONing",
+          "url": "https://jsoning.com/api/"
+        },
+        "description": "This API allows users to create a customizable mock API for testing and prototyping. Users can define resources and rules to specify how the API handles requests and responses. It is free and open-source, enabling easy setup for local installations.",
+        "servers": [
+          {
+            "description": "Public Mock API Server",
+            "url": "https://api.jsoning.com/mock"
+          }
+        ],
+        "title": "Mock API",
+        "version": "1.0.0"
+      },
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "cart": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "item",
+              "req": false,
+              "type": "`$ARRAY`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "cart",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/public/carts",
+                  "parts": [
+                    "public",
+                    "carts"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "coupon": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "discount",
+              "req": false,
+              "type": "`$NUMBER`",
+              "active": true
+            },
+            {
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "coupon",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/public/coupons",
+                  "parts": [
+                    "public",
+                    "coupons"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "create_custom_resource_item": {
+          "alias": {
+            "field": {}
+          },
+          "name": "create_custom_resource_item",
+          "op": {
+            "create": {
+              "name": "create",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "orig": "/{resource}",
+                  "parts": [
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "resource": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "delete_custom_resource_item": {
+          "alias": {
+            "field": {}
+          },
+          "name": "delete_custom_resource_item",
+          "op": {
+            "remove": {
+              "name": "remove",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "param",
+                        "name": "resource",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "DELETE",
+                  "orig": "/{resource}/{id}",
+                  "parts": [
+                    "{resource}",
+                    "{id}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "id",
+                      "resource"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "get_custom_resource": {
+          "alias": {
+            "field": {}
+          },
+          "name": "get_custom_resource",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/{resource}",
+                  "parts": [
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "resource": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "get_custom_resource_item_by_id": {
+          "alias": {
+            "field": {}
+          },
+          "name": "get_custom_resource_item_by_id",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "param",
+                        "name": "resource",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/{resource}/{id}",
+                  "parts": [
+                    "{resource}",
+                    "{id}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "id",
+                      "resource"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "patch_custom_resource_item": {
+          "alias": {
+            "field": {}
+          },
+          "name": "patch_custom_resource_item",
+          "op": {
+            "update": {
+              "name": "update",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "param",
+                        "name": "resource",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "PATCH",
+                  "orig": "/{resource}/{id}",
+                  "parts": [
+                    "{resource}",
+                    "{id}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "id",
+                      "resource"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "product": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "price",
+              "req": false,
+              "type": "`$NUMBER`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "product",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/public/products",
+                  "parts": [
+                    "public",
+                    "products"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/public/products/{id}",
+                  "parts": [
+                    "public",
+                    "products",
+                    "{id}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "status": {
+          "alias": {
+            "field": {}
+          },
+          "name": "status",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "code",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/public/status/{code}",
+                  "parts": [
+                    "public",
+                    "status",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "code": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "method": "GET",
+                  "orig": "/public/status",
+                  "parts": [
+                    "public",
+                    "status"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "update_custom_resource_item": {
+          "alias": {
+            "field": {}
+          },
+          "name": "update_custom_resource_item",
+          "op": {
+            "update": {
+              "name": "update",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "id",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "param",
+                        "name": "resource",
+                        "orig": "resource",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "PUT",
+                  "orig": "/{resource}/{id}",
+                  "parts": [
+                    "{resource}",
+                    "{id}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "id",
+                      "resource"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "user": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "email",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "username",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "user",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/public/users",
+                  "parts": [
+                    "public",
+                    "users"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "name": "test",
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1",
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            }
+          },
+          "target": {
+            "ts": {
+              "deps": {}
+            },
+            "go": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            }
+          }
+        }
+      },
+      "flow": {
+        "BasicCartFlow": {
+          "entity": "cart",
+          "kind": "basic",
+          "name": "BasicCartFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "cart_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCartFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCouponFlow": {
+          "entity": "coupon",
+          "kind": "basic",
+          "name": "BasicCouponFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "coupon_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCouponFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCreateCustomResourceItemFlow": {
+          "entity": "create_custom_resource_item",
+          "kind": "basic",
+          "name": "BasicCreateCustomResourceItemFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "create_custom_resource_item_ref01"
+              },
+              "match": {
+                "resource": "resource01"
+              },
+              "op": "create",
+              "active": true,
+              "data": {},
+              "spec": [],
+              "valid": []
+            }
+          ],
+          "key$": "BasicCreateCustomResourceItemFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicDeleteCustomResourceItemFlow": {
+          "entity": "delete_custom_resource_item",
+          "kind": "basic",
+          "name": "BasicDeleteCustomResourceItemFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "delete_custom_resource_item_ref01",
+                "suffix": "_rm0"
+              },
+              "match": {
+                "id": "delete_custom_resource_item01",
+                "resource": "resource01"
+              },
+              "op": "remove",
+              "active": true,
+              "data": {},
+              "spec": [],
+              "valid": []
+            }
+          ],
+          "key$": "BasicDeleteCustomResourceItemFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicGetCustomResourceFlow": {
+          "entity": "get_custom_resource",
+          "kind": "basic",
+          "name": "BasicGetCustomResourceFlow",
+          "step": [
+            {
+              "match": {
+                "resource": "resource01"
+              },
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "get_custom_resource_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicGetCustomResourceFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicGetCustomResourceItemByIdFlow": {
+          "entity": "get_custom_resource_item_by_id",
+          "kind": "basic",
+          "name": "BasicGetCustomResourceItemByIdFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "get_custom_resource_item_by_id_ref01",
+                "srcdatavar": "get_custom_resource_item_by_id_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "get_custom_resource_item_by_id01",
+                "resource": "resource01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-get_custom_resource_item_by_id_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicGetCustomResourceItemByIdFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicPatchCustomResourceItemFlow": {
+          "entity": "patch_custom_resource_item",
+          "kind": "basic",
+          "name": "BasicPatchCustomResourceItemFlow",
+          "step": [
+            {
+              "data": {
+                "resource": "resource01"
+              },
+              "input": {
+                "ref": "patch_custom_resource_item_ref01",
+                "srcdatavar": "patch_custom_resource_item_ref01_data",
+                "suffix": "_up0"
+              },
+              "op": "update",
+              "spec": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-patch_custom_resource_item_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "valid": []
+            }
+          ],
+          "key$": "BasicPatchCustomResourceItemFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicProductFlow": {
+          "entity": "product",
+          "kind": "basic",
+          "name": "BasicProductFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "product_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "product_ref01",
+                "srcdatavar": "product_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "product01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-product_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicProductFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicStatusFlow": {
+          "entity": "status",
+          "kind": "basic",
+          "name": "BasicStatusFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "status_ref01",
+                "srcdatavar": "status_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-status_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicStatusFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicUpdateCustomResourceItemFlow": {
+          "entity": "update_custom_resource_item",
+          "kind": "basic",
+          "name": "BasicUpdateCustomResourceItemFlow",
+          "step": [
+            {
+              "data": {
+                "resource": "resource01"
+              },
+              "input": {
+                "ref": "update_custom_resource_item_ref01",
+                "srcdatavar": "update_custom_resource_item_ref01_data",
+                "suffix": "_up0"
+              },
+              "op": "update",
+              "spec": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-update_custom_resource_item_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "valid": []
+            }
+          ],
+          "key$": "BasicUpdateCustomResourceItemFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicUserFlow": {
+          "entity": "user",
+          "kind": "basic",
+          "name": "BasicUserFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "user_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicUserFlow",
+          "active": true,
+          "param": {}
+        }
+      },
+      "target": {
+        "ts": {
+          "title": "TypeScript",
+          "ext": "ts",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "version": "^17.4.2",
+              "kind": "dev"
+            },
+            "typescript": {
+              "active": true,
+              "version": "^5.9.3",
+              "kind": "dev"
+            },
+            "@types/node": {
+              "active": true,
+              "version": "^25.6.0",
+              "kind": "dev"
+            }
+          },
+          "name": "ts",
+          "active": true
+        },
+        "go": {
+          "title": "Golang",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "srcfeature": false,
+          "deps": {
+            "github.com/voxgig/struct": {
+              "active": true,
+              "version": "v0.0.0",
+              "replace": "./utility/struct",
+              "kind": "prod"
+            }
+          },
+          "name": "go",
+          "active": true
+        },
+        "lua": {
+          "title": "Lua",
+          "ext": "lua",
+          "comment": {
+            "line": "--"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "srcfeature": false,
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "version": "2.5",
+              "kind": "prod"
+            }
+          },
+          "name": "lua",
+          "active": true
+        },
+        "php": {
+          "title": "PHP",
+          "ext": "php",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "srcfeature": false,
+          "deps": {},
+          "name": "php",
+          "active": true
+        },
+        "py": {
+          "title": "Python",
+          "ext": "py",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "srcfeature": false,
+          "deps": {
+            "requests": {
+              "active": true,
+              "version": "2.33",
+              "kind": "prod"
+            }
+          },
+          "name": "py",
+          "active": true
+        },
+        "rb": {
+          "title": "Ruby",
+          "ext": "rb",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "mock"
+          },
+          "srcfeature": false,
+          "deps": {
+            "voxgig-struct": {
+              "active": true,
+              "version": "0.0.10",
+              "kind": "prod"
+            },
+            "json": {
+              "active": true,
+              "version": "0",
+              "kind": "prod"
+            }
+          },
+          "name": "rb",
+          "active": true
+        }
+      },
+      "option": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "api": {
+      "guide": {},
+      "entity": {}
+    }
+  },
+  "name__orig": "mock",
+  "Name": "Mock",
+  "name_": "mock",
+  "name-": "mock",
+  "NAME": "MOCK"
+}

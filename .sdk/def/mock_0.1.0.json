@@ -1,0 +1,672 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mock API",
+    "description": "This API allows users to create a customizable mock API for testing and prototyping. Users can define resources and rules to specify how the API handles requests and responses. It is free and open-source, enabling easy setup for local installations.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "JSONing",
+      "url": "https://jsoning.com/api/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.jsoning.com/mock",
+      "description": "Public Mock API Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Public API",
+      "description": "Read-only public API endpoints for testing"
+    },
+    {
+      "name": "Custom Resources",
+      "description": "Operations on custom-defined resources"
+    },
+    {
+      "name": "Status Simulation",
+      "description": "Endpoints for simulating HTTP status codes"
+    }
+  ],
+  "paths": {
+    "/public/products": {
+      "get": {
+        "tags": [
+          "Public API"
+        ],
+        "summary": "Get all products",
+        "description": "Returns a list of all products from the public API",
+        "operationId": "getPublicProducts",
+        "responses": {
+          "200": {
+            "description": "Successful response with list of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/products/{id}": {
+      "get": {
+        "tags": [
+          "Public API"
+        ],
+        "summary": "Get product by ID",
+        "description": "Returns a single product by its ID from the public API",
+        "operationId": "getPublicProductById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Product ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with product details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/public/carts": {
+      "get": {
+        "tags": [
+          "Public API"
+        ],
+        "summary": "Get all carts",
+        "description": "Returns a list of all carts from the public API",
+        "operationId": "getPublicCarts",
+        "responses": {
+          "200": {
+            "description": "Successful response with list of carts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cart"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/users": {
+      "get": {
+        "tags": [
+          "Public API"
+        ],
+        "summary": "Get all users",
+        "description": "Returns a list of all users from the public API",
+        "operationId": "getPublicUsers",
+        "responses": {
+          "200": {
+            "description": "Successful response with list of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/coupons": {
+      "get": {
+        "tags": [
+          "Public API"
+        ],
+        "summary": "Get all coupons",
+        "description": "Returns a list of all coupons from the public API",
+        "operationId": "getPublicCoupons",
+        "responses": {
+          "200": {
+            "description": "Successful response with list of coupons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Coupon"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/status": {
+      "get": {
+        "tags": [
+          "Status Simulation"
+        ],
+        "summary": "Get status endpoint information",
+        "description": "Returns information about the status simulation endpoint",
+        "operationId": "getStatusInfo",
+        "responses": {
+          "200": {
+            "description": "Successful response with status information"
+          }
+        }
+      }
+    },
+    "/public/status/{code}": {
+      "get": {
+        "tags": [
+          "Status Simulation"
+        ],
+        "summary": "Simulate HTTP status code",
+        "description": "Returns the specified HTTP status code for testing purposes",
+        "operationId": "simulateStatusCode",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "description": "HTTP status code to simulate (e.g., 401, 404, 500)",
+            "schema": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response with the requested status code"
+          },
+          "401": {
+            "description": "Unauthorized error simulation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found error simulation"
+          },
+          "500": {
+            "description": "Internal server error simulation"
+          }
+        }
+      }
+    },
+    "/{resource}": {
+      "get": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Get all items from a custom resource",
+        "description": "Returns all items from a custom-defined resource",
+        "operationId": "getCustomResource",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Create a new item in a custom resource",
+        "description": "Creates a new item in the specified custom resource",
+        "operationId": "createCustomResourceItem",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{resource}/{id}": {
+      "get": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Get a single item from a custom resource by ID",
+        "description": "Returns a single item from the specified custom resource by its ID",
+        "operationId": "getCustomResourceItemById",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with item details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Update an item in a custom resource",
+        "description": "Fully updates an item in the specified custom resource by its ID",
+        "operationId": "updateCustomResourceItem",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Partially update an item in a custom resource",
+        "description": "Partially updates an item in the specified custom resource by its ID",
+        "operationId": "patchCustomResourceItem",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item partially updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Custom Resources"
+        ],
+        "summary": "Delete an item from a custom resource",
+        "description": "Deletes an item from the specified custom resource by its ID",
+        "operationId": "deleteCustomResourceItem",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "Name of the custom resource",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item deleted successfully"
+          },
+          "204": {
+            "description": "Item deleted successfully (no content)"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "description": "Product price"
+          }
+        },
+        "example": {
+          "id": "1",
+          "name": "T-shirt",
+          "price": 19.99
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "User ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "Username"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+          }
+        },
+        "example": {
+          "id": "1",
+          "username": "johndoe",
+          "email": "johndoe@example.com"
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Cart ID"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Items in the cart"
+          }
+        }
+      },
+      "Coupon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Coupon ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "Coupon code"
+          },
+          "discount": {
+            "type": "number",
+            "description": "Discount amount or percentage"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "example": {
+          "error": "demo error"
+        }
+      },
+      "Rule": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "object",
+            "properties": {
+              "method": {
+                "type": "string",
+                "enum": [
+                  "GET",
+                  "POST",
+                  "PUT",
+                  "PATCH",
+                  "DELETE"
+                ],
+                "description": "HTTP method"
+              },
+              "path": {
+                "type": "string",
+                "description": "Request path pattern"
+              },
+              "headers": {
+                "type": "object",
+                "description": "Request headers"
+              },
+              "payload": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Request payload"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "integer",
+                "description": "HTTP status code"
+              },
+              "response": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Response payload"
+              },
+              "headers": {
+                "type": "object",
+                "description": "Response headers"
+              }
+            }
+          },
+          "stop": {
+            "type": "boolean",
+            "description": "Whether to halt after applying the rule"
+          }
+        },
+        "example": {
+          "input": {
+            "method": "GET",
+            "path": "/status/401"
+          },
+          "output": {
+            "status": 401,
+            "response": {
+              "error": "demo error"
+            }
+          },
+          "stop": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicCouponFlow
+
+main: kit: flow: BasicCouponFlow:
+{
+  entity: "coupon",
+  kind: "basic",
+  name: "BasicCouponFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "coupon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCouponFlow"
+}

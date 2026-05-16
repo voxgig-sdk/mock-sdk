@@ -1,0 +1,636 @@
+# Mock Python SDK
+
+The Python SDK for the Mock API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+## Install
+```bash
+pip install mock-sdk
+```
+
+Or install from source:
+
+```bash
+pip install -e .
+```
+
+
+## Tutorial: your first API call
+
+This tutorial walks through creating a client, listing entities, and
+loading a specific record.
+
+### 1. Create a client
+
+```python
+import os
+from mock_sdk import MockSDK
+
+client = MockSDK({
+    "apikey": os.environ.get("MOCK_APIKEY"),
+})
+```
+
+### 2. List carts
+
+```python
+result, err = client.Cart(None).list(None, None)
+if err:
+    raise Exception(err)
+
+if isinstance(result, list):
+    for item in result:
+        d = item.data_get()
+        print(d["id"], d["name"])
+```
+
+
+## How-to guides
+
+### Make a direct HTTP request
+
+For endpoints not covered by entity methods:
+
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
+})
+if err:
+    raise Exception(err)
+
+if result["ok"]:
+    print(result["status"])  # 200
+    print(result["data"])    # response body
+```
+
+### Prepare a request without sending it
+
+```python
+fetchdef, err = client.prepare({
+    "path": "/api/resource/{id}",
+    "method": "DELETE",
+    "params": {"id": "example"},
+})
+if err:
+    raise Exception(err)
+
+print(fetchdef["url"])
+print(fetchdef["method"])
+print(fetchdef["headers"])
+```
+
+### Use test mode
+
+Create a mock client for unit testing — no server required:
+
+```python
+client = MockSDK.test(None, None)
+
+result, err = client.Mock(None).load(
+    {"id": "test01"}, None
+)
+# result contains mock response data
+```
+
+### Use a custom fetch function
+
+Replace the HTTP transport with your own function:
+
+```python
+def mock_fetch(url, init):
+    return {
+        "status": 200,
+        "statusText": "OK",
+        "headers": {},
+        "json": lambda: {"id": "mock01"},
+    }, None
+
+client = MockSDK({
+    "base": "http://localhost:8080",
+    "system": {
+        "fetch": mock_fetch,
+    },
+})
+```
+
+### Run live tests
+
+Create a `.env.local` file at the project root:
+
+```
+MOCK_TEST_LIVE=TRUE
+MOCK_APIKEY=<your-key>
+```
+
+Then run:
+
+```bash
+cd py && pytest test/
+```
+
+
+## Reference
+
+### MockSDK
+
+```python
+from mock_sdk import MockSDK
+
+client = MockSDK(options)
+```
+
+Creates a new SDK client.
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
+| `base` | `str` | Base URL of the API server. |
+| `prefix` | `str` | URL path prefix prepended to all requests. |
+| `suffix` | `str` | URL path suffix appended to all requests. |
+| `feature` | `dict` | Feature activation flags. |
+| `extend` | `list` | Additional Feature instances to load. |
+| `system` | `dict` | System overrides (e.g. custom `fetch` function). |
+
+### test
+
+```python
+client = MockSDK.test(testopts, sdkopts)
+```
+
+Creates a test-mode client with mock transport. Both arguments may be `None`.
+
+### MockSDK methods
+
+| Method | Signature | Description |
+| --- | --- | --- |
+| `options_map` | `() -> dict` | Deep copy of current SDK options. |
+| `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
+| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
+| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `Cart` | `(data) -> CartEntity` | Create a Cart entity instance. |
+| `Coupon` | `(data) -> CouponEntity` | Create a Coupon entity instance. |
+| `CreateCustomResourceItem` | `(data) -> CreateCustomResourceItemEntity` | Create a CreateCustomResourceItem entity instance. |
+| `DeleteCustomResourceItem` | `(data) -> DeleteCustomResourceItemEntity` | Create a DeleteCustomResourceItem entity instance. |
+| `GetCustomResource` | `(data) -> GetCustomResourceEntity` | Create a GetCustomResource entity instance. |
+| `GetCustomResourceItemById` | `(data) -> GetCustomResourceItemByIdEntity` | Create a GetCustomResourceItemById entity instance. |
+| `PatchCustomResourceItem` | `(data) -> PatchCustomResourceItemEntity` | Create a PatchCustomResourceItem entity instance. |
+| `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
+| `Status` | `(data) -> StatusEntity` | Create a Status entity instance. |
+| `UpdateCustomResourceItem` | `(data) -> UpdateCustomResourceItemEntity` | Create a UpdateCustomResourceItem entity instance. |
+| `User` | `(data) -> UserEntity` | Create a User entity instance. |
+
+### Entity interface
+
+All entities share the same interface.
+
+| Method | Signature | Description |
+| --- | --- | --- |
+| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
+| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
+| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
+| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
+| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `data_get` | `() -> dict` | Get entity data. |
+| `data_set` | `(data)` | Set entity data. |
+| `match_get` | `() -> dict` | Get entity match criteria. |
+| `match_set` | `(match)` | Set entity match criteria. |
+| `make` | `() -> Entity` | Create a new instance with the same options. |
+| `get_name` | `() -> str` | Return the entity name. |
+
+### Result shape
+
+Entity operations return `(any, err)`. The first value is a
+`dict` with these keys:
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `ok` | `bool` | `True` if the HTTP status is 2xx. |
+| `status` | `int` | HTTP status code. |
+| `headers` | `dict` | Response headers. |
+| `data` | `any` | Parsed JSON response body. |
+
+On error, `ok` is `False` and `err` contains the error value.
+
+### Entities
+
+#### Cart
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `item` |  |
+
+Operations: List.
+
+API path: `/public/carts`
+
+#### Coupon
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `discount` |  |
+| `id` |  |
+
+Operations: List.
+
+API path: `/public/coupons`
+
+#### CreateCustomResourceItem
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/{resource}`
+
+#### DeleteCustomResourceItem
+
+| Field | Description |
+| --- | --- |
+
+Operations: Remove.
+
+API path: `/{resource}/{id}`
+
+#### GetCustomResource
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/{resource}`
+
+#### GetCustomResourceItemById
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/{resource}/{id}`
+
+#### PatchCustomResourceItem
+
+| Field | Description |
+| --- | --- |
+
+Operations: Update.
+
+API path: `/{resource}/{id}`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `price` |  |
+
+Operations: List, Load.
+
+API path: `/public/products`
+
+#### Status
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/public/status/{code}`
+
+#### UpdateCustomResourceItem
+
+| Field | Description |
+| --- | --- |
+
+Operations: Update.
+
+API path: `/{resource}/{id}`
+
+#### User
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `id` |  |
+| `username` |  |
+
+Operations: List.
+
+API path: `/public/users`
+
+
+
+## Entities
+
+
+### Cart
+
+Create an instance: `const cart = client.Cart()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | ``$STRING`` |  |
+| `item` | ``$ARRAY`` |  |
+
+#### Example: List
+
+```ts
+const carts = await client.Cart().list()
+```
+
+
+### Coupon
+
+Create an instance: `const coupon = client.Coupon()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | ``$STRING`` |  |
+| `discount` | ``$NUMBER`` |  |
+| `id` | ``$STRING`` |  |
+
+#### Example: List
+
+```ts
+const coupons = await client.Coupon().list()
+```
+
+
+### CreateCustomResourceItem
+
+Create an instance: `const create_custom_resource_item = client.CreateCustomResourceItem()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const create_custom_resource_item = await client.CreateCustomResourceItem().create({
+})
+```
+
+
+### DeleteCustomResourceItem
+
+Create an instance: `const delete_custom_resource_item = client.DeleteCustomResourceItem()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+
+
+### GetCustomResource
+
+Create an instance: `const get_custom_resource = client.GetCustomResource()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const get_custom_resources = await client.GetCustomResource().list()
+```
+
+
+### GetCustomResourceItemById
+
+Create an instance: `const get_custom_resource_item_by_id = client.GetCustomResourceItemById()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ts
+const get_custom_resource_item_by_id = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
+```
+
+
+### PatchCustomResourceItem
+
+Create an instance: `const patch_custom_resource_item = client.PatchCustomResourceItem()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+
+### Product
+
+Create an instance: `const product = client.Product()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | ``$STRING`` |  |
+| `name` | ``$STRING`` |  |
+| `price` | ``$NUMBER`` |  |
+
+#### Example: Load
+
+```ts
+const product = await client.Product().load({ id: 'product_id' })
+```
+
+#### Example: List
+
+```ts
+const products = await client.Product().list()
+```
+
+
+### Status
+
+Create an instance: `const status = client.Status()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ts
+const status = await client.Status().load({ id: 'status_id' })
+```
+
+
+### UpdateCustomResourceItem
+
+Create an instance: `const update_custom_resource_item = client.UpdateCustomResourceItem()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+
+### User
+
+Create an instance: `const user = client.User()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | ``$STRING`` |  |
+| `id` | ``$STRING`` |  |
+| `username` | ``$STRING`` |  |
+
+#### Example: List
+
+```ts
+const users = await client.User().list()
+```
+
+
+## Explanation
+
+### The operation pipeline
+
+Every entity operation (load, list, create, update, remove) follows a
+six-stage pipeline. Each stage fires a feature hook before executing:
+
+```
+PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
+```
+
+- **PrePoint**: Resolves which API endpoint to call based on the
+  operation name and entity configuration.
+- **PreSpec**: Builds the HTTP spec — URL, method, headers, body —
+  from the resolved point and the caller's parameters.
+- **PreRequest**: Sends the HTTP request. Features can intercept here
+  to replace the transport (as TestFeature does with mocks).
+- **PreResponse**: Parses the raw HTTP response.
+- **PreResult**: Extracts the business data from the parsed response.
+- **PreDone**: Final stage before returning to the caller. Entity
+  state (match, data) is updated here.
+
+If any stage returns an error, the pipeline short-circuits and the
+error is returned to the caller as the second element in the return tuple.
+
+### Features and hooks
+
+Features are the extension mechanism. A feature is a Python class
+with hook methods named after pipeline stages (e.g. `PrePoint`,
+`PreSpec`). Each method receives the context.
+
+The SDK ships with built-in features:
+
+- **TestFeature**: In-memory mock transport for testing without a live server
+
+Features are initialized in order. Hooks fire in the order features
+were added, so later features can override earlier ones.
+
+### Data as dicts
+
+The Python SDK uses plain dicts throughout rather than typed
+objects. This mirrors the dynamic nature of the API and keeps the
+SDK flexible — no code generation is needed when the API schema
+changes.
+
+Use `helpers.to_map()` to safely validate that a value is a dict.
+
+### Module structure
+
+```
+py/
+├── mock_sdk.py         -- Main SDK module
+├── config.py                    -- Configuration
+├── features.py                  -- Feature factory
+├── core/                        -- Core types and context
+├── entity/                      -- Entity implementations
+├── feature/                     -- Built-in features (Base, Test, Log)
+├── utility/                     -- Utility functions and struct library
+└── test/                        -- Test suites
+```
+
+The main module (`mock_sdk`) exports the SDK class.
+Import entity or utility modules directly only when needed.
+
+### Entity state
+
+Entity instances are stateful. After a successful `load`, the entity
+stores the returned data and match criteria internally.
+
+```python
+moon = client.Moon()
+moon.load({"planet_id": "earth", "id": "luna"})
+
+# moon.data_get() now returns the loaded moon data
+# moon.match_get() returns the last match criteria
+```
+
+Call `make()` to create a fresh instance with the same configuration
+but no stored state.
+
+### Direct vs entity access
+
+The entity interface handles URL construction, parameter placement,
+and response parsing automatically. Use it for standard CRUD operations.
+
+`direct()` gives full control over the HTTP request. Use it for
+non-standard endpoints, bulk operations, or any path not modelled as
+an entity. `prepare()` builds the request without sending it — useful
+for debugging or custom transport.
+
+
+## Full Reference
+
+See [REFERENCE.md](REFERENCE.md) for complete API reference
+documentation including all method signatures, entity field schemas,
+and detailed usage examples.

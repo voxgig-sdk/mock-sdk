@@ -1,0 +1,50 @@
+# Entity: create_custom_resource_item
+
+main: kit: entity: create_custom_resource_item: {
+
+  alias: field: {}
+
+  name: "create_custom_resource_item"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "resource"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/{resource}"
+          parts: [
+            "{id}"
+          ]
+          rename: {
+            param: {
+              resource: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
