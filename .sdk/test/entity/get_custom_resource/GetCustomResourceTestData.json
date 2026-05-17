@@ -1,15 +1,9 @@
 {
   "existing": {
     "get_custom_resource": {
-      "GET_CUSTOM_RESOURCE00": {
-        "id": "GET_CUSTOM_RESOURCE00"
-      },
-      "GET_CUSTOM_RESOURCE01": {
-        "id": "GET_CUSTOM_RESOURCE01"
-      },
-      "GET_CUSTOM_RESOURCE02": {
-        "id": "GET_CUSTOM_RESOURCE02"
-      }
+      "GET_CUSTOM_RESOURCE00": {},
+      "GET_CUSTOM_RESOURCE01": {},
+      "GET_CUSTOM_RESOURCE02": {}
     }
   },
   "new": {

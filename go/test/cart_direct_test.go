@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/mock-sdk"
-	"github.com/voxgig-sdk/mock-sdk/core"
+	sdk "github.com/voxgig-sdk/mock-sdk/go"
+	"github.com/voxgig-sdk/mock-sdk/go/core"
 )
 
 func TestCartDirect(t *testing.T) {

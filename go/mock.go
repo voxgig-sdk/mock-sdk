@@ -1,10 +1,10 @@
 package voxgigmocksdk
 
 import (
-	"github.com/voxgig-sdk/mock-sdk/core"
-	"github.com/voxgig-sdk/mock-sdk/entity"
-	"github.com/voxgig-sdk/mock-sdk/feature"
-	_ "github.com/voxgig-sdk/mock-sdk/utility"
+	"github.com/voxgig-sdk/mock-sdk/go/core"
+	"github.com/voxgig-sdk/mock-sdk/go/entity"
+	"github.com/voxgig-sdk/mock-sdk/go/feature"
+	_ "github.com/voxgig-sdk/mock-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

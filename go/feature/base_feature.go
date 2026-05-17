@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/mock-sdk/core"
+	"github.com/voxgig-sdk/mock-sdk/go/core"
 )
 
 type BaseFeature struct {
