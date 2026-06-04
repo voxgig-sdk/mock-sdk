@@ -117,7 +117,6 @@ func get_custom_resource_item_by_idBasicSetup(extra map[string]any) *entityTestS
 		"MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID": idmap,
 		"MOCK_TEST_LIVE":      "FALSE",
 		"MOCK_TEST_EXPLAIN":   "FALSE",
-		"MOCK_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID"])
@@ -128,7 +127,6 @@ func get_custom_resource_item_by_idBasicSetup(extra map[string]any) *entityTestS
 	if env["MOCK_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["MOCK_APIKEY"],
 			},
 			extra,
 		})

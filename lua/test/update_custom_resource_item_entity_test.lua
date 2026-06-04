@@ -95,7 +95,6 @@ function update_custom_resource_item_basic_setup(extra)
     ["MOCK_TEST_UPDATE_CUSTOM_RESOURCE_ITEM_ENTID"] = idmap,
     ["MOCK_TEST_LIVE"] = "FALSE",
     ["MOCK_TEST_EXPLAIN"] = "FALSE",
-    ["MOCK_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -110,7 +109,6 @@ function update_custom_resource_item_basic_setup(extra)
   if env["MOCK_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["MOCK_APIKEY"],
       },
       extra or {},
     })

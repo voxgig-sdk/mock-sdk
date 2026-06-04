@@ -61,14 +61,12 @@ def _coupon_direct_setup(mockres):
     env = runner.env_override({
         "MOCK_TEST_COUPON_ENTID": {},
         "MOCK_TEST_LIVE": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     live = env.get("MOCK_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("MOCK_APIKEY"),
         }
         client = MockSDK(merged_opts)
         return {

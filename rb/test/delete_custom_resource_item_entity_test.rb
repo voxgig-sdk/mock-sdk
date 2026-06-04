@@ -83,7 +83,6 @@ def delete_custom_resource_item_basic_setup(extra)
     "MOCK_TEST_DELETE_CUSTOM_RESOURCE_ITEM_ENTID" => idmap,
     "MOCK_TEST_LIVE" => "FALSE",
     "MOCK_TEST_EXPLAIN" => "FALSE",
-    "MOCK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +94,6 @@ def delete_custom_resource_item_basic_setup(extra)
   if env["MOCK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCK_APIKEY"],
       },
       extra || {},
     ])

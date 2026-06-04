@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "Mock_sdk"
 
-client = MockSDK.new({
-  "apikey" => ENV["MOCK_APIKEY"],
-})
+client = MockSDK.new({})
 ```
 
 ### 2. List carts
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOCK_TEST_LIVE=TRUE
-MOCK_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

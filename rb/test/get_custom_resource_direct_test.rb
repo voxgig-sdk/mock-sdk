@@ -76,14 +76,12 @@ def get_custom_resource_direct_setup(mockres)
   env = Runner.env_override({
     "MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID" => {},
     "MOCK_TEST_LIVE" => "FALSE",
-    "MOCK_APIKEY" => "NONE",
   })
 
   live = env["MOCK_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["MOCK_APIKEY"],
     }
     client = MockSDK.new(merged_opts)
     return {

@@ -85,7 +85,6 @@ function get_custom_resource_item_by_id_basic_setup($extra)
         "MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID" => $idmap,
         "MOCK_TEST_LIVE" => "FALSE",
         "MOCK_TEST_EXPLAIN" => "FALSE",
-        "MOCK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function get_custom_resource_item_by_id_basic_setup($extra)
     if ($env["MOCK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCK_APIKEY"],
             ],
             $extra ?? [],
         ]);

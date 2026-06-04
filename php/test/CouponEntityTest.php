@@ -86,7 +86,6 @@ function coupon_basic_setup($extra)
         "MOCK_TEST_COUPON_ENTID" => $idmap,
         "MOCK_TEST_LIVE" => "FALSE",
         "MOCK_TEST_EXPLAIN" => "FALSE",
-        "MOCK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function coupon_basic_setup($extra)
     if ($env["MOCK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCK_APIKEY"],
             ],
             $extra ?? [],
         ]);

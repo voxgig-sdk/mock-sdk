@@ -20,9 +20,6 @@ class MockConfig
             ],
             "options" => [
                 "base" => "https://api.jsoning.com/mock",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

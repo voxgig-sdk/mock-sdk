@@ -17,8 +17,37 @@ main: {
       ]
       title: "Mock API"
       version: "1.0.0"
+      tagline: "Spin up a customizable mock REST API for testing and prototyping, with public sample resources or your own JSON"
+      homepage: "https://jsoning.com/api/"
+      docs_url: "https://jsoning.com/api/"
+      license_short: "Open-source service; public mock endpoints are free to use with no authentication."
+      license_md: `- Open-source service maintained by Cyril Bois at [jsoning.com](https://jsoning.com).
+- Public mock endpoints under \`https://api.jsoning.com/mock/public/\` require no authentication.
+- Custom resources are ephemeral and are deleted daily — recreate them as needed.
+- The project is available on GitHub for self-hosting; check the upstream repository for the exact licence terms.`
+      about_md: `[Mock API](https://jsoning.com/api/) is a free mock-server hosted at \`api.jsoning.com/mock\` and maintained as part of [jsoning.com](https://jsoning.com), a collection of JSON-focused developer tools by Cyril Bois. It lets you instantly generate a REST API from a JSON object and define rules that customise how requests are matched and responded to.
+
+What you get from the API:
+
+- A small set of read-only **public sample resources** under \`https://api.jsoning.com/mock/public/{resource}\` — \`products\` (10), \`users\` (5), \`carts\` (5), \`coupons\` (5), and \`status\` (for exercising HTTP status codes).
+- Standard REST verbs (\`GET\`, \`POST\`, \`PUT\`, \`PATCH\`, \`DELETE\`) against your own custom resources.
+- A rule engine that can match on method, path, headers, and payload and short-circuit the default response.
+
+No authentication is required for the public endpoints, and CORS is enabled so the API can be called directly from browser code. Custom resources you create are wiped daily, so this service is best suited to testing, prototyping, and demos rather than persistent storage. The project is open source and can also be run locally.`
+      entity_desc: {
+        cart: "Public sample shopping-cart resource at `GET /mock/public/carts` (5 items) for prototyping cart-related UIs."
+        coupon: "Public sample discount-coupon resource at `GET /mock/public/coupons` (5 items)."
+        create_custom_resource_item: "Create an item in a user-defined custom resource using a `POST` against that resource's path."
+        delete_custom_resource_item: "Remove an item from a custom resource via `DELETE`."
+        get_custom_resource: "List all items in a user-defined custom resource via `GET` on the resource path."
+        get_custom_resource_item_by_id: "Fetch a single item from a user-defined custom resource by its id via `GET`."
+        patch_custom_resource_item: "Partially update an existing item in a custom resource via `PATCH`."
+        product: "Public sample product catalogue at `GET /mock/public/products` (10 items)."
+        status: "Helper resource under `/mock/public/status` for exercising specific HTTP status codes in tests."
+        update_custom_resource_item: "Replace an existing item in a custom resource via `PUT`."
+        user: "Public sample user resource at `GET /mock/public/users` (5 items)."
+      }
+      auth: false
     }
   }
-}
-
 }

@@ -93,14 +93,12 @@ func userDirectSetup(mockres any) *userDirectSetupResult {
 	env := envOverride(map[string]any{
 		"MOCK_TEST_USER_ENTID": map[string]any{},
 		"MOCK_TEST_LIVE":    "FALSE",
-		"MOCK_APIKEY":       "NONE",
 	})
 
 	live := env["MOCK_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MOCK_APIKEY"],
 		}
 		client := sdk.NewMockSDK(mergedOpts)
 

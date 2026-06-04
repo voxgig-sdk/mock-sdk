@@ -114,7 +114,6 @@ function basicSetup(extra?: any) {
     'MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID': idmap,
     'MOCK_TEST_LIVE': 'FALSE',
     'MOCK_TEST_EXPLAIN': 'FALSE',
-    'MOCK_APIKEY': 'NONE',
   })
 
   idmap = env['MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID']
@@ -124,7 +123,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MockSDK(merge([
       {
-        apikey: env.MOCK_APIKEY,
       },
       extra
     ]))
