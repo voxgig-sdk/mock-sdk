@@ -68,12 +68,14 @@ function cart_direct_setup($mockres)
     $env = Runner::env_override([
         "MOCK_TEST_CART_ENTID" => [],
         "MOCK_TEST_LIVE" => "FALSE",
+        "MOCK_APIKEY" => "NONE",
     ]);
 
     $live = $env["MOCK_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["MOCK_APIKEY"],
         ];
         $client = new MockSDK($merged_opts);
         return [

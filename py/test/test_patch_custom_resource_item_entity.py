@@ -95,6 +95,7 @@ def _patch_custom_resource_item_basic_setup(extra):
         "MOCK_TEST_PATCH_CUSTOM_RESOURCE_ITEM_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
+        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -107,6 +108,7 @@ def _patch_custom_resource_item_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

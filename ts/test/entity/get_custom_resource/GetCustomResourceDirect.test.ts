@@ -86,12 +86,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID': {},
     'MOCK_TEST_LIVE': 'FALSE',
+    'MOCK_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MOCK_TEST_LIVE
 
   if (live) {
     const client = new MockSDK({
+      apikey: env.MOCK_APIKEY,
     })
 
     let idmap: any = env['MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID']

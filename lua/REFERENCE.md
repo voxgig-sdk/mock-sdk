@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -141,7 +141,7 @@ local cart = client:Cart(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Cart(nil):list(nil, nil)
+local results, err = client:Cart():list()
 ```
 
 ### Common Methods
@@ -195,7 +195,7 @@ local coupon = client:Coupon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Coupon(nil):list(nil, nil)
+local results, err = client:Coupon():list()
 ```
 
 ### Common Methods
@@ -241,8 +241,8 @@ local create_custom_resource_item = client:CreateCustomResourceItem(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:CreateCustomResourceItem(nil):create({
-}, nil)
+local result, err = client:CreateCustomResourceItem():create({
+})
 ```
 
 ### Common Methods
@@ -288,7 +288,7 @@ local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:DeleteCustomResourceItem(nil):remove({ id = "delete_custom_resource_item_id" }, nil)
+local result, err = client:DeleteCustomResourceItem():remove({ id = "delete_custom_resource_item_id" })
 ```
 
 ### Common Methods
@@ -334,7 +334,7 @@ local get_custom_resource = client:GetCustomResource(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GetCustomResource(nil):list(nil, nil)
+local results, err = client:GetCustomResource():list()
 ```
 
 ### Common Methods
@@ -380,7 +380,7 @@ local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCustomResourceItemById(nil):load({ id = "get_custom_resource_item_by_id_id" }, nil)
+local result, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id" })
 ```
 
 ### Common Methods
@@ -426,10 +426,10 @@ local patch_custom_resource_item = client:PatchCustomResourceItem(nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:PatchCustomResourceItem(nil):update({
+local result, err = client:PatchCustomResourceItem():update({
   id = "patch_custom_resource_item_id",
   -- Fields to update
-}, nil)
+})
 ```
 
 ### Common Methods
@@ -483,7 +483,7 @@ local product = client:Product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Product(nil):list(nil, nil)
+local results, err = client:Product():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -491,7 +491,7 @@ local results, err = client:Product(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product(nil):load({ id = "product_id" }, nil)
+local result, err = client:Product():load({ id = "product_id" })
 ```
 
 ### Common Methods
@@ -537,7 +537,7 @@ local status = client:Status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Status(nil):load({ id = "status_id" }, nil)
+local result, err = client:Status():load({ id = "status_id" })
 ```
 
 ### Common Methods
@@ -583,10 +583,10 @@ local update_custom_resource_item = client:UpdateCustomResourceItem(nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:UpdateCustomResourceItem(nil):update({
+local result, err = client:UpdateCustomResourceItem():update({
   id = "update_custom_resource_item_id",
   -- Fields to update
-}, nil)
+})
 ```
 
 ### Common Methods
@@ -640,7 +640,7 @@ local user = client:User(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:User(nil):list(nil, nil)
+local results, err = client:User():list()
 ```
 
 ### Common Methods

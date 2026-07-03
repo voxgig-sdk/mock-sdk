@@ -121,12 +121,14 @@ func get_custom_resource_item_by_idDirectSetup(mockres any) *get_custom_resource
 	env := envOverride(map[string]any{
 		"MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID": map[string]any{},
 		"MOCK_TEST_LIVE":    "FALSE",
+		"MOCK_APIKEY":       "NONE",
 	})
 
 	live := env["MOCK_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["MOCK_APIKEY"],
 		}
 		client := sdk.NewMockSDK(mergedOpts)
 

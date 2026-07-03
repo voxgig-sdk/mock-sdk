@@ -1,20 +1,8 @@
 # Mock SDK
 
-Spin up a customizable mock REST API for testing and prototyping, with public sample resources or your own JSON
+Mock API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Mock API
-
-[Mock API](https://jsoning.com/api/) is a free mock-server hosted at `api.jsoning.com/mock` and maintained as part of [jsoning.com](https://jsoning.com), a collection of JSON-focused developer tools by Cyril Bois. It lets you instantly generate a REST API from a JSON object and define rules that customise how requests are matched and responded to.
-
-What you get from the API:
-
-- A small set of read-only **public sample resources** under `https://api.jsoning.com/mock/public/{resource}` — `products` (10), `users` (5), `carts` (5), `coupons` (5), and `status` (for exercising HTTP status codes).
-- Standard REST verbs (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) against your own custom resources.
-- A rule engine that can match on method, path, headers, and payload and short-circuit the default response.
-
-No authentication is required for the public endpoints, and CORS is enabled so the API can be called directly from browser code. Custom resources you create are wiped daily, so this service is best suited to testing, prototyping, and demos rather than persistent storage. The project is open source and can also be run locally.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install mock-sdk
 luarocks install mock-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { MockSDK } from 'mock'
 
-const client = new MockSDK({})
+const client = new MockSDK({
+  apikey: process.env.MOCK_APIKEY,
+})
 
 // List all carts
 const carts = await client.Cart().list()
+console.log(carts.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,17 +90,17 @@ The API exposes 11 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Cart** | Public sample shopping-cart resource at `GET /mock/public/carts` (5 items) for prototyping cart-related UIs. | `/public/carts` |
-| **Coupon** | Public sample discount-coupon resource at `GET /mock/public/coupons` (5 items). | `/public/coupons` |
-| **CreateCustomResourceItem** | Create an item in a user-defined custom resource using a `POST` against that resource's path. | `/{resource}` |
-| **DeleteCustomResourceItem** | Remove an item from a custom resource via `DELETE`. | `/{resource}/{id}` |
-| **GetCustomResource** | List all items in a user-defined custom resource via `GET` on the resource path. | `/{resource}` |
-| **GetCustomResourceItemById** | Fetch a single item from a user-defined custom resource by its id via `GET`. | `/{resource}/{id}` |
-| **PatchCustomResourceItem** | Partially update an existing item in a custom resource via `PATCH`. | `/{resource}/{id}` |
-| **Product** | Public sample product catalogue at `GET /mock/public/products` (10 items). | `/public/products` |
-| **Status** | Helper resource under `/mock/public/status` for exercising specific HTTP status codes in tests. | `/public/status/{code}` |
-| **UpdateCustomResourceItem** | Replace an existing item in a custom resource via `PUT`. | `/{resource}/{id}` |
-| **User** | Public sample user resource at `GET /mock/public/users` (5 items). | `/public/users` |
+| **Cart** |  | `/public/carts` |
+| **Coupon** |  | `/public/coupons` |
+| **CreateCustomResourceItem** |  | `/{resource}` |
+| **DeleteCustomResourceItem** |  | `/{resource}/{id}` |
+| **GetCustomResource** |  | `/{resource}` |
+| **GetCustomResourceItemById** |  | `/{resource}/{id}` |
+| **PatchCustomResourceItem** |  | `/{resource}/{id}` |
+| **Product** |  | `/public/products` |
+| **Status** |  | `/public/status/{code}` |
+| **UpdateCustomResourceItem** |  | `/{resource}/{id}` |
+| **User** |  | `/public/users` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -120,12 +110,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from mock_sdk import MockSDK
 
-client = MockSDK({})
+client = MockSDK({
+    "apikey": os.environ.get("MOCK_APIKEY"),
+})
 
 # List all carts
-carts, err = client.Cart(None).list(None, None)
+carts, err = client.Cart().list()
+print(carts)
 ```
 
 ### PHP
@@ -134,10 +128,13 @@ carts, err = client.Cart(None).list(None, None)
 <?php
 require_once 'mock_sdk.php';
 
-$client = new MockSDK([]);
+$client = new MockSDK([
+    "apikey" => getenv("MOCK_APIKEY"),
+]);
 
 // List all carts
-[$carts, $err] = $client->Cart(null)->list(null, null);
+[$carts, $err] = $client->Cart()->list();
+print_r($carts);
 ```
 
 ### Golang
@@ -145,10 +142,13 @@ $client = new MockSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/mock-sdk/go"
 
-client := sdk.NewMockSDK(map[string]any{})
+client := sdk.NewMockSDK(map[string]any{
+    "apikey": os.Getenv("MOCK_APIKEY"),
+})
 
 // List all carts
 carts, err := client.Cart(nil).List(nil, nil)
+fmt.Println(carts)
 ```
 
 ### Ruby
@@ -156,10 +156,13 @@ carts, err := client.Cart(nil).List(nil, nil)
 ```ruby
 require_relative "Mock_sdk"
 
-client = MockSDK.new({})
+client = MockSDK.new({
+  "apikey" => ENV["MOCK_APIKEY"],
+})
 
 # List all carts
-carts, err = client.Cart(nil).list(nil, nil)
+carts, err = client.Cart().list
+puts carts
 ```
 
 ### Lua
@@ -167,10 +170,13 @@ carts, err = client.Cart(nil).list(nil, nil)
 ```lua
 local sdk = require("mock_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MOCK_APIKEY"),
+})
 
 -- List all carts
-local carts, err = client:Cart(nil):list(nil, nil)
+local carts, err = client:Cart():list()
+print(carts)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +195,21 @@ const result = await client.Cart().load({ id: 'test01' })
 ### Python
 
 ```python
-client = MockSDK.test(None, None)
-result, err = client.Cart(None).load(
-    {"id": "test01"}, None
-)
+client = MockSDK.test()
+result, err = client.Cart().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = MockSDK::test(null, null);
-[$result, $err] = $client->Cart(null)->load(
-    ["id" => "test01"], null
-);
+$client = MockSDK::test();
+[$result, $err] = $client->Cart()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Cart(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +218,15 @@ result, err := client.Cart(nil).Load(
 ### Ruby
 
 ```ruby
-client = MockSDK.test(nil, nil)
-result, err = client.Cart(nil).load(
-  { "id" => "test01" }, nil
-)
+client = MockSDK.test
+result, err = client.Cart().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Cart(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Cart():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,15 +330,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Mock API
-
-- Upstream: [https://jsoning.com/api/](https://jsoning.com/api/)
-
-- Open-source service maintained by Cyril Bois at [jsoning.com](https://jsoning.com).
-- Public mock endpoints under `https://api.jsoning.com/mock/public/` require no authentication.
-- Custom resources are ephemeral and are deleted daily — recreate them as needed.
-- The project is available on GitHub for self-hosting; check the upstream repository for the exact licence terms.
 
 ---
 

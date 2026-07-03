@@ -135,6 +135,7 @@ func productBasicSetup(extra map[string]any) *entityTestSetup {
 		"MOCK_TEST_PRODUCT_ENTID": idmap,
 		"MOCK_TEST_LIVE":      "FALSE",
 		"MOCK_TEST_EXPLAIN":   "FALSE",
+		"MOCK_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOCK_TEST_PRODUCT_ENTID"])
@@ -145,6 +146,7 @@ func productBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["MOCK_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["MOCK_APIKEY"],
 			},
 			extra,
 		})

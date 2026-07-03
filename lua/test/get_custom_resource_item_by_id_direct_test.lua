@@ -73,12 +73,14 @@ function get_custom_resource_item_by_id_direct_setup(mockres)
   local env = runner.env_override({
     ["MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID"] = {},
     ["MOCK_TEST_LIVE"] = "FALSE",
+    ["MOCK_APIKEY"] = "NONE",
   })
 
   local live = env["MOCK_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["MOCK_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
