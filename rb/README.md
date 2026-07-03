@@ -10,13 +10,13 @@ The Ruby SDK for the Mock API — an entity-oriented client using idiomatic Ruby
 
 ## Install
 ```bash
-gem install mock-sdk
+gem install voxgig-sdk-mock
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "mock-sdk"
+gem "voxgig-sdk-mock"
 ```
 
 Then run:

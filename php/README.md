@@ -10,7 +10,7 @@ The PHP SDK for the Mock API — an entity-oriented client using PHP conventions
 
 ## Install
 ```bash
-composer require voxgig/mock-sdk
+composer require voxgig-sdk/mock
 ```
 
 

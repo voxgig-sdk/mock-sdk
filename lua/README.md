@@ -10,7 +10,7 @@ The Lua SDK for the Mock API — an entity-oriented client using Lua conventions
 
 ## Install
 ```bash
-luarocks install mock-sdk
+luarocks install voxgig-sdk-mock
 ```
 
 If the module is not yet published, add the source directory to
