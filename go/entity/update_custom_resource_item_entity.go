@@ -85,6 +85,27 @@ func (e *UpdateCustomResourceItemEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an UpdateCustomResourceItem; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *UpdateCustomResourceItemEntity) DataTyped(data ...UpdateCustomResourceItem) UpdateCustomResourceItem {
+	if len(data) > 0 {
+		return typedFrom[UpdateCustomResourceItem](e.Data(asMap(data[0])))
+	}
+	return typedFrom[UpdateCustomResourceItem](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through UpdateCustomResourceItem (all fields
+// optional at the wire level).
+func (e *UpdateCustomResourceItemEntity) MatchTyped(match ...UpdateCustomResourceItem) UpdateCustomResourceItem {
+	if len(match) > 0 {
+		return typedFrom[UpdateCustomResourceItem](e.Match(asMap(match[0])))
+	}
+	return typedFrom[UpdateCustomResourceItem](e.Match())
+}
+
 func (e *UpdateCustomResourceItemEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -124,6 +145,17 @@ func (e *UpdateCustomResourceItemEntity) Update(reqdata map[string]any, ctrl map
 			}
 		}
 	})
+}
+
+// UpdateTyped is the statically-typed variant of Update: it takes an
+// UpdateCustomResourceItemUpdateData and returns an UpdateCustomResourceItem. It delegates to the untyped
+// Update (identical runtime) and converts at the typed boundary.
+func (e *UpdateCustomResourceItemEntity) UpdateTyped(reqdata UpdateCustomResourceItemUpdateData, ctrl map[string]any) (UpdateCustomResourceItem, error) {
+	res, err := e.Update(asMap(reqdata), ctrl)
+	if err != nil {
+		return UpdateCustomResourceItem{}, err
+	}
+	return typedFrom[UpdateCustomResourceItem](res), nil
 }
 
 

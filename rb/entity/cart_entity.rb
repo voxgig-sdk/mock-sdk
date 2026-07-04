@@ -45,6 +45,7 @@ class CartEntity
     end
   end
 
+  # @return [Cart, Hash] the current Cart data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CartEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Cart fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CartEntity
   
 
   
+  # List Cart items matching the given filter.
+  #
+  # @param reqmatch [CartListMatch, Hash, nil] match filter (any subset of Cart fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Cart>, Array] the matching Cart items; raises MockError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

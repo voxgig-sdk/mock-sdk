@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetCustomResourceItemById,
+  GetCustomResourceItemByIdLoadMatch,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class GetCustomResourceItemByIdEntity extends MockEntityBase {
+class GetCustomResourceItemByIdEntity extends MockEntityBase<GetCustomResourceItemById> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetCustomResourceItemByIdEntity extends MockEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetCustomResourceItemByIdLoadMatch, ctrl?: Control): Promise<GetCustomResourceItemById> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetCustomResourceItemByIdEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetCustomResourceItemById> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

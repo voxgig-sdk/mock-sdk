@@ -144,16 +144,23 @@ class MockSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class MockSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,65 +212,186 @@ class MockSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def cart(self):
+        """Idiomatic facade: client.cart.list() / client.cart.load({"id": ...})."""
+        from entity.cart_entity import CartEntity
+        cached = getattr(self, "_cart", None)
+        if cached is None:
+            cached = CartEntity(self, None)
+            self._cart = cached
+        return cached
 
     def Cart(self, data=None):
+        # Deprecated: use client.cart instead.
         from entity.cart_entity import CartEntity
         return CartEntity(self, data)
 
 
+    @property
+    def coupon(self):
+        """Idiomatic facade: client.coupon.list() / client.coupon.load({"id": ...})."""
+        from entity.coupon_entity import CouponEntity
+        cached = getattr(self, "_coupon", None)
+        if cached is None:
+            cached = CouponEntity(self, None)
+            self._coupon = cached
+        return cached
+
     def Coupon(self, data=None):
+        # Deprecated: use client.coupon instead.
         from entity.coupon_entity import CouponEntity
         return CouponEntity(self, data)
 
 
+    @property
+    def create_custom_resource_item(self):
+        """Idiomatic facade: client.create_custom_resource_item.list() / client.create_custom_resource_item.load({"id": ...})."""
+        from entity.create_custom_resource_item_entity import CreateCustomResourceItemEntity
+        cached = getattr(self, "_create_custom_resource_item", None)
+        if cached is None:
+            cached = CreateCustomResourceItemEntity(self, None)
+            self._create_custom_resource_item = cached
+        return cached
+
     def CreateCustomResourceItem(self, data=None):
+        # Deprecated: use client.create_custom_resource_item instead.
         from entity.create_custom_resource_item_entity import CreateCustomResourceItemEntity
         return CreateCustomResourceItemEntity(self, data)
 
 
+    @property
+    def delete_custom_resource_item(self):
+        """Idiomatic facade: client.delete_custom_resource_item.list() / client.delete_custom_resource_item.load({"id": ...})."""
+        from entity.delete_custom_resource_item_entity import DeleteCustomResourceItemEntity
+        cached = getattr(self, "_delete_custom_resource_item", None)
+        if cached is None:
+            cached = DeleteCustomResourceItemEntity(self, None)
+            self._delete_custom_resource_item = cached
+        return cached
+
     def DeleteCustomResourceItem(self, data=None):
+        # Deprecated: use client.delete_custom_resource_item instead.
         from entity.delete_custom_resource_item_entity import DeleteCustomResourceItemEntity
         return DeleteCustomResourceItemEntity(self, data)
 
 
+    @property
+    def get_custom_resource(self):
+        """Idiomatic facade: client.get_custom_resource.list() / client.get_custom_resource.load({"id": ...})."""
+        from entity.get_custom_resource_entity import GetCustomResourceEntity
+        cached = getattr(self, "_get_custom_resource", None)
+        if cached is None:
+            cached = GetCustomResourceEntity(self, None)
+            self._get_custom_resource = cached
+        return cached
+
     def GetCustomResource(self, data=None):
+        # Deprecated: use client.get_custom_resource instead.
         from entity.get_custom_resource_entity import GetCustomResourceEntity
         return GetCustomResourceEntity(self, data)
 
 
+    @property
+    def get_custom_resource_item_by_id(self):
+        """Idiomatic facade: client.get_custom_resource_item_by_id.list() / client.get_custom_resource_item_by_id.load({"id": ...})."""
+        from entity.get_custom_resource_item_by_id_entity import GetCustomResourceItemByIdEntity
+        cached = getattr(self, "_get_custom_resource_item_by_id", None)
+        if cached is None:
+            cached = GetCustomResourceItemByIdEntity(self, None)
+            self._get_custom_resource_item_by_id = cached
+        return cached
+
     def GetCustomResourceItemById(self, data=None):
+        # Deprecated: use client.get_custom_resource_item_by_id instead.
         from entity.get_custom_resource_item_by_id_entity import GetCustomResourceItemByIdEntity
         return GetCustomResourceItemByIdEntity(self, data)
 
 
+    @property
+    def patch_custom_resource_item(self):
+        """Idiomatic facade: client.patch_custom_resource_item.list() / client.patch_custom_resource_item.load({"id": ...})."""
+        from entity.patch_custom_resource_item_entity import PatchCustomResourceItemEntity
+        cached = getattr(self, "_patch_custom_resource_item", None)
+        if cached is None:
+            cached = PatchCustomResourceItemEntity(self, None)
+            self._patch_custom_resource_item = cached
+        return cached
+
     def PatchCustomResourceItem(self, data=None):
+        # Deprecated: use client.patch_custom_resource_item instead.
         from entity.patch_custom_resource_item_entity import PatchCustomResourceItemEntity
         return PatchCustomResourceItemEntity(self, data)
 
 
+    @property
+    def product(self):
+        """Idiomatic facade: client.product.list() / client.product.load({"id": ...})."""
+        from entity.product_entity import ProductEntity
+        cached = getattr(self, "_product", None)
+        if cached is None:
+            cached = ProductEntity(self, None)
+            self._product = cached
+        return cached
+
     def Product(self, data=None):
+        # Deprecated: use client.product instead.
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
+    @property
+    def status(self):
+        """Idiomatic facade: client.status.list() / client.status.load({"id": ...})."""
+        from entity.status_entity import StatusEntity
+        cached = getattr(self, "_status", None)
+        if cached is None:
+            cached = StatusEntity(self, None)
+            self._status = cached
+        return cached
+
     def Status(self, data=None):
+        # Deprecated: use client.status instead.
         from entity.status_entity import StatusEntity
         return StatusEntity(self, data)
 
 
+    @property
+    def update_custom_resource_item(self):
+        """Idiomatic facade: client.update_custom_resource_item.list() / client.update_custom_resource_item.load({"id": ...})."""
+        from entity.update_custom_resource_item_entity import UpdateCustomResourceItemEntity
+        cached = getattr(self, "_update_custom_resource_item", None)
+        if cached is None:
+            cached = UpdateCustomResourceItemEntity(self, None)
+            self._update_custom_resource_item = cached
+        return cached
+
     def UpdateCustomResourceItem(self, data=None):
+        # Deprecated: use client.update_custom_resource_item instead.
         from entity.update_custom_resource_item_entity import UpdateCustomResourceItemEntity
         return UpdateCustomResourceItemEntity(self, data)
 
 
+    @property
+    def user(self):
+        """Idiomatic facade: client.user.list() / client.user.load({"id": ...})."""
+        from entity.user_entity import UserEntity
+        cached = getattr(self, "_user", None)
+        if cached is None:
+            cached = UserEntity(self, None)
+            self._user = cached
+        return cached
+
     def User(self, data=None):
+        # Deprecated: use client.user instead.
         from entity.user_entity import UserEntity
         return UserEntity(self, data)
 

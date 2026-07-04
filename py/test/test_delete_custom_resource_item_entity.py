@@ -51,8 +51,7 @@ class TestDeleteCustomResourceItemEntity:
         delete_custom_resource_item_ref01_match_rm0 = {
             "id": delete_custom_resource_item_ref01_data["id"],
         }
-        _, err = delete_custom_resource_item_ref01_ent.remove(delete_custom_resource_item_ref01_match_rm0, None)
-        assert err is None
+        delete_custom_resource_item_ref01_ent.remove(delete_custom_resource_item_ref01_match_rm0, None)
 
 
 
@@ -92,7 +91,6 @@ def _delete_custom_resource_item_basic_setup(extra):
         "MOCK_TEST_DELETE_CUSTOM_RESOURCE_ITEM_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _delete_custom_resource_item_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

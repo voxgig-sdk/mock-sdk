@@ -49,8 +49,7 @@ class StatusEntityTest extends TestCase
         // LOAD
         $status_ref01_ent = $client->Status(null);
         $status_ref01_match_dt0 = [];
-        [$status_ref01_data_dt0_loaded, $err] = $status_ref01_ent->load($status_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $status_ref01_data_dt0_loaded = $status_ref01_ent->load($status_ref01_match_dt0, null);
         $this->assertNotNull($status_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function status_basic_setup($extra)
         "MOCK_TEST_STATUS_ENTID" => $idmap,
         "MOCK_TEST_LIVE" => "FALSE",
         "MOCK_TEST_EXPLAIN" => "FALSE",
-        "MOCK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function status_basic_setup($extra)
     if ($env["MOCK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCK_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -52,9 +52,7 @@ class TestPatchCustomResourceItemEntity:
             "resource": setup["idmap"]["resource"],
         }
 
-        patch_custom_resource_item_ref01_resdata_up0_result, err = patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, None)
-        assert err is None
-        patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(patch_custom_resource_item_ref01_resdata_up0_result)
+        patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, None))
         assert patch_custom_resource_item_ref01_resdata_up0 is not None
 
 
@@ -95,7 +93,6 @@ def _patch_custom_resource_item_basic_setup(extra):
         "MOCK_TEST_PATCH_CUSTOM_RESOURCE_ITEM_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -108,7 +105,6 @@ def _patch_custom_resource_item_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

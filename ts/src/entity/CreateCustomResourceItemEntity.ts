@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  CreateCustomResourceItem,
+  CreateCustomResourceItemCreateData,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class CreateCustomResourceItemEntity extends MockEntityBase {
+class CreateCustomResourceItemEntity extends MockEntityBase<CreateCustomResourceItem> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class CreateCustomResourceItemEntity extends MockEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: CreateCustomResourceItemCreateData, ctrl?: Control): Promise<CreateCustomResourceItem> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class CreateCustomResourceItemEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<CreateCustomResourceItem> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

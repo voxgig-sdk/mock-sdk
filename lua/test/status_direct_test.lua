@@ -72,14 +72,12 @@ function status_direct_setup(mockres)
   local env = runner.env_override({
     ["MOCK_TEST_STATUS_ENTID"] = {},
     ["MOCK_TEST_LIVE"] = "FALSE",
-    ["MOCK_APIKEY"] = "NONE",
   })
 
   local live = env["MOCK_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["MOCK_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

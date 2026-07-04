@@ -85,6 +85,10 @@ end
 
 
 
+---@param reqdata PatchCustomResourceItemUpdateData
+---@param ctrl? table
+---@return PatchCustomResourceItem
+---@return string? err
 function PatchCustomResourceItemEntity:update(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

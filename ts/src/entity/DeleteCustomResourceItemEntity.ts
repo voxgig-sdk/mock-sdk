@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  DeleteCustomResourceItem,
+  DeleteCustomResourceItemRemoveMatch,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class DeleteCustomResourceItemEntity extends MockEntityBase {
+class DeleteCustomResourceItemEntity extends MockEntityBase<DeleteCustomResourceItem> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -36,7 +40,7 @@ class DeleteCustomResourceItemEntity extends MockEntityBase {
 
 
 
-  async remove(this: any, reqmatch?: any, ctrl?: Control) {
+  async remove(this: any, reqmatch?: DeleteCustomResourceItemRemoveMatch, ctrl?: Control): Promise<DeleteCustomResourceItem> {
 
     const utility = this._utility
 
@@ -141,7 +145,9 @@ class DeleteCustomResourceItemEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<DeleteCustomResourceItem> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

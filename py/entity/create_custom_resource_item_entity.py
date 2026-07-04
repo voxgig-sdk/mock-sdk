@@ -1,7 +1,13 @@
 # Mock SDK CreateCustomResourceItem entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from mock_types import (
+    CreateCustomResourceItem,
+    CreateCustomResourceItemCreateData,
+)
 
 
 class CreateCustomResourceItemEntity:
@@ -44,7 +50,7 @@ class CreateCustomResourceItemEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> CreateCustomResourceItem:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,7 +59,7 @@ class CreateCustomResourceItemEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> CreateCustomResourceItem:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
@@ -62,7 +68,7 @@ class CreateCustomResourceItemEntity:
     
 
     
-    def create(self, reqdata, ctrl=None):
+    def create(self, reqdata: CreateCustomResourceItemCreateData, ctrl=None) -> CreateCustomResourceItem:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "create",

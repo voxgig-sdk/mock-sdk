@@ -49,8 +49,7 @@ class TestGetCustomResourceItemByIdEntity:
         # LOAD
         get_custom_resource_item_by_id_ref01_ent = client.GetCustomResourceItemById(None)
         get_custom_resource_item_by_id_ref01_match_dt0 = {}
-        get_custom_resource_item_by_id_ref01_data_dt0_loaded, err = get_custom_resource_item_by_id_ref01_ent.load(get_custom_resource_item_by_id_ref01_match_dt0, None)
-        assert err is None
+        get_custom_resource_item_by_id_ref01_data_dt0_loaded = get_custom_resource_item_by_id_ref01_ent.load(get_custom_resource_item_by_id_ref01_match_dt0, None)
         assert get_custom_resource_item_by_id_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _get_custom_resource_item_by_id_basic_setup(extra):
         "MOCK_TEST_GET_CUSTOM_RESOURCE_ITEM_BY_ID_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _get_custom_resource_item_by_id_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

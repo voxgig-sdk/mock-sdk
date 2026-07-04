@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -96,7 +95,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -110,11 +112,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -122,7 +125,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## CartEntity
 
 ```php
-$cart = $client->Cart();
+$cart = $client->cart();
 ```
 
 ### Fields
@@ -134,12 +137,12 @@ $cart = $client->Cart();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Cart()->list([]);
+$results = $client->cart()->list([]);
 ```
 
 ### Common Methods
@@ -175,7 +178,7 @@ Return the entity name.
 ## CouponEntity
 
 ```php
-$coupon = $client->Coupon();
+$coupon = $client->coupon();
 ```
 
 ### Fields
@@ -188,12 +191,12 @@ $coupon = $client->Coupon();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Coupon()->list([]);
+$results = $client->coupon()->list([]);
 ```
 
 ### Common Methods
@@ -229,17 +232,17 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```php
-$create_custom_resource_item = $client->CreateCustomResourceItem();
+$create_custom_resource_item = $client->create_custom_resource_item();
 ```
 
 ### Operations
 
-#### `create(array $reqdata, ?array $ctrl = null): array`
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Throws on error.
 
 ```php
-[$result, $err] = $client->CreateCustomResourceItem()->create([
+$result = $client->create_custom_resource_item()->create([
 ]);
 ```
 
@@ -276,17 +279,17 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```php
-$delete_custom_resource_item = $client->DeleteCustomResourceItem();
+$delete_custom_resource_item = $client->delete_custom_resource_item();
 ```
 
 ### Operations
 
-#### `remove(array $reqmatch, ?array $ctrl = null): array`
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->DeleteCustomResourceItem()->remove(["id" => "delete_custom_resource_item_id"]);
+$result = $client->delete_custom_resource_item()->remove(["id" => "delete_custom_resource_item_id"]);
 ```
 
 ### Common Methods
@@ -322,17 +325,17 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```php
-$get_custom_resource = $client->GetCustomResource();
+$get_custom_resource = $client->get_custom_resource();
 ```
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->GetCustomResource()->list([]);
+$results = $client->get_custom_resource()->list([]);
 ```
 
 ### Common Methods
@@ -368,17 +371,17 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```php
-$get_custom_resource_item_by_id = $client->GetCustomResourceItemById();
+$get_custom_resource_item_by_id = $client->get_custom_resource_item_by_id();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id"]);
+$result = $client->get_custom_resource_item_by_id()->load(["id" => "get_custom_resource_item_by_id_id"]);
 ```
 
 ### Common Methods
@@ -414,17 +417,17 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```php
-$patch_custom_resource_item = $client->PatchCustomResourceItem();
+$patch_custom_resource_item = $client->patch_custom_resource_item();
 ```
 
 ### Operations
 
-#### `update(array $reqdata, ?array $ctrl = null): array`
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-[$result, $err] = $client->PatchCustomResourceItem()->update([
+$result = $client->patch_custom_resource_item()->update([
   "id" => "patch_custom_resource_item_id",
   // Fields to update
 ]);
@@ -463,7 +466,7 @@ Return the entity name.
 ## ProductEntity
 
 ```php
-$product = $client->Product();
+$product = $client->product();
 ```
 
 ### Fields
@@ -476,20 +479,20 @@ $product = $client->Product();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Product()->list([]);
+$results = $client->product()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Product()->load(["id" => "product_id"]);
+$result = $client->product()->load(["id" => "product_id"]);
 ```
 
 ### Common Methods
@@ -525,17 +528,17 @@ Return the entity name.
 ## StatusEntity
 
 ```php
-$status = $client->Status();
+$status = $client->status();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Status()->load(["id" => "status_id"]);
+$result = $client->status()->load(["id" => "status_id"]);
 ```
 
 ### Common Methods
@@ -571,17 +574,17 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```php
-$update_custom_resource_item = $client->UpdateCustomResourceItem();
+$update_custom_resource_item = $client->update_custom_resource_item();
 ```
 
 ### Operations
 
-#### `update(array $reqdata, ?array $ctrl = null): array`
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-[$result, $err] = $client->UpdateCustomResourceItem()->update([
+$result = $client->update_custom_resource_item()->update([
   "id" => "update_custom_resource_item_id",
   // Fields to update
 ]);
@@ -620,7 +623,7 @@ Return the entity name.
 ## UserEntity
 
 ```php
-$user = $client->User();
+$user = $client->user();
 ```
 
 ### Fields
@@ -633,12 +636,12 @@ $user = $client->User();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->User()->list([]);
+$results = $client->user()->list([]);
 ```
 
 ### Common Methods

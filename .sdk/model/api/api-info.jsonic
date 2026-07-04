@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "JSONing"
         url: "https://jsoning.com/api/"

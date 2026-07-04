@@ -85,6 +85,27 @@ func (e *DeleteCustomResourceItemEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an DeleteCustomResourceItem; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *DeleteCustomResourceItemEntity) DataTyped(data ...DeleteCustomResourceItem) DeleteCustomResourceItem {
+	if len(data) > 0 {
+		return typedFrom[DeleteCustomResourceItem](e.Data(asMap(data[0])))
+	}
+	return typedFrom[DeleteCustomResourceItem](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through DeleteCustomResourceItem (all fields
+// optional at the wire level).
+func (e *DeleteCustomResourceItemEntity) MatchTyped(match ...DeleteCustomResourceItem) DeleteCustomResourceItem {
+	if len(match) > 0 {
+		return typedFrom[DeleteCustomResourceItem](e.Match(asMap(match[0])))
+	}
+	return typedFrom[DeleteCustomResourceItem](e.Match())
+}
+
 func (e *DeleteCustomResourceItemEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -129,6 +150,17 @@ func (e *DeleteCustomResourceItemEntity) Remove(reqmatch map[string]any, ctrl ma
 			}
 		}
 	})
+}
+
+// RemoveTyped is the statically-typed variant of Remove: it takes an
+// DeleteCustomResourceItemRemoveMatch and returns an DeleteCustomResourceItem. It delegates to the untyped
+// Remove (identical runtime) and converts at the typed boundary.
+func (e *DeleteCustomResourceItemEntity) RemoveTyped(reqmatch DeleteCustomResourceItemRemoveMatch, ctrl map[string]any) (DeleteCustomResourceItem, error) {
+	res, err := e.Remove(asMap(reqmatch), ctrl)
+	if err != nil {
+		return DeleteCustomResourceItem{}, err
+	}
+	return typedFrom[DeleteCustomResourceItem](res), nil
 }
 
 

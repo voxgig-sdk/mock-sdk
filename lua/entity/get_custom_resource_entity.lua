@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch GetCustomResourceListMatch
+---@param ctrl? table
+---@return GetCustomResource[]
+---@return string? err
 function GetCustomResourceEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

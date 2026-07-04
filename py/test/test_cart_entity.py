@@ -50,8 +50,7 @@ class TestCartEntity:
         cart_ref01_ent = client.Cart(None)
         cart_ref01_match = {}
 
-        cart_ref01_list_result, err = cart_ref01_ent.list(cart_ref01_match, None)
-        assert err is None
+        cart_ref01_list_result = cart_ref01_ent.list(cart_ref01_match, None)
         assert isinstance(cart_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _cart_basic_setup(extra):
         "MOCK_TEST_CART_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _cart_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

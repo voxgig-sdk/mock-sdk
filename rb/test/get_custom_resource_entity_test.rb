@@ -45,8 +45,7 @@ class GetCustomResourceEntityTest < Minitest::Test
       "resource" => setup[:idmap]["resource01"],
     }
 
-    get_custom_resource_ref01_list_result, err = get_custom_resource_ref01_ent.list(get_custom_resource_ref01_match, nil)
-    assert_nil err
+    get_custom_resource_ref01_list_result = get_custom_resource_ref01_ent.list(get_custom_resource_ref01_match, nil)
     assert get_custom_resource_ref01_list_result.is_a?(Array)
 
   end
@@ -85,7 +84,6 @@ def get_custom_resource_basic_setup(extra)
     "MOCK_TEST_GET_CUSTOM_RESOURCE_ENTID" => idmap,
     "MOCK_TEST_LIVE" => "FALSE",
     "MOCK_TEST_EXPLAIN" => "FALSE",
-    "MOCK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -97,7 +95,6 @@ def get_custom_resource_basic_setup(extra)
   if env["MOCK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCK_APIKEY"],
       },
       extra || {},
     ])

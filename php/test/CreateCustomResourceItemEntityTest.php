@@ -44,8 +44,7 @@ class CreateCustomResourceItemEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.create_custom_resource_item"), "create_custom_resource_item_ref01"));
         $create_custom_resource_item_ref01_data["resource"] = $setup["idmap"]["resource01"];
 
-        [$create_custom_resource_item_ref01_data_result, $err] = $create_custom_resource_item_ref01_ent->create($create_custom_resource_item_ref01_data, null);
-        $this->assertNull($err);
+        $create_custom_resource_item_ref01_data_result = $create_custom_resource_item_ref01_ent->create($create_custom_resource_item_ref01_data, null);
         $create_custom_resource_item_ref01_data = Helpers::to_map($create_custom_resource_item_ref01_data_result);
         $this->assertNotNull($create_custom_resource_item_ref01_data);
 
@@ -81,7 +80,6 @@ function create_custom_resource_item_basic_setup($extra)
         "MOCK_TEST_CREATE_CUSTOM_RESOURCE_ITEM_ENTID" => $idmap,
         "MOCK_TEST_LIVE" => "FALSE",
         "MOCK_TEST_EXPLAIN" => "FALSE",
-        "MOCK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -93,7 +91,6 @@ function create_custom_resource_item_basic_setup($extra)
     if ($env["MOCK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCK_APIKEY"],
             ],
             $extra ?? [],
         ]);

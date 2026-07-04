@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  PatchCustomResourceItem,
+  PatchCustomResourceItemUpdateData,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class PatchCustomResourceItemEntity extends MockEntityBase {
+class PatchCustomResourceItemEntity extends MockEntityBase<PatchCustomResourceItem> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -35,7 +39,7 @@ class PatchCustomResourceItemEntity extends MockEntityBase {
 
 
 
-  async update(this: any, reqdata?: any, ctrl?: Control) {
+  async update(this: any, reqdata?: PatchCustomResourceItemUpdateData, ctrl?: Control): Promise<PatchCustomResourceItem> {
 
     const utility = this._utility
 
@@ -140,7 +144,9 @@ class PatchCustomResourceItemEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<PatchCustomResourceItem> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

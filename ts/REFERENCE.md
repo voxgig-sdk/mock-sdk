@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -230,7 +229,7 @@ Alias for `MockSDK.test()`.
 ## CartEntity
 
 ```ts
-const cart = client.Cart()
+const cart = client.cart
 ```
 
 ### Fields
@@ -247,7 +246,7 @@ const cart = client.Cart()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Cart().list()
+const results = await client.cart.list()
 ```
 
 ### Common Methods
@@ -281,7 +280,7 @@ Return a copy of the entity options.
 ## CouponEntity
 
 ```ts
-const coupon = client.Coupon()
+const coupon = client.coupon
 ```
 
 ### Fields
@@ -299,7 +298,7 @@ const coupon = client.Coupon()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Coupon().list()
+const results = await client.coupon.list()
 ```
 
 ### Common Methods
@@ -333,7 +332,7 @@ Return a copy of the entity options.
 ## CreateCustomResourceItemEntity
 
 ```ts
-const create_custom_resource_item = client.CreateCustomResourceItem()
+const create_custom_resource_item = client.create_custom_resource_item
 ```
 
 ### Operations
@@ -343,7 +342,7 @@ const create_custom_resource_item = client.CreateCustomResourceItem()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.CreateCustomResourceItem().create({
+const result = await client.create_custom_resource_item.create({
 })
 ```
 
@@ -378,7 +377,7 @@ Return a copy of the entity options.
 ## DeleteCustomResourceItemEntity
 
 ```ts
-const delete_custom_resource_item = client.DeleteCustomResourceItem()
+const delete_custom_resource_item = client.delete_custom_resource_item
 ```
 
 ### Operations
@@ -388,7 +387,7 @@ const delete_custom_resource_item = client.DeleteCustomResourceItem()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.DeleteCustomResourceItem().remove({ id: 'delete_custom_resource_item_id' })
+const result = await client.delete_custom_resource_item.remove({ id: 'delete_custom_resource_item_id' })
 ```
 
 ### Common Methods
@@ -422,7 +421,7 @@ Return a copy of the entity options.
 ## GetCustomResourceEntity
 
 ```ts
-const get_custom_resource = client.GetCustomResource()
+const get_custom_resource = client.get_custom_resource
 ```
 
 ### Operations
@@ -432,7 +431,7 @@ const get_custom_resource = client.GetCustomResource()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetCustomResource().list()
+const results = await client.get_custom_resource.list()
 ```
 
 ### Common Methods
@@ -466,7 +465,7 @@ Return a copy of the entity options.
 ## GetCustomResourceItemByIdEntity
 
 ```ts
-const get_custom_resource_item_by_id = client.GetCustomResourceItemById()
+const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 ```
 
 ### Operations
@@ -476,7 +475,7 @@ const get_custom_resource_item_by_id = client.GetCustomResourceItemById()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
+const result = await client.get_custom_resource_item_by_id.load({ id: 'get_custom_resource_item_by_id_id' })
 ```
 
 ### Common Methods
@@ -510,7 +509,7 @@ Return a copy of the entity options.
 ## PatchCustomResourceItemEntity
 
 ```ts
-const patch_custom_resource_item = client.PatchCustomResourceItem()
+const patch_custom_resource_item = client.patch_custom_resource_item
 ```
 
 ### Operations
@@ -520,7 +519,7 @@ const patch_custom_resource_item = client.PatchCustomResourceItem()
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.PatchCustomResourceItem().update({
+const result = await client.patch_custom_resource_item.update({
   id: 'patch_custom_resource_item_id',
   // Fields to update
 })
@@ -557,7 +556,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.Product()
+const product = client.product
 ```
 
 ### Fields
@@ -575,7 +574,7 @@ const product = client.Product()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Product().list()
+const results = await client.product.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -583,7 +582,7 @@ const results = await client.Product().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Product().load({ id: 'product_id' })
+const result = await client.product.load({ id: 'product_id' })
 ```
 
 ### Common Methods
@@ -617,7 +616,7 @@ Return a copy of the entity options.
 ## StatusEntity
 
 ```ts
-const status = client.Status()
+const status = client.status
 ```
 
 ### Operations
@@ -627,7 +626,7 @@ const status = client.Status()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Status().load({ id: 'status_id' })
+const result = await client.status.load({ id: 'status_id' })
 ```
 
 ### Common Methods
@@ -661,7 +660,7 @@ Return a copy of the entity options.
 ## UpdateCustomResourceItemEntity
 
 ```ts
-const update_custom_resource_item = client.UpdateCustomResourceItem()
+const update_custom_resource_item = client.update_custom_resource_item
 ```
 
 ### Operations
@@ -671,7 +670,7 @@ const update_custom_resource_item = client.UpdateCustomResourceItem()
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.UpdateCustomResourceItem().update({
+const result = await client.update_custom_resource_item.update({
   id: 'update_custom_resource_item_id',
   // Fields to update
 })
@@ -708,7 +707,7 @@ Return a copy of the entity options.
 ## UserEntity
 
 ```ts
-const user = client.User()
+const user = client.user
 ```
 
 ### Fields
@@ -726,7 +725,7 @@ const user = client.User()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.User().list()
+const results = await client.user.list()
 ```
 
 ### Common Methods

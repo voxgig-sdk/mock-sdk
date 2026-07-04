@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Cart,
+  CartListMatch,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class CartEntity extends MockEntityBase {
+class CartEntity extends MockEntityBase<Cart> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class CartEntity extends MockEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CartListMatch, ctrl?: Control): Promise<Cart[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class CartEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Cart[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

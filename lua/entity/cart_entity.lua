@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CartListMatch
+---@param ctrl? table
+---@return Cart[]
+---@return string? err
 function CartEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -43,8 +43,7 @@ class CouponEntityTest < Minitest::Test
     coupon_ref01_ent = client.Coupon(nil)
     coupon_ref01_match = {}
 
-    coupon_ref01_list_result, err = coupon_ref01_ent.list(coupon_ref01_match, nil)
-    assert_nil err
+    coupon_ref01_list_result = coupon_ref01_ent.list(coupon_ref01_match, nil)
     assert coupon_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def coupon_basic_setup(extra)
     "MOCK_TEST_COUPON_ENTID" => idmap,
     "MOCK_TEST_LIVE" => "FALSE",
     "MOCK_TEST_EXPLAIN" => "FALSE",
-    "MOCK_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def coupon_basic_setup(extra)
   if env["MOCK_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCK_APIKEY"],
       },
       extra || {},
     ])

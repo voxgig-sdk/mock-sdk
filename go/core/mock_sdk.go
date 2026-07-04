@@ -245,56 +245,89 @@ func (sdk *MockSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Cart returns a Cart entity bound to this client.
+// Idiomatic usage: client.Cart(nil).List(nil, nil) or
+// client.Cart(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) Cart(data map[string]any) MockEntity {
 	return NewCartEntityFunc(sdk, data)
 }
 
 
+// Coupon returns a Coupon entity bound to this client.
+// Idiomatic usage: client.Coupon(nil).List(nil, nil) or
+// client.Coupon(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) Coupon(data map[string]any) MockEntity {
 	return NewCouponEntityFunc(sdk, data)
 }
 
 
+// CreateCustomResourceItem returns a CreateCustomResourceItem entity bound to this client.
+// Idiomatic usage: client.CreateCustomResourceItem(nil).List(nil, nil) or
+// client.CreateCustomResourceItem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) CreateCustomResourceItem(data map[string]any) MockEntity {
 	return NewCreateCustomResourceItemEntityFunc(sdk, data)
 }
 
 
+// DeleteCustomResourceItem returns a DeleteCustomResourceItem entity bound to this client.
+// Idiomatic usage: client.DeleteCustomResourceItem(nil).List(nil, nil) or
+// client.DeleteCustomResourceItem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) DeleteCustomResourceItem(data map[string]any) MockEntity {
 	return NewDeleteCustomResourceItemEntityFunc(sdk, data)
 }
 
 
+// GetCustomResource returns a GetCustomResource entity bound to this client.
+// Idiomatic usage: client.GetCustomResource(nil).List(nil, nil) or
+// client.GetCustomResource(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) GetCustomResource(data map[string]any) MockEntity {
 	return NewGetCustomResourceEntityFunc(sdk, data)
 }
 
 
+// GetCustomResourceItemById returns a GetCustomResourceItemById entity bound to this client.
+// Idiomatic usage: client.GetCustomResourceItemById(nil).List(nil, nil) or
+// client.GetCustomResourceItemById(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) GetCustomResourceItemById(data map[string]any) MockEntity {
 	return NewGetCustomResourceItemByIdEntityFunc(sdk, data)
 }
 
 
+// PatchCustomResourceItem returns a PatchCustomResourceItem entity bound to this client.
+// Idiomatic usage: client.PatchCustomResourceItem(nil).List(nil, nil) or
+// client.PatchCustomResourceItem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) PatchCustomResourceItem(data map[string]any) MockEntity {
 	return NewPatchCustomResourceItemEntityFunc(sdk, data)
 }
 
 
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) Product(data map[string]any) MockEntity {
 	return NewProductEntityFunc(sdk, data)
 }
 
 
+// Status returns a Status entity bound to this client.
+// Idiomatic usage: client.Status(nil).List(nil, nil) or
+// client.Status(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) Status(data map[string]any) MockEntity {
 	return NewStatusEntityFunc(sdk, data)
 }
 
 
+// UpdateCustomResourceItem returns a UpdateCustomResourceItem entity bound to this client.
+// Idiomatic usage: client.UpdateCustomResourceItem(nil).List(nil, nil) or
+// client.UpdateCustomResourceItem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) UpdateCustomResourceItem(data map[string]any) MockEntity {
 	return NewUpdateCustomResourceItemEntityFunc(sdk, data)
 }
 
 
+// User returns a User entity bound to this client.
+// Idiomatic usage: client.User(nil).List(nil, nil) or
+// client.User(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockSDK) User(data map[string]any) MockEntity {
 	return NewUserEntityFunc(sdk, data)
 }

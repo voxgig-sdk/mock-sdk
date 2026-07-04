@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata CreateCustomResourceItemCreateData
+---@param ctrl? table
+---@return CreateCustomResourceItem
+---@return string? err
 function CreateCustomResourceItemEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

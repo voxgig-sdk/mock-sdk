@@ -9,9 +9,10 @@ The PHP SDK for the Mock API — an entity-oriented client using PHP conventions
 
 
 ## Install
-```bash
-composer require voxgig-sdk/mock
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/mock-sdk/releases](https://github.com/voxgig-sdk/mock-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,22 +26,22 @@ loading a specific record.
 <?php
 require_once 'mock_sdk.php';
 
-$client = new MockSDK([
-    "apikey" => getenv("MOCK_APIKEY"),
-]);
+$client = new MockSDK();
 ```
 
 ### 2. List carts
 
 ```php
-[$result, $err] = $client->Cart()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->cart()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +53,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +91,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = MockSDK::test();
 
-[$result, $err] = $client->Mock()->load(["id" => "test01"]);
+$result = $client->cart()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -122,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOCK_TEST_LIVE=TRUE
-MOCK_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +148,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -201,8 +203,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -332,7 +338,7 @@ API path: `/public/users`
 
 ### Cart
 
-Create an instance: `const cart = client.Cart()`
+Create an instance: `const cart = client.cart`
 
 #### Operations
 
@@ -350,13 +356,13 @@ Create an instance: `const cart = client.Cart()`
 #### Example: List
 
 ```ts
-const carts = await client.Cart().list()
+const carts = await client.cart.list()
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.Coupon()`
+Create an instance: `const coupon = client.coupon`
 
 #### Operations
 
@@ -375,13 +381,13 @@ Create an instance: `const coupon = client.Coupon()`
 #### Example: List
 
 ```ts
-const coupons = await client.Coupon().list()
+const coupons = await client.coupon.list()
 ```
 
 
 ### CreateCustomResourceItem
 
-Create an instance: `const create_custom_resource_item = client.CreateCustomResourceItem()`
+Create an instance: `const create_custom_resource_item = client.create_custom_resource_item`
 
 #### Operations
 
@@ -392,14 +398,14 @@ Create an instance: `const create_custom_resource_item = client.CreateCustomReso
 #### Example: Create
 
 ```ts
-const create_custom_resource_item = await client.CreateCustomResourceItem().create({
+const create_custom_resource_item = await client.create_custom_resource_item.create({
 })
 ```
 
 
 ### DeleteCustomResourceItem
 
-Create an instance: `const delete_custom_resource_item = client.DeleteCustomResourceItem()`
+Create an instance: `const delete_custom_resource_item = client.delete_custom_resource_item`
 
 #### Operations
 
@@ -410,7 +416,7 @@ Create an instance: `const delete_custom_resource_item = client.DeleteCustomReso
 
 ### GetCustomResource
 
-Create an instance: `const get_custom_resource = client.GetCustomResource()`
+Create an instance: `const get_custom_resource = client.get_custom_resource`
 
 #### Operations
 
@@ -421,13 +427,13 @@ Create an instance: `const get_custom_resource = client.GetCustomResource()`
 #### Example: List
 
 ```ts
-const get_custom_resources = await client.GetCustomResource().list()
+const get_custom_resources = await client.get_custom_resource.list()
 ```
 
 
 ### GetCustomResourceItemById
 
-Create an instance: `const get_custom_resource_item_by_id = client.GetCustomResourceItemById()`
+Create an instance: `const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id`
 
 #### Operations
 
@@ -438,13 +444,13 @@ Create an instance: `const get_custom_resource_item_by_id = client.GetCustomReso
 #### Example: Load
 
 ```ts
-const get_custom_resource_item_by_id = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
+const get_custom_resource_item_by_id = await client.get_custom_resource_item_by_id.load({ id: 'get_custom_resource_item_by_id_id' })
 ```
 
 
 ### PatchCustomResourceItem
 
-Create an instance: `const patch_custom_resource_item = client.PatchCustomResourceItem()`
+Create an instance: `const patch_custom_resource_item = client.patch_custom_resource_item`
 
 #### Operations
 
@@ -455,7 +461,7 @@ Create an instance: `const patch_custom_resource_item = client.PatchCustomResour
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -475,19 +481,19 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.Status()`
+Create an instance: `const status = client.status`
 
 #### Operations
 
@@ -498,13 +504,13 @@ Create an instance: `const status = client.Status()`
 #### Example: Load
 
 ```ts
-const status = await client.Status().load({ id: 'status_id' })
+const status = await client.status.load({ id: 'status_id' })
 ```
 
 
 ### UpdateCustomResourceItem
 
-Create an instance: `const update_custom_resource_item = client.UpdateCustomResourceItem()`
+Create an instance: `const update_custom_resource_item = client.update_custom_resource_item`
 
 #### Operations
 
@@ -515,7 +521,7 @@ Create an instance: `const update_custom_resource_item = client.UpdateCustomReso
 
 ### User
 
-Create an instance: `const user = client.User()`
+Create an instance: `const user = client.user`
 
 #### Operations
 
@@ -534,7 +540,7 @@ Create an instance: `const user = client.User()`
 #### Example: List
 
 ```ts
-const users = await client.User().list()
+const users = await client.user.list()
 ```
 
 
@@ -609,11 +615,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$cart = $client->cart();
+$cart->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $cart->dataGet() now returns the loaded cart data
+// $cart->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

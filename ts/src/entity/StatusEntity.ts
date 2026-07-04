@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Status,
+  StatusLoadMatch,
+} from '../MockTypes'
 
 // TODO: needs Entity superclass
-class StatusEntity extends MockEntityBase {
+class StatusEntity extends MockEntityBase<Status> {
 
   constructor(client: MockSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class StatusEntity extends MockEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: StatusLoadMatch, ctrl?: Control): Promise<Status> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class StatusEntity extends MockEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Status> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

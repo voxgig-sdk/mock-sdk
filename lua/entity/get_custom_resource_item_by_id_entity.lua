@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetCustomResourceItemByIdLoadMatch
+---@param ctrl? table
+---@return GetCustomResourceItemById
+---@return string? err
 function GetCustomResourceItemByIdEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

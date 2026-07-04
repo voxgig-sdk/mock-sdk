@@ -244,66 +244,209 @@ end
 
 
 
+-- Idiomatic facade: client:cart():list() / client:cart():load({ id = ... })
+function MockSDK:cart(data)
+  local EntityMod = require("entity.cart_entity")
+  if data == nil then
+    if self._cart == nil then
+      self._cart = EntityMod.new(self, nil)
+    end
+    return self._cart
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:cart() instead.
 function MockSDK:Cart(data)
   local EntityMod = require("entity.cart_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:coupon():list() / client:coupon():load({ id = ... })
+function MockSDK:coupon(data)
+  local EntityMod = require("entity.coupon_entity")
+  if data == nil then
+    if self._coupon == nil then
+      self._coupon = EntityMod.new(self, nil)
+    end
+    return self._coupon
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:coupon() instead.
 function MockSDK:Coupon(data)
   local EntityMod = require("entity.coupon_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:create_custom_resource_item():list() / client:create_custom_resource_item():load({ id = ... })
+function MockSDK:create_custom_resource_item(data)
+  local EntityMod = require("entity.create_custom_resource_item_entity")
+  if data == nil then
+    if self._create_custom_resource_item == nil then
+      self._create_custom_resource_item = EntityMod.new(self, nil)
+    end
+    return self._create_custom_resource_item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:create_custom_resource_item() instead.
 function MockSDK:CreateCustomResourceItem(data)
   local EntityMod = require("entity.create_custom_resource_item_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:delete_custom_resource_item():list() / client:delete_custom_resource_item():load({ id = ... })
+function MockSDK:delete_custom_resource_item(data)
+  local EntityMod = require("entity.delete_custom_resource_item_entity")
+  if data == nil then
+    if self._delete_custom_resource_item == nil then
+      self._delete_custom_resource_item = EntityMod.new(self, nil)
+    end
+    return self._delete_custom_resource_item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:delete_custom_resource_item() instead.
 function MockSDK:DeleteCustomResourceItem(data)
   local EntityMod = require("entity.delete_custom_resource_item_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:get_custom_resource():list() / client:get_custom_resource():load({ id = ... })
+function MockSDK:get_custom_resource(data)
+  local EntityMod = require("entity.get_custom_resource_entity")
+  if data == nil then
+    if self._get_custom_resource == nil then
+      self._get_custom_resource = EntityMod.new(self, nil)
+    end
+    return self._get_custom_resource
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_custom_resource() instead.
 function MockSDK:GetCustomResource(data)
   local EntityMod = require("entity.get_custom_resource_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:get_custom_resource_item_by_id():list() / client:get_custom_resource_item_by_id():load({ id = ... })
+function MockSDK:get_custom_resource_item_by_id(data)
+  local EntityMod = require("entity.get_custom_resource_item_by_id_entity")
+  if data == nil then
+    if self._get_custom_resource_item_by_id == nil then
+      self._get_custom_resource_item_by_id = EntityMod.new(self, nil)
+    end
+    return self._get_custom_resource_item_by_id
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_custom_resource_item_by_id() instead.
 function MockSDK:GetCustomResourceItemById(data)
   local EntityMod = require("entity.get_custom_resource_item_by_id_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:patch_custom_resource_item():list() / client:patch_custom_resource_item():load({ id = ... })
+function MockSDK:patch_custom_resource_item(data)
+  local EntityMod = require("entity.patch_custom_resource_item_entity")
+  if data == nil then
+    if self._patch_custom_resource_item == nil then
+      self._patch_custom_resource_item = EntityMod.new(self, nil)
+    end
+    return self._patch_custom_resource_item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:patch_custom_resource_item() instead.
 function MockSDK:PatchCustomResourceItem(data)
   local EntityMod = require("entity.patch_custom_resource_item_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
+function MockSDK:product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:product() instead.
 function MockSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:status():list() / client:status():load({ id = ... })
+function MockSDK:status(data)
+  local EntityMod = require("entity.status_entity")
+  if data == nil then
+    if self._status == nil then
+      self._status = EntityMod.new(self, nil)
+    end
+    return self._status
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:status() instead.
 function MockSDK:Status(data)
   local EntityMod = require("entity.status_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:update_custom_resource_item():list() / client:update_custom_resource_item():load({ id = ... })
+function MockSDK:update_custom_resource_item(data)
+  local EntityMod = require("entity.update_custom_resource_item_entity")
+  if data == nil then
+    if self._update_custom_resource_item == nil then
+      self._update_custom_resource_item = EntityMod.new(self, nil)
+    end
+    return self._update_custom_resource_item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:update_custom_resource_item() instead.
 function MockSDK:UpdateCustomResourceItem(data)
   local EntityMod = require("entity.update_custom_resource_item_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:user():list() / client:user():load({ id = ... })
+function MockSDK:user(data)
+  local EntityMod = require("entity.user_entity")
+  if data == nil then
+    if self._user == nil then
+      self._user = EntityMod.new(self, nil)
+    end
+    return self._user
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:user() instead.
 function MockSDK:User(data)
   local EntityMod = require("entity.user_entity")
   return EntityMod.new(self, data)

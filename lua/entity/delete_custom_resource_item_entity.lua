@@ -87,6 +87,10 @@ end
 
 
 
+---@param reqmatch DeleteCustomResourceItemRemoveMatch
+---@param ctrl? table
+---@return DeleteCustomResourceItem
+---@return string? err
 function DeleteCustomResourceItemEntity:remove(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

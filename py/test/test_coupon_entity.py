@@ -50,8 +50,7 @@ class TestCouponEntity:
         coupon_ref01_ent = client.Coupon(None)
         coupon_ref01_match = {}
 
-        coupon_ref01_list_result, err = coupon_ref01_ent.list(coupon_ref01_match, None)
-        assert err is None
+        coupon_ref01_list_result = coupon_ref01_ent.list(coupon_ref01_match, None)
         assert isinstance(coupon_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _coupon_basic_setup(extra):
         "MOCK_TEST_COUPON_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _coupon_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

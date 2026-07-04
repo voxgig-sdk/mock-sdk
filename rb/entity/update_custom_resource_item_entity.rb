@@ -45,6 +45,7 @@ class UpdateCustomResourceItemEntity
     end
   end
 
+  # @return [UpdateCustomResourceItem, Hash] the current UpdateCustomResourceItem data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class UpdateCustomResourceItemEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of UpdateCustomResourceItem fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -69,6 +71,11 @@ class UpdateCustomResourceItemEntity
   
 
   
+  # Update an existing UpdateCustomResourceItem.
+  #
+  # @param reqdata [UpdateCustomResourceItemUpdateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [UpdateCustomResourceItem, Hash] the updated UpdateCustomResourceItem; raises MockError on failure
   def update(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

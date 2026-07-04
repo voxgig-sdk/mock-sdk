@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -94,9 +93,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -110,14 +111,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -125,7 +126,7 @@ same parameters as `direct()`.
 ## CartEntity
 
 ```ruby
-cart = client.Cart
+cart = client.cart
 ```
 
 ### Fields
@@ -137,12 +138,12 @@ cart = client.Cart
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Cart.list(nil)
+results = client.cart.list(nil)
 ```
 
 ### Common Methods
@@ -178,7 +179,7 @@ Return the entity name.
 ## CouponEntity
 
 ```ruby
-coupon = client.Coupon
+coupon = client.coupon
 ```
 
 ### Fields
@@ -191,12 +192,12 @@ coupon = client.Coupon
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Coupon.list(nil)
+results = client.coupon.list(nil)
 ```
 
 ### Common Methods
@@ -232,17 +233,17 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```ruby
-create_custom_resource_item = client.CreateCustomResourceItem
+create_custom_resource_item = client.create_custom_resource_item
 ```
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.CreateCustomResourceItem.create({
+result = client.create_custom_resource_item.create({
 })
 ```
 
@@ -279,17 +280,17 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```ruby
-delete_custom_resource_item = client.DeleteCustomResourceItem
+delete_custom_resource_item = client.delete_custom_resource_item
 ```
 
 ### Operations
 
-#### `remove(reqmatch, ctrl = nil) -> result, err`
+#### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.DeleteCustomResourceItem.remove({ "id" => "delete_custom_resource_item_id" })
+result = client.delete_custom_resource_item.remove({ "id" => "delete_custom_resource_item_id" })
 ```
 
 ### Common Methods
@@ -325,17 +326,17 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```ruby
-get_custom_resource = client.GetCustomResource
+get_custom_resource = client.get_custom_resource
 ```
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.GetCustomResource.list(nil)
+results = client.get_custom_resource.list(nil)
 ```
 
 ### Common Methods
@@ -371,17 +372,17 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```ruby
-get_custom_resource_item_by_id = client.GetCustomResourceItemById
+get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id" })
+result = client.get_custom_resource_item_by_id.load({ "id" => "get_custom_resource_item_by_id_id" })
 ```
 
 ### Common Methods
@@ -417,17 +418,17 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```ruby
-patch_custom_resource_item = client.PatchCustomResourceItem
+patch_custom_resource_item = client.patch_custom_resource_item
 ```
 
 ### Operations
 
-#### `update(reqdata, ctrl = nil) -> result, err`
+#### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result, err = client.PatchCustomResourceItem.update({
+result = client.patch_custom_resource_item.update({
   "id" => "patch_custom_resource_item_id",
   # Fields to update
 })
@@ -466,7 +467,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.Product
+product = client.product
 ```
 
 ### Fields
@@ -479,20 +480,20 @@ product = client.Product
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Product.list(nil)
+results = client.product.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Product.load({ "id" => "product_id" })
+result = client.product.load({ "id" => "product_id" })
 ```
 
 ### Common Methods
@@ -528,17 +529,17 @@ Return the entity name.
 ## StatusEntity
 
 ```ruby
-status = client.Status
+status = client.status
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Status.load({ "id" => "status_id" })
+result = client.status.load({ "id" => "status_id" })
 ```
 
 ### Common Methods
@@ -574,17 +575,17 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```ruby
-update_custom_resource_item = client.UpdateCustomResourceItem
+update_custom_resource_item = client.update_custom_resource_item
 ```
 
 ### Operations
 
-#### `update(reqdata, ctrl = nil) -> result, err`
+#### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result, err = client.UpdateCustomResourceItem.update({
+result = client.update_custom_resource_item.update({
   "id" => "update_custom_resource_item_id",
   # Fields to update
 })
@@ -623,7 +624,7 @@ Return the entity name.
 ## UserEntity
 
 ```ruby
-user = client.User
+user = client.user
 ```
 
 ### Fields
@@ -636,12 +637,12 @@ user = client.User
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.User.list(nil)
+results = client.user.list(nil)
 ```
 
 ### Common Methods

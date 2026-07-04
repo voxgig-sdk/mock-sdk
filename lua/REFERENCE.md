@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -124,7 +123,7 @@ same parameters as `direct()`.
 ## CartEntity
 
 ```lua
-local cart = client:Cart(nil)
+local cart = client:cart(nil)
 ```
 
 ### Fields
@@ -141,7 +140,7 @@ local cart = client:Cart(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Cart():list()
+local results, err = client:cart():list()
 ```
 
 ### Common Methods
@@ -177,7 +176,7 @@ Return the entity name.
 ## CouponEntity
 
 ```lua
-local coupon = client:Coupon(nil)
+local coupon = client:coupon(nil)
 ```
 
 ### Fields
@@ -195,7 +194,7 @@ local coupon = client:Coupon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Coupon():list()
+local results, err = client:coupon():list()
 ```
 
 ### Common Methods
@@ -231,7 +230,7 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```lua
-local create_custom_resource_item = client:CreateCustomResourceItem(nil)
+local create_custom_resource_item = client:create_custom_resource_item(nil)
 ```
 
 ### Operations
@@ -241,7 +240,7 @@ local create_custom_resource_item = client:CreateCustomResourceItem(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:CreateCustomResourceItem():create({
+local result, err = client:create_custom_resource_item():create({
 })
 ```
 
@@ -278,7 +277,7 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```lua
-local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
+local delete_custom_resource_item = client:delete_custom_resource_item(nil)
 ```
 
 ### Operations
@@ -288,7 +287,7 @@ local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:DeleteCustomResourceItem():remove({ id = "delete_custom_resource_item_id" })
+local result, err = client:delete_custom_resource_item():remove({ id = "delete_custom_resource_item_id" })
 ```
 
 ### Common Methods
@@ -324,7 +323,7 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```lua
-local get_custom_resource = client:GetCustomResource(nil)
+local get_custom_resource = client:get_custom_resource(nil)
 ```
 
 ### Operations
@@ -334,7 +333,7 @@ local get_custom_resource = client:GetCustomResource(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GetCustomResource():list()
+local results, err = client:get_custom_resource():list()
 ```
 
 ### Common Methods
@@ -370,7 +369,7 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```lua
-local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)
+local get_custom_resource_item_by_id = client:get_custom_resource_item_by_id(nil)
 ```
 
 ### Operations
@@ -380,7 +379,7 @@ local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id" })
+local result, err = client:get_custom_resource_item_by_id():load({ id = "get_custom_resource_item_by_id_id" })
 ```
 
 ### Common Methods
@@ -416,7 +415,7 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```lua
-local patch_custom_resource_item = client:PatchCustomResourceItem(nil)
+local patch_custom_resource_item = client:patch_custom_resource_item(nil)
 ```
 
 ### Operations
@@ -426,7 +425,7 @@ local patch_custom_resource_item = client:PatchCustomResourceItem(nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:PatchCustomResourceItem():update({
+local result, err = client:patch_custom_resource_item():update({
   id = "patch_custom_resource_item_id",
   -- Fields to update
 })
@@ -465,7 +464,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:Product(nil)
+local product = client:product(nil)
 ```
 
 ### Fields
@@ -483,7 +482,7 @@ local product = client:Product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Product():list()
+local results, err = client:product():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -491,7 +490,7 @@ local results, err = client:Product():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:product():load({ id = "product_id" })
 ```
 
 ### Common Methods
@@ -527,7 +526,7 @@ Return the entity name.
 ## StatusEntity
 
 ```lua
-local status = client:Status(nil)
+local status = client:status(nil)
 ```
 
 ### Operations
@@ -537,7 +536,7 @@ local status = client:Status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Status():load({ id = "status_id" })
+local result, err = client:status():load({ id = "status_id" })
 ```
 
 ### Common Methods
@@ -573,7 +572,7 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```lua
-local update_custom_resource_item = client:UpdateCustomResourceItem(nil)
+local update_custom_resource_item = client:update_custom_resource_item(nil)
 ```
 
 ### Operations
@@ -583,7 +582,7 @@ local update_custom_resource_item = client:UpdateCustomResourceItem(nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:UpdateCustomResourceItem():update({
+local result, err = client:update_custom_resource_item():update({
   id = "update_custom_resource_item_id",
   -- Fields to update
 })
@@ -622,7 +621,7 @@ Return the entity name.
 ## UserEntity
 
 ```lua
-local user = client:User(nil)
+local user = client:user(nil)
 ```
 
 ### Fields
@@ -640,7 +639,7 @@ local user = client:User(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:User():list()
+local results, err = client:user():list()
 ```
 
 ### Common Methods

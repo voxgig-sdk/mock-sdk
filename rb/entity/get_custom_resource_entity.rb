@@ -45,6 +45,7 @@ class GetCustomResourceEntity
     end
   end
 
+  # @return [GetCustomResource, Hash] the current GetCustomResource data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class GetCustomResourceEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GetCustomResource fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class GetCustomResourceEntity
   
 
   
+  # List GetCustomResource items matching the given filter.
+  #
+  # @param reqmatch [GetCustomResourceListMatch, Hash, nil] match filter (any subset of GetCustomResource fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<GetCustomResource>, Array] the matching GetCustomResource items; raises MockError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

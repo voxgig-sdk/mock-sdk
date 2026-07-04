@@ -45,9 +45,7 @@ class TestCreateCustomResourceItemEntity:
             vs.getpath(setup["data"], "new.create_custom_resource_item"), "create_custom_resource_item_ref01"))
         create_custom_resource_item_ref01_data["resource"] = setup["idmap"]["resource01"]
 
-        create_custom_resource_item_ref01_data_result, err = create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, None)
-        assert err is None
-        create_custom_resource_item_ref01_data = helpers.to_map(create_custom_resource_item_ref01_data_result)
+        create_custom_resource_item_ref01_data = helpers.to_map(create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, None))
         assert create_custom_resource_item_ref01_data is not None
 
 
@@ -88,7 +86,6 @@ def _create_custom_resource_item_basic_setup(extra):
         "MOCK_TEST_CREATE_CUSTOM_RESOURCE_ITEM_ENTID": idmap,
         "MOCK_TEST_LIVE": "FALSE",
         "MOCK_TEST_EXPLAIN": "FALSE",
-        "MOCK_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -99,7 +96,6 @@ def _create_custom_resource_item_basic_setup(extra):
     if env.get("MOCK_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCK_APIKEY"),
             },
             extra or {},
         ])

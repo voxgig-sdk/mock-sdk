@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -94,9 +93,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -109,11 +108,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -121,7 +120,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## CartEntity
 
 ```python
-cart = client.Cart()
+cart = client.cart
 ```
 
 ### Fields
@@ -133,12 +132,12 @@ cart = client.Cart()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Cart().list({})
+results = client.cart.list({})
 ```
 
 ### Common Methods
@@ -173,7 +172,7 @@ Return the entity name.
 ## CouponEntity
 
 ```python
-coupon = client.Coupon()
+coupon = client.coupon
 ```
 
 ### Fields
@@ -186,12 +185,12 @@ coupon = client.Coupon()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Coupon().list({})
+results = client.coupon.list({})
 ```
 
 ### Common Methods
@@ -226,17 +225,17 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```python
-create_custom_resource_item = client.CreateCustomResourceItem()
+create_custom_resource_item = client.create_custom_resource_item
 ```
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> tuple`
+#### `create(reqdata, ctrl=None) -> dict`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result, err = client.CreateCustomResourceItem().create({
+result = client.create_custom_resource_item.create({
 })
 ```
 
@@ -272,17 +271,17 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```python
-delete_custom_resource_item = client.DeleteCustomResourceItem()
+delete_custom_resource_item = client.delete_custom_resource_item
 ```
 
 ### Operations
 
-#### `remove(reqmatch, ctrl=None) -> tuple`
+#### `remove(reqmatch, ctrl=None) -> dict`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result, err = client.DeleteCustomResourceItem().remove({"id": "delete_custom_resource_item_id"})
+result = client.delete_custom_resource_item.remove({"id": "delete_custom_resource_item_id"})
 ```
 
 ### Common Methods
@@ -317,17 +316,17 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```python
-get_custom_resource = client.GetCustomResource()
+get_custom_resource = client.get_custom_resource
 ```
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.GetCustomResource().list({})
+results = client.get_custom_resource.list({})
 ```
 
 ### Common Methods
@@ -362,17 +361,17 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```python
-get_custom_resource_item_by_id = client.GetCustomResourceItemById()
+get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetCustomResourceItemById().load({"id": "get_custom_resource_item_by_id_id"})
+result = client.get_custom_resource_item_by_id.load({"id": "get_custom_resource_item_by_id_id"})
 ```
 
 ### Common Methods
@@ -407,17 +406,17 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```python
-patch_custom_resource_item = client.PatchCustomResourceItem()
+patch_custom_resource_item = client.patch_custom_resource_item
 ```
 
 ### Operations
 
-#### `update(reqdata, ctrl=None) -> tuple`
+#### `update(reqdata, ctrl=None) -> dict`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result, err = client.PatchCustomResourceItem().update({
+result = client.patch_custom_resource_item.update({
     "id": "patch_custom_resource_item_id",
     # Fields to update
 })
@@ -455,7 +454,7 @@ Return the entity name.
 ## ProductEntity
 
 ```python
-product = client.Product()
+product = client.product
 ```
 
 ### Fields
@@ -468,20 +467,20 @@ product = client.Product()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Product().list({})
+results = client.product.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Product().load({"id": "product_id"})
+result = client.product.load({"id": "product_id"})
 ```
 
 ### Common Methods
@@ -516,17 +515,17 @@ Return the entity name.
 ## StatusEntity
 
 ```python
-status = client.Status()
+status = client.status
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Status().load({"id": "status_id"})
+result = client.status.load({"id": "status_id"})
 ```
 
 ### Common Methods
@@ -561,17 +560,17 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```python
-update_custom_resource_item = client.UpdateCustomResourceItem()
+update_custom_resource_item = client.update_custom_resource_item
 ```
 
 ### Operations
 
-#### `update(reqdata, ctrl=None) -> tuple`
+#### `update(reqdata, ctrl=None) -> dict`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result, err = client.UpdateCustomResourceItem().update({
+result = client.update_custom_resource_item.update({
     "id": "update_custom_resource_item_id",
     # Fields to update
 })
@@ -609,7 +608,7 @@ Return the entity name.
 ## UserEntity
 
 ```python
-user = client.User()
+user = client.user
 ```
 
 ### Fields
@@ -622,12 +621,12 @@ user = client.User()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.User().list({})
+results = client.user.list({})
 ```
 
 ### Common Methods

@@ -103,7 +103,7 @@ class MockSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class MockSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class MockSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,94 +216,215 @@ class MockSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Cart($data = null)
+    private $_cart = null;
+
+    // Idiomatic facade: $client->cart()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Cart() (PHP method
+    // names are case-insensitive).
+    public function cart($data = null)
     {
         require_once __DIR__ . '/entity/cart_entity.php';
+        if ($data === null) {
+            if ($this->_cart === null) {
+                $this->_cart = new CartEntity($this, null);
+            }
+            return $this->_cart;
+        }
         return new CartEntity($this, $data);
     }
 
 
-    public function Coupon($data = null)
+    private $_coupon = null;
+
+    // Idiomatic facade: $client->coupon()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Coupon() (PHP method
+    // names are case-insensitive).
+    public function coupon($data = null)
     {
         require_once __DIR__ . '/entity/coupon_entity.php';
+        if ($data === null) {
+            if ($this->_coupon === null) {
+                $this->_coupon = new CouponEntity($this, null);
+            }
+            return $this->_coupon;
+        }
         return new CouponEntity($this, $data);
     }
 
 
-    public function CreateCustomResourceItem($data = null)
+    private $_create_custom_resource_item = null;
+
+    // Idiomatic facade: $client->create_custom_resource_item()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias CreateCustomResourceItem() (PHP method
+    // names are case-insensitive).
+    public function create_custom_resource_item($data = null)
     {
         require_once __DIR__ . '/entity/create_custom_resource_item_entity.php';
+        if ($data === null) {
+            if ($this->_create_custom_resource_item === null) {
+                $this->_create_custom_resource_item = new CreateCustomResourceItemEntity($this, null);
+            }
+            return $this->_create_custom_resource_item;
+        }
         return new CreateCustomResourceItemEntity($this, $data);
     }
 
 
-    public function DeleteCustomResourceItem($data = null)
+    private $_delete_custom_resource_item = null;
+
+    // Idiomatic facade: $client->delete_custom_resource_item()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias DeleteCustomResourceItem() (PHP method
+    // names are case-insensitive).
+    public function delete_custom_resource_item($data = null)
     {
         require_once __DIR__ . '/entity/delete_custom_resource_item_entity.php';
+        if ($data === null) {
+            if ($this->_delete_custom_resource_item === null) {
+                $this->_delete_custom_resource_item = new DeleteCustomResourceItemEntity($this, null);
+            }
+            return $this->_delete_custom_resource_item;
+        }
         return new DeleteCustomResourceItemEntity($this, $data);
     }
 
 
-    public function GetCustomResource($data = null)
+    private $_get_custom_resource = null;
+
+    // Idiomatic facade: $client->get_custom_resource()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetCustomResource() (PHP method
+    // names are case-insensitive).
+    public function get_custom_resource($data = null)
     {
         require_once __DIR__ . '/entity/get_custom_resource_entity.php';
+        if ($data === null) {
+            if ($this->_get_custom_resource === null) {
+                $this->_get_custom_resource = new GetCustomResourceEntity($this, null);
+            }
+            return $this->_get_custom_resource;
+        }
         return new GetCustomResourceEntity($this, $data);
     }
 
 
-    public function GetCustomResourceItemById($data = null)
+    private $_get_custom_resource_item_by_id = null;
+
+    // Idiomatic facade: $client->get_custom_resource_item_by_id()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetCustomResourceItemById() (PHP method
+    // names are case-insensitive).
+    public function get_custom_resource_item_by_id($data = null)
     {
         require_once __DIR__ . '/entity/get_custom_resource_item_by_id_entity.php';
+        if ($data === null) {
+            if ($this->_get_custom_resource_item_by_id === null) {
+                $this->_get_custom_resource_item_by_id = new GetCustomResourceItemByIdEntity($this, null);
+            }
+            return $this->_get_custom_resource_item_by_id;
+        }
         return new GetCustomResourceItemByIdEntity($this, $data);
     }
 
 
-    public function PatchCustomResourceItem($data = null)
+    private $_patch_custom_resource_item = null;
+
+    // Idiomatic facade: $client->patch_custom_resource_item()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias PatchCustomResourceItem() (PHP method
+    // names are case-insensitive).
+    public function patch_custom_resource_item($data = null)
     {
         require_once __DIR__ . '/entity/patch_custom_resource_item_entity.php';
+        if ($data === null) {
+            if ($this->_patch_custom_resource_item === null) {
+                $this->_patch_custom_resource_item = new PatchCustomResourceItemEntity($this, null);
+            }
+            return $this->_patch_custom_resource_item;
+        }
         return new PatchCustomResourceItemEntity($this, $data);
     }
 
 
-    public function Product($data = null)
+    private $_product = null;
+
+    // Idiomatic facade: $client->product()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Product() (PHP method
+    // names are case-insensitive).
+    public function product($data = null)
     {
         require_once __DIR__ . '/entity/product_entity.php';
+        if ($data === null) {
+            if ($this->_product === null) {
+                $this->_product = new ProductEntity($this, null);
+            }
+            return $this->_product;
+        }
         return new ProductEntity($this, $data);
     }
 
 
-    public function Status($data = null)
+    private $_status = null;
+
+    // Idiomatic facade: $client->status()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Status() (PHP method
+    // names are case-insensitive).
+    public function status($data = null)
     {
         require_once __DIR__ . '/entity/status_entity.php';
+        if ($data === null) {
+            if ($this->_status === null) {
+                $this->_status = new StatusEntity($this, null);
+            }
+            return $this->_status;
+        }
         return new StatusEntity($this, $data);
     }
 
 
-    public function UpdateCustomResourceItem($data = null)
+    private $_update_custom_resource_item = null;
+
+    // Idiomatic facade: $client->update_custom_resource_item()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias UpdateCustomResourceItem() (PHP method
+    // names are case-insensitive).
+    public function update_custom_resource_item($data = null)
     {
         require_once __DIR__ . '/entity/update_custom_resource_item_entity.php';
+        if ($data === null) {
+            if ($this->_update_custom_resource_item === null) {
+                $this->_update_custom_resource_item = new UpdateCustomResourceItemEntity($this, null);
+            }
+            return $this->_update_custom_resource_item;
+        }
         return new UpdateCustomResourceItemEntity($this, $data);
     }
 
 
-    public function User($data = null)
+    private $_user = null;
+
+    // Idiomatic facade: $client->user()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias User() (PHP method
+    // names are case-insensitive).
+    public function user($data = null)
     {
         require_once __DIR__ . '/entity/user_entity.php';
+        if ($data === null) {
+            if ($this->_user === null) {
+                $this->_user = new UserEntity($this, null);
+            }
+            return $this->_user;
+        }
         return new UserEntity($this, $data);
     }
 

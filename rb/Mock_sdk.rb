@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Mock_types'
+
 
 class MockSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class MockSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class MockSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue MockError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = MockHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class MockSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,76 +198,153 @@ class MockSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.cart.list / client.cart.load({ "id" => ... })
+  def cart
+    require_relative 'entity/cart_entity'
+    @cart ||= CartEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.cart instead.
   def Cart(data = nil)
     require_relative 'entity/cart_entity'
     CartEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.coupon.list / client.coupon.load({ "id" => ... })
+  def coupon
+    require_relative 'entity/coupon_entity'
+    @coupon ||= CouponEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.coupon instead.
   def Coupon(data = nil)
     require_relative 'entity/coupon_entity'
     CouponEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.create_custom_resource_item.list / client.create_custom_resource_item.load({ "id" => ... })
+  def create_custom_resource_item
+    require_relative 'entity/create_custom_resource_item_entity'
+    @create_custom_resource_item ||= CreateCustomResourceItemEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.create_custom_resource_item instead.
   def CreateCustomResourceItem(data = nil)
     require_relative 'entity/create_custom_resource_item_entity'
     CreateCustomResourceItemEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.delete_custom_resource_item.list / client.delete_custom_resource_item.load({ "id" => ... })
+  def delete_custom_resource_item
+    require_relative 'entity/delete_custom_resource_item_entity'
+    @delete_custom_resource_item ||= DeleteCustomResourceItemEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.delete_custom_resource_item instead.
   def DeleteCustomResourceItem(data = nil)
     require_relative 'entity/delete_custom_resource_item_entity'
     DeleteCustomResourceItemEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.get_custom_resource.list / client.get_custom_resource.load({ "id" => ... })
+  def get_custom_resource
+    require_relative 'entity/get_custom_resource_entity'
+    @get_custom_resource ||= GetCustomResourceEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_custom_resource instead.
   def GetCustomResource(data = nil)
     require_relative 'entity/get_custom_resource_entity'
     GetCustomResourceEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.get_custom_resource_item_by_id.list / client.get_custom_resource_item_by_id.load({ "id" => ... })
+  def get_custom_resource_item_by_id
+    require_relative 'entity/get_custom_resource_item_by_id_entity'
+    @get_custom_resource_item_by_id ||= GetCustomResourceItemByIdEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_custom_resource_item_by_id instead.
   def GetCustomResourceItemById(data = nil)
     require_relative 'entity/get_custom_resource_item_by_id_entity'
     GetCustomResourceItemByIdEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.patch_custom_resource_item.list / client.patch_custom_resource_item.load({ "id" => ... })
+  def patch_custom_resource_item
+    require_relative 'entity/patch_custom_resource_item_entity'
+    @patch_custom_resource_item ||= PatchCustomResourceItemEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.patch_custom_resource_item instead.
   def PatchCustomResourceItem(data = nil)
     require_relative 'entity/patch_custom_resource_item_entity'
     PatchCustomResourceItemEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.product.list / client.product.load({ "id" => ... })
+  def product
+    require_relative 'entity/product_entity'
+    @product ||= ProductEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.product instead.
   def Product(data = nil)
     require_relative 'entity/product_entity'
     ProductEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.status.list / client.status.load({ "id" => ... })
+  def status
+    require_relative 'entity/status_entity'
+    @status ||= StatusEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.status instead.
   def Status(data = nil)
     require_relative 'entity/status_entity'
     StatusEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.update_custom_resource_item.list / client.update_custom_resource_item.load({ "id" => ... })
+  def update_custom_resource_item
+    require_relative 'entity/update_custom_resource_item_entity'
+    @update_custom_resource_item ||= UpdateCustomResourceItemEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.update_custom_resource_item instead.
   def UpdateCustomResourceItem(data = nil)
     require_relative 'entity/update_custom_resource_item_entity'
     UpdateCustomResourceItemEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.user.list / client.user.load({ "id" => ... })
+  def user
+    require_relative 'entity/user_entity'
+    @user ||= UserEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.user instead.
   def User(data = nil)
     require_relative 'entity/user_entity'
     UserEntity.new(self, data)

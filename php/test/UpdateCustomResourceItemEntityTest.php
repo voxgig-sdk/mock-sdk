@@ -52,8 +52,7 @@ class UpdateCustomResourceItemEntityTest extends TestCase
             "resource" => $setup["idmap"]["resource"],
         ];
 
-        [$update_custom_resource_item_ref01_resdata_up0_result, $err] = $update_custom_resource_item_ref01_ent->update($update_custom_resource_item_ref01_data_up0_up, null);
-        $this->assertNull($err);
+        $update_custom_resource_item_ref01_resdata_up0_result = $update_custom_resource_item_ref01_ent->update($update_custom_resource_item_ref01_data_up0_up, null);
         $update_custom_resource_item_ref01_resdata_up0 = Helpers::to_map($update_custom_resource_item_ref01_resdata_up0_result);
         $this->assertNotNull($update_custom_resource_item_ref01_resdata_up0);
 
@@ -89,7 +88,6 @@ function update_custom_resource_item_basic_setup($extra)
         "MOCK_TEST_UPDATE_CUSTOM_RESOURCE_ITEM_ENTID" => $idmap,
         "MOCK_TEST_LIVE" => "FALSE",
         "MOCK_TEST_EXPLAIN" => "FALSE",
-        "MOCK_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +102,6 @@ function update_custom_resource_item_basic_setup($extra)
     if ($env["MOCK_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCK_APIKEY"],
             ],
             $extra ?? [],
         ]);

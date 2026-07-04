@@ -85,6 +85,27 @@ func (e *PatchCustomResourceItemEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an PatchCustomResourceItem; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *PatchCustomResourceItemEntity) DataTyped(data ...PatchCustomResourceItem) PatchCustomResourceItem {
+	if len(data) > 0 {
+		return typedFrom[PatchCustomResourceItem](e.Data(asMap(data[0])))
+	}
+	return typedFrom[PatchCustomResourceItem](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through PatchCustomResourceItem (all fields
+// optional at the wire level).
+func (e *PatchCustomResourceItemEntity) MatchTyped(match ...PatchCustomResourceItem) PatchCustomResourceItem {
+	if len(match) > 0 {
+		return typedFrom[PatchCustomResourceItem](e.Match(asMap(match[0])))
+	}
+	return typedFrom[PatchCustomResourceItem](e.Match())
+}
+
 func (e *PatchCustomResourceItemEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -124,6 +145,17 @@ func (e *PatchCustomResourceItemEntity) Update(reqdata map[string]any, ctrl map[
 			}
 		}
 	})
+}
+
+// UpdateTyped is the statically-typed variant of Update: it takes an
+// PatchCustomResourceItemUpdateData and returns an PatchCustomResourceItem. It delegates to the untyped
+// Update (identical runtime) and converts at the typed boundary.
+func (e *PatchCustomResourceItemEntity) UpdateTyped(reqdata PatchCustomResourceItemUpdateData, ctrl map[string]any) (PatchCustomResourceItem, error) {
+	res, err := e.Update(asMap(reqdata), ctrl)
+	if err != nil {
+		return PatchCustomResourceItem{}, err
+	}
+	return typedFrom[PatchCustomResourceItem](res), nil
 }
 
 
