@@ -208,143 +208,77 @@ class MockSDK
   end
 
 
-  # Idiomatic facade: client.cart.list / client.cart.load({ "id" => ... })
-  def cart
-    require_relative 'entity/cart_entity'
-    @cart ||= CartEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.cart instead.
+  # Canonical facade: client.Cart.list / client.Cart.load({ "id" => ... })
   def Cart(data = nil)
     require_relative 'entity/cart_entity'
     CartEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.coupon.list / client.coupon.load({ "id" => ... })
-  def coupon
-    require_relative 'entity/coupon_entity'
-    @coupon ||= CouponEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.coupon instead.
+  # Canonical facade: client.Coupon.list / client.Coupon.load({ "id" => ... })
   def Coupon(data = nil)
     require_relative 'entity/coupon_entity'
     CouponEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.create_custom_resource_item.list / client.create_custom_resource_item.load({ "id" => ... })
-  def create_custom_resource_item
-    require_relative 'entity/create_custom_resource_item_entity'
-    @create_custom_resource_item ||= CreateCustomResourceItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.create_custom_resource_item instead.
+  # Canonical facade: client.CreateCustomResourceItem.list / client.CreateCustomResourceItem.load({ "id" => ... })
   def CreateCustomResourceItem(data = nil)
     require_relative 'entity/create_custom_resource_item_entity'
     CreateCustomResourceItemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.delete_custom_resource_item.list / client.delete_custom_resource_item.load({ "id" => ... })
-  def delete_custom_resource_item
-    require_relative 'entity/delete_custom_resource_item_entity'
-    @delete_custom_resource_item ||= DeleteCustomResourceItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.delete_custom_resource_item instead.
+  # Canonical facade: client.DeleteCustomResourceItem.list / client.DeleteCustomResourceItem.load({ "id" => ... })
   def DeleteCustomResourceItem(data = nil)
     require_relative 'entity/delete_custom_resource_item_entity'
     DeleteCustomResourceItemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_custom_resource.list / client.get_custom_resource.load({ "id" => ... })
-  def get_custom_resource
-    require_relative 'entity/get_custom_resource_entity'
-    @get_custom_resource ||= GetCustomResourceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_custom_resource instead.
+  # Canonical facade: client.GetCustomResource.list / client.GetCustomResource.load({ "id" => ... })
   def GetCustomResource(data = nil)
     require_relative 'entity/get_custom_resource_entity'
     GetCustomResourceEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_custom_resource_item_by_id.list / client.get_custom_resource_item_by_id.load({ "id" => ... })
-  def get_custom_resource_item_by_id
-    require_relative 'entity/get_custom_resource_item_by_id_entity'
-    @get_custom_resource_item_by_id ||= GetCustomResourceItemByIdEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_custom_resource_item_by_id instead.
+  # Canonical facade: client.GetCustomResourceItemById.list / client.GetCustomResourceItemById.load({ "id" => ... })
   def GetCustomResourceItemById(data = nil)
     require_relative 'entity/get_custom_resource_item_by_id_entity'
     GetCustomResourceItemByIdEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.patch_custom_resource_item.list / client.patch_custom_resource_item.load({ "id" => ... })
-  def patch_custom_resource_item
-    require_relative 'entity/patch_custom_resource_item_entity'
-    @patch_custom_resource_item ||= PatchCustomResourceItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.patch_custom_resource_item instead.
+  # Canonical facade: client.PatchCustomResourceItem.list / client.PatchCustomResourceItem.load({ "id" => ... })
   def PatchCustomResourceItem(data = nil)
     require_relative 'entity/patch_custom_resource_item_entity'
     PatchCustomResourceItemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.product.list / client.product.load({ "id" => ... })
-  def product
-    require_relative 'entity/product_entity'
-    @product ||= ProductEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.product instead.
+  # Canonical facade: client.Product.list / client.Product.load({ "id" => ... })
   def Product(data = nil)
     require_relative 'entity/product_entity'
     ProductEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.status.list / client.status.load({ "id" => ... })
-  def status
-    require_relative 'entity/status_entity'
-    @status ||= StatusEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.status instead.
+  # Canonical facade: client.Status.list / client.Status.load({ "id" => ... })
   def Status(data = nil)
     require_relative 'entity/status_entity'
     StatusEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.update_custom_resource_item.list / client.update_custom_resource_item.load({ "id" => ... })
-  def update_custom_resource_item
-    require_relative 'entity/update_custom_resource_item_entity'
-    @update_custom_resource_item ||= UpdateCustomResourceItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.update_custom_resource_item instead.
+  # Canonical facade: client.UpdateCustomResourceItem.list / client.UpdateCustomResourceItem.load({ "id" => ... })
   def UpdateCustomResourceItem(data = nil)
     require_relative 'entity/update_custom_resource_item_entity'
     UpdateCustomResourceItemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.user.list / client.user.load({ "id" => ... })
-  def user
-    require_relative 'entity/user_entity'
-    @user ||= UserEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.user instead.
+  # Canonical facade: client.User.list / client.User.load({ "id" => ... })
   def User(data = nil)
     require_relative 'entity/user_entity'
     UserEntity.new(self, data)

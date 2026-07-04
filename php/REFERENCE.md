@@ -125,7 +125,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CartEntity
 
 ```php
-$cart = $client->cart();
+$cart = $client->Cart();
 ```
 
 ### Fields
@@ -142,7 +142,7 @@ $cart = $client->cart();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->cart()->list([]);
+$results = $client->Cart()->list([]);
 ```
 
 ### Common Methods
@@ -178,7 +178,7 @@ Return the entity name.
 ## CouponEntity
 
 ```php
-$coupon = $client->coupon();
+$coupon = $client->Coupon();
 ```
 
 ### Fields
@@ -196,7 +196,7 @@ $coupon = $client->coupon();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->coupon()->list([]);
+$results = $client->Coupon()->list([]);
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```php
-$create_custom_resource_item = $client->create_custom_resource_item();
+$create_custom_resource_item = $client->CreateCustomResourceItem();
 ```
 
 ### Operations
@@ -242,7 +242,7 @@ $create_custom_resource_item = $client->create_custom_resource_item();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->create_custom_resource_item()->create([
+$result = $client->CreateCustomResourceItem()->create([
 ]);
 ```
 
@@ -279,7 +279,7 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```php
-$delete_custom_resource_item = $client->delete_custom_resource_item();
+$delete_custom_resource_item = $client->DeleteCustomResourceItem();
 ```
 
 ### Operations
@@ -289,7 +289,7 @@ $delete_custom_resource_item = $client->delete_custom_resource_item();
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->delete_custom_resource_item()->remove(["id" => "delete_custom_resource_item_id"]);
+$result = $client->DeleteCustomResourceItem()->remove(["id" => "delete_custom_resource_item_id"]);
 ```
 
 ### Common Methods
@@ -325,7 +325,7 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```php
-$get_custom_resource = $client->get_custom_resource();
+$get_custom_resource = $client->GetCustomResource();
 ```
 
 ### Operations
@@ -335,7 +335,7 @@ $get_custom_resource = $client->get_custom_resource();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->get_custom_resource()->list([]);
+$results = $client->GetCustomResource()->list([]);
 ```
 
 ### Common Methods
@@ -371,7 +371,7 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```php
-$get_custom_resource_item_by_id = $client->get_custom_resource_item_by_id();
+$get_custom_resource_item_by_id = $client->GetCustomResourceItemById();
 ```
 
 ### Operations
@@ -381,7 +381,7 @@ $get_custom_resource_item_by_id = $client->get_custom_resource_item_by_id();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->get_custom_resource_item_by_id()->load(["id" => "get_custom_resource_item_by_id_id"]);
+$result = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id"]);
 ```
 
 ### Common Methods
@@ -417,7 +417,7 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```php
-$patch_custom_resource_item = $client->patch_custom_resource_item();
+$patch_custom_resource_item = $client->PatchCustomResourceItem();
 ```
 
 ### Operations
@@ -427,7 +427,7 @@ $patch_custom_resource_item = $client->patch_custom_resource_item();
 Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-$result = $client->patch_custom_resource_item()->update([
+$result = $client->PatchCustomResourceItem()->update([
   "id" => "patch_custom_resource_item_id",
   // Fields to update
 ]);
@@ -466,7 +466,7 @@ Return the entity name.
 ## ProductEntity
 
 ```php
-$product = $client->product();
+$product = $client->Product();
 ```
 
 ### Fields
@@ -484,7 +484,7 @@ $product = $client->product();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->product()->list([]);
+$results = $client->Product()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -492,7 +492,7 @@ $results = $client->product()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->product()->load(["id" => "product_id"]);
+$result = $client->Product()->load(["id" => "product_id"]);
 ```
 
 ### Common Methods
@@ -528,7 +528,7 @@ Return the entity name.
 ## StatusEntity
 
 ```php
-$status = $client->status();
+$status = $client->Status();
 ```
 
 ### Operations
@@ -538,7 +538,7 @@ $status = $client->status();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->status()->load(["id" => "status_id"]);
+$result = $client->Status()->load(["id" => "status_id"]);
 ```
 
 ### Common Methods
@@ -574,7 +574,7 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```php
-$update_custom_resource_item = $client->update_custom_resource_item();
+$update_custom_resource_item = $client->UpdateCustomResourceItem();
 ```
 
 ### Operations
@@ -584,7 +584,7 @@ $update_custom_resource_item = $client->update_custom_resource_item();
 Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-$result = $client->update_custom_resource_item()->update([
+$result = $client->UpdateCustomResourceItem()->update([
   "id" => "update_custom_resource_item_id",
   // Fields to update
 ]);
@@ -623,7 +623,7 @@ Return the entity name.
 ## UserEntity
 
 ```php
-$user = $client->user();
+$user = $client->User();
 ```
 
 ### Fields
@@ -641,7 +641,7 @@ $user = $client->user();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->user()->list([]);
+$results = $client->User()->list([]);
 ```
 
 ### Common Methods

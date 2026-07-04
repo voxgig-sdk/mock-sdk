@@ -26,9 +26,11 @@ import { MockSDK } from '@voxgig-sdk/mock'
 
 const client = new MockSDK()
 
-// List all carts
-const carts = await client.cart.list()
-console.log(carts.data)
+// List all carts (returns Cart[])
+const carts = await client.Cart().list()
+for (const cart of carts) {
+  console.log(cart)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -93,9 +95,10 @@ from mock_sdk import MockSDK
 
 client = MockSDK()
 
-# List all carts
-carts = client.cart.list()
-print(carts)
+# List all carts (returns a list, raises on error)
+carts = client.Cart().list({})
+for cart in carts:
+    print(cart)
 ```
 
 ### PHP
@@ -106,8 +109,8 @@ require_once 'mock_sdk.php';
 
 $client = new MockSDK();
 
-// List all carts (throws on error)
-$carts = $client->cart()->list();
+// List all carts (returns an array; throws on error)
+$carts = $client->Cart()->list();
 print_r($carts);
 ```
 
@@ -130,8 +133,8 @@ require_relative "Mock_sdk"
 
 client = MockSDK.new
 
-# List all carts
-carts = client.cart.list
+# List all carts (returns an Array; raises on error)
+carts = client.Cart.list
 puts carts
 ```
 
@@ -143,7 +146,7 @@ local sdk = require("mock_sdk")
 local client = sdk.new()
 
 -- List all carts
-local carts, err = client:cart():list()
+local carts, err = client:Cart():list()
 print(carts)
 ```
 
@@ -156,22 +159,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MockSDK.test()
-const result = await client.cart.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const cart = await client.Cart().load({ id: 'test01' })
+// cart is a bare Cart populated with mock data
+console.log(cart)
 ```
 
 ### Python
 
 ```python
 client = MockSDK.test()
-result = client.cart.load({"id": "test01"})
+cart = client.Cart().load({"id": "test01"})
+print(cart)
 ```
 
 ### PHP
 
 ```php
-$client = MockSDK::test();
-$result = $client->cart()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = MockSDK::test([
+    "entity" => ["cart" => ["test01" => ["id" => "test01"]]],
+]);
+$cart = $client->Cart()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -186,15 +194,18 @@ result, err := client.Cart(nil).Load(
 ### Ruby
 
 ```ruby
-client = MockSDK.test
-result = client.cart.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = MockSDK.test({
+  "entity" => { "cart" => { "test01" => { "id" => "test01" } } },
+})
+cart = client.Cart.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:cart():load({ id = "test01" })
+local result, err = client:Cart():load({ id = "test01" })
 ```
 
 ## How it works
@@ -242,6 +253,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

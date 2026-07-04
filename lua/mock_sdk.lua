@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:cart():list() / client:cart():load({ id = ... })
-function MockSDK:cart(data)
+-- Idiomatic facade: client:Cart():list() / client:Cart():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:Cart(data)
   local EntityMod = require("entity.cart_entity")
   if data == nil then
     if self._cart == nil then
@@ -256,15 +257,10 @@ function MockSDK:cart(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:cart() instead.
-function MockSDK:Cart(data)
-  local EntityMod = require("entity.cart_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:coupon():list() / client:coupon():load({ id = ... })
-function MockSDK:coupon(data)
+-- Idiomatic facade: client:Coupon():list() / client:Coupon():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:Coupon(data)
   local EntityMod = require("entity.coupon_entity")
   if data == nil then
     if self._coupon == nil then
@@ -275,15 +271,10 @@ function MockSDK:coupon(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:coupon() instead.
-function MockSDK:Coupon(data)
-  local EntityMod = require("entity.coupon_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:create_custom_resource_item():list() / client:create_custom_resource_item():load({ id = ... })
-function MockSDK:create_custom_resource_item(data)
+-- Idiomatic facade: client:CreateCustomResourceItem():list() / client:CreateCustomResourceItem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:CreateCustomResourceItem(data)
   local EntityMod = require("entity.create_custom_resource_item_entity")
   if data == nil then
     if self._create_custom_resource_item == nil then
@@ -294,15 +285,10 @@ function MockSDK:create_custom_resource_item(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:create_custom_resource_item() instead.
-function MockSDK:CreateCustomResourceItem(data)
-  local EntityMod = require("entity.create_custom_resource_item_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:delete_custom_resource_item():list() / client:delete_custom_resource_item():load({ id = ... })
-function MockSDK:delete_custom_resource_item(data)
+-- Idiomatic facade: client:DeleteCustomResourceItem():list() / client:DeleteCustomResourceItem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:DeleteCustomResourceItem(data)
   local EntityMod = require("entity.delete_custom_resource_item_entity")
   if data == nil then
     if self._delete_custom_resource_item == nil then
@@ -313,15 +299,10 @@ function MockSDK:delete_custom_resource_item(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:delete_custom_resource_item() instead.
-function MockSDK:DeleteCustomResourceItem(data)
-  local EntityMod = require("entity.delete_custom_resource_item_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_custom_resource():list() / client:get_custom_resource():load({ id = ... })
-function MockSDK:get_custom_resource(data)
+-- Idiomatic facade: client:GetCustomResource():list() / client:GetCustomResource():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:GetCustomResource(data)
   local EntityMod = require("entity.get_custom_resource_entity")
   if data == nil then
     if self._get_custom_resource == nil then
@@ -332,15 +313,10 @@ function MockSDK:get_custom_resource(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_custom_resource() instead.
-function MockSDK:GetCustomResource(data)
-  local EntityMod = require("entity.get_custom_resource_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_custom_resource_item_by_id():list() / client:get_custom_resource_item_by_id():load({ id = ... })
-function MockSDK:get_custom_resource_item_by_id(data)
+-- Idiomatic facade: client:GetCustomResourceItemById():list() / client:GetCustomResourceItemById():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:GetCustomResourceItemById(data)
   local EntityMod = require("entity.get_custom_resource_item_by_id_entity")
   if data == nil then
     if self._get_custom_resource_item_by_id == nil then
@@ -351,15 +327,10 @@ function MockSDK:get_custom_resource_item_by_id(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_custom_resource_item_by_id() instead.
-function MockSDK:GetCustomResourceItemById(data)
-  local EntityMod = require("entity.get_custom_resource_item_by_id_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:patch_custom_resource_item():list() / client:patch_custom_resource_item():load({ id = ... })
-function MockSDK:patch_custom_resource_item(data)
+-- Idiomatic facade: client:PatchCustomResourceItem():list() / client:PatchCustomResourceItem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:PatchCustomResourceItem(data)
   local EntityMod = require("entity.patch_custom_resource_item_entity")
   if data == nil then
     if self._patch_custom_resource_item == nil then
@@ -370,15 +341,10 @@ function MockSDK:patch_custom_resource_item(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:patch_custom_resource_item() instead.
-function MockSDK:PatchCustomResourceItem(data)
-  local EntityMod = require("entity.patch_custom_resource_item_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
-function MockSDK:product(data)
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   if data == nil then
     if self._product == nil then
@@ -389,15 +355,10 @@ function MockSDK:product(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:product() instead.
-function MockSDK:Product(data)
-  local EntityMod = require("entity.product_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:status():list() / client:status():load({ id = ... })
-function MockSDK:status(data)
+-- Idiomatic facade: client:Status():list() / client:Status():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:Status(data)
   local EntityMod = require("entity.status_entity")
   if data == nil then
     if self._status == nil then
@@ -408,15 +369,10 @@ function MockSDK:status(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:status() instead.
-function MockSDK:Status(data)
-  local EntityMod = require("entity.status_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:update_custom_resource_item():list() / client:update_custom_resource_item():load({ id = ... })
-function MockSDK:update_custom_resource_item(data)
+-- Idiomatic facade: client:UpdateCustomResourceItem():list() / client:UpdateCustomResourceItem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:UpdateCustomResourceItem(data)
   local EntityMod = require("entity.update_custom_resource_item_entity")
   if data == nil then
     if self._update_custom_resource_item == nil then
@@ -427,15 +383,10 @@ function MockSDK:update_custom_resource_item(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:update_custom_resource_item() instead.
-function MockSDK:UpdateCustomResourceItem(data)
-  local EntityMod = require("entity.update_custom_resource_item_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:user():list() / client:user():load({ id = ... })
-function MockSDK:user(data)
+-- Idiomatic facade: client:User():list() / client:User():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockSDK:User(data)
   local EntityMod = require("entity.user_entity")
   if data == nil then
     if self._user == nil then
@@ -443,12 +394,6 @@ function MockSDK:user(data)
     end
     return self._user
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:user() instead.
-function MockSDK:User(data)
-  local EntityMod = require("entity.user_entity")
   return EntityMod.new(self, data)
 end
 

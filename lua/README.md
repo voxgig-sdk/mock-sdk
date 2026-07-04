@@ -31,17 +31,17 @@ local sdk = require("mock_sdk")
 local client = sdk.new()
 ```
 
-### 2. List carts
+### 2. List cart records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:cart():list()
+local carts, err = client:Cart():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(carts) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:cart():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Cart():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -176,8 +176,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `PatchCustomResourceItem` | `(data) -> PatchCustomResourceItemEntity` | Create a PatchCustomResourceItem entity instance. |
 | `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `Status` | `(data) -> StatusEntity` | Create a Status entity instance. |
-| `UpdateCustomResourceItem` | `(data) -> UpdateCustomResourceItemEntity` | Create a UpdateCustomResourceItem entity instance. |
-| `User` | `(data) -> UserEntity` | Create a User entity instance. |
+| `UpdateCustomResourceItem` | `(data) -> UpdateCustomResourceItemEntity` | Create an UpdateCustomResourceItem entity instance. |
+| `User` | `(data) -> UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -199,17 +199,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local cart, err = client:Cart():load({ id = "example_id" })
+    if err then error(err) end
+    -- cart is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -330,7 +335,7 @@ API path: `/public/users`
 
 ### Cart
 
-Create an instance: `const cart = client.cart`
+Create an instance: `local cart = client:Cart(nil)`
 
 #### Operations
 
@@ -347,14 +352,14 @@ Create an instance: `const cart = client.cart`
 
 #### Example: List
 
-```ts
-const carts = await client.cart.list()
+```lua
+local carts, err = client:Cart():list()
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.coupon`
+Create an instance: `local coupon = client:Coupon(nil)`
 
 #### Operations
 
@@ -372,14 +377,14 @@ Create an instance: `const coupon = client.coupon`
 
 #### Example: List
 
-```ts
-const coupons = await client.coupon.list()
+```lua
+local coupons, err = client:Coupon():list()
 ```
 
 
 ### CreateCustomResourceItem
 
-Create an instance: `const create_custom_resource_item = client.create_custom_resource_item`
+Create an instance: `local create_custom_resource_item = client:CreateCustomResourceItem(nil)`
 
 #### Operations
 
@@ -389,15 +394,15 @@ Create an instance: `const create_custom_resource_item = client.create_custom_re
 
 #### Example: Create
 
-```ts
-const create_custom_resource_item = await client.create_custom_resource_item.create({
+```lua
+local create_custom_resource_item, err = client:CreateCustomResourceItem():create({
 })
 ```
 
 
 ### DeleteCustomResourceItem
 
-Create an instance: `const delete_custom_resource_item = client.delete_custom_resource_item`
+Create an instance: `local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)`
 
 #### Operations
 
@@ -408,7 +413,7 @@ Create an instance: `const delete_custom_resource_item = client.delete_custom_re
 
 ### GetCustomResource
 
-Create an instance: `const get_custom_resource = client.get_custom_resource`
+Create an instance: `local get_custom_resource = client:GetCustomResource(nil)`
 
 #### Operations
 
@@ -418,14 +423,14 @@ Create an instance: `const get_custom_resource = client.get_custom_resource`
 
 #### Example: List
 
-```ts
-const get_custom_resources = await client.get_custom_resource.list()
+```lua
+local get_custom_resources, err = client:GetCustomResource():list()
 ```
 
 
 ### GetCustomResourceItemById
 
-Create an instance: `const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id`
+Create an instance: `local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)`
 
 #### Operations
 
@@ -435,14 +440,14 @@ Create an instance: `const get_custom_resource_item_by_id = client.get_custom_re
 
 #### Example: Load
 
-```ts
-const get_custom_resource_item_by_id = await client.get_custom_resource_item_by_id.load({ id: 'get_custom_resource_item_by_id_id' })
+```lua
+local get_custom_resource_item_by_id, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id" })
 ```
 
 
 ### PatchCustomResourceItem
 
-Create an instance: `const patch_custom_resource_item = client.patch_custom_resource_item`
+Create an instance: `local patch_custom_resource_item = client:PatchCustomResourceItem(nil)`
 
 #### Operations
 
@@ -453,7 +458,7 @@ Create an instance: `const patch_custom_resource_item = client.patch_custom_reso
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `local product = client:Product(nil)`
 
 #### Operations
 
@@ -472,20 +477,20 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```lua
+local product, err = client:Product():load({ id = "product_id" })
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```lua
+local products, err = client:Product():list()
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.status`
+Create an instance: `local status = client:Status(nil)`
 
 #### Operations
 
@@ -495,14 +500,14 @@ Create an instance: `const status = client.status`
 
 #### Example: Load
 
-```ts
-const status = await client.status.load({ id: 'status_id' })
+```lua
+local status, err = client:Status():load({ id = "status_id" })
 ```
 
 
 ### UpdateCustomResourceItem
 
-Create an instance: `const update_custom_resource_item = client.update_custom_resource_item`
+Create an instance: `local update_custom_resource_item = client:UpdateCustomResourceItem(nil)`
 
 #### Operations
 
@@ -513,7 +518,7 @@ Create an instance: `const update_custom_resource_item = client.update_custom_re
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `local user = client:User(nil)`
 
 #### Operations
 
@@ -531,8 +536,8 @@ Create an instance: `const user = client.user`
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```lua
+local users, err = client:User():list()
 ```
 
 
@@ -607,7 +612,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local cart = client:cart()
+local cart = client:Cart()
 cart:load({ id = "example_id" })
 
 -- cart:data_get() now returns the loaded cart data

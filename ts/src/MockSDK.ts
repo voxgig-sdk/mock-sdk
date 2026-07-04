@@ -214,154 +214,77 @@ class MockSDK {
 
 
 
-  _cart?: CartEntity
-
-  // Idiomatic facade: `client.cart.list()` / `client.cart.load({ id })`.
-  get cart(): CartEntity {
-    return (this._cart ??= new CartEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.cart` instead. */
+  // Entity access: `client.Cart().list()` / `client.Cart().load({ id })`.
   Cart(data?: any) {
     const self = this
     return new CartEntity(self,data)
   }
 
 
-  _coupon?: CouponEntity
-
-  // Idiomatic facade: `client.coupon.list()` / `client.coupon.load({ id })`.
-  get coupon(): CouponEntity {
-    return (this._coupon ??= new CouponEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.coupon` instead. */
+  // Entity access: `client.Coupon().list()` / `client.Coupon().load({ id })`.
   Coupon(data?: any) {
     const self = this
     return new CouponEntity(self,data)
   }
 
 
-  _create_custom_resource_item?: CreateCustomResourceItemEntity
-
-  // Idiomatic facade: `client.create_custom_resource_item.list()` / `client.create_custom_resource_item.load({ id })`.
-  get create_custom_resource_item(): CreateCustomResourceItemEntity {
-    return (this._create_custom_resource_item ??= new CreateCustomResourceItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.create_custom_resource_item` instead. */
+  // Entity access: `client.CreateCustomResourceItem().list()` / `client.CreateCustomResourceItem().load({ id })`.
   CreateCustomResourceItem(data?: any) {
     const self = this
     return new CreateCustomResourceItemEntity(self,data)
   }
 
 
-  _delete_custom_resource_item?: DeleteCustomResourceItemEntity
-
-  // Idiomatic facade: `client.delete_custom_resource_item.list()` / `client.delete_custom_resource_item.load({ id })`.
-  get delete_custom_resource_item(): DeleteCustomResourceItemEntity {
-    return (this._delete_custom_resource_item ??= new DeleteCustomResourceItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.delete_custom_resource_item` instead. */
+  // Entity access: `client.DeleteCustomResourceItem().list()` / `client.DeleteCustomResourceItem().load({ id })`.
   DeleteCustomResourceItem(data?: any) {
     const self = this
     return new DeleteCustomResourceItemEntity(self,data)
   }
 
 
-  _get_custom_resource?: GetCustomResourceEntity
-
-  // Idiomatic facade: `client.get_custom_resource.list()` / `client.get_custom_resource.load({ id })`.
-  get get_custom_resource(): GetCustomResourceEntity {
-    return (this._get_custom_resource ??= new GetCustomResourceEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_custom_resource` instead. */
+  // Entity access: `client.GetCustomResource().list()` / `client.GetCustomResource().load({ id })`.
   GetCustomResource(data?: any) {
     const self = this
     return new GetCustomResourceEntity(self,data)
   }
 
 
-  _get_custom_resource_item_by_id?: GetCustomResourceItemByIdEntity
-
-  // Idiomatic facade: `client.get_custom_resource_item_by_id.list()` / `client.get_custom_resource_item_by_id.load({ id })`.
-  get get_custom_resource_item_by_id(): GetCustomResourceItemByIdEntity {
-    return (this._get_custom_resource_item_by_id ??= new GetCustomResourceItemByIdEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_custom_resource_item_by_id` instead. */
+  // Entity access: `client.GetCustomResourceItemById().list()` / `client.GetCustomResourceItemById().load({ id })`.
   GetCustomResourceItemById(data?: any) {
     const self = this
     return new GetCustomResourceItemByIdEntity(self,data)
   }
 
 
-  _patch_custom_resource_item?: PatchCustomResourceItemEntity
-
-  // Idiomatic facade: `client.patch_custom_resource_item.list()` / `client.patch_custom_resource_item.load({ id })`.
-  get patch_custom_resource_item(): PatchCustomResourceItemEntity {
-    return (this._patch_custom_resource_item ??= new PatchCustomResourceItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.patch_custom_resource_item` instead. */
+  // Entity access: `client.PatchCustomResourceItem().list()` / `client.PatchCustomResourceItem().load({ id })`.
   PatchCustomResourceItem(data?: any) {
     const self = this
     return new PatchCustomResourceItemEntity(self,data)
   }
 
 
-  _product?: ProductEntity
-
-  // Idiomatic facade: `client.product.list()` / `client.product.load({ id })`.
-  get product(): ProductEntity {
-    return (this._product ??= new ProductEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.product` instead. */
+  // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
   Product(data?: any) {
     const self = this
     return new ProductEntity(self,data)
   }
 
 
-  _status?: StatusEntity
-
-  // Idiomatic facade: `client.status.list()` / `client.status.load({ id })`.
-  get status(): StatusEntity {
-    return (this._status ??= new StatusEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.status` instead. */
+  // Entity access: `client.Status().list()` / `client.Status().load({ id })`.
   Status(data?: any) {
     const self = this
     return new StatusEntity(self,data)
   }
 
 
-  _update_custom_resource_item?: UpdateCustomResourceItemEntity
-
-  // Idiomatic facade: `client.update_custom_resource_item.list()` / `client.update_custom_resource_item.load({ id })`.
-  get update_custom_resource_item(): UpdateCustomResourceItemEntity {
-    return (this._update_custom_resource_item ??= new UpdateCustomResourceItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.update_custom_resource_item` instead. */
+  // Entity access: `client.UpdateCustomResourceItem().list()` / `client.UpdateCustomResourceItem().load({ id })`.
   UpdateCustomResourceItem(data?: any) {
     const self = this
     return new UpdateCustomResourceItemEntity(self,data)
   }
 
 
-  _user?: UserEntity
-
-  // Idiomatic facade: `client.user.list()` / `client.user.load({ id })`.
-  get user(): UserEntity {
-    return (this._user ??= new UserEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.user` instead. */
+  // Entity access: `client.User().list()` / `client.User().load({ id })`.
   User(data?: any) {
     const self = this
     return new UserEntity(self,data)

@@ -229,7 +229,7 @@ Alias for `MockSDK.test()`.
 ## CartEntity
 
 ```ts
-const cart = client.cart
+const cart = client.Cart()
 ```
 
 ### Fields
@@ -246,7 +246,7 @@ const cart = client.cart
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.cart.list()
+const results = await client.Cart().list()
 ```
 
 ### Common Methods
@@ -280,7 +280,7 @@ Return a copy of the entity options.
 ## CouponEntity
 
 ```ts
-const coupon = client.coupon
+const coupon = client.Coupon()
 ```
 
 ### Fields
@@ -298,7 +298,7 @@ const coupon = client.coupon
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.coupon.list()
+const results = await client.Coupon().list()
 ```
 
 ### Common Methods
@@ -332,7 +332,7 @@ Return a copy of the entity options.
 ## CreateCustomResourceItemEntity
 
 ```ts
-const create_custom_resource_item = client.create_custom_resource_item
+const create_custom_resource_item = client.CreateCustomResourceItem()
 ```
 
 ### Operations
@@ -342,7 +342,7 @@ const create_custom_resource_item = client.create_custom_resource_item
 Create a new entity with the given data.
 
 ```ts
-const result = await client.create_custom_resource_item.create({
+const result = await client.CreateCustomResourceItem().create({
 })
 ```
 
@@ -377,7 +377,7 @@ Return a copy of the entity options.
 ## DeleteCustomResourceItemEntity
 
 ```ts
-const delete_custom_resource_item = client.delete_custom_resource_item
+const delete_custom_resource_item = client.DeleteCustomResourceItem()
 ```
 
 ### Operations
@@ -387,7 +387,7 @@ const delete_custom_resource_item = client.delete_custom_resource_item
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.delete_custom_resource_item.remove({ id: 'delete_custom_resource_item_id' })
+const result = await client.DeleteCustomResourceItem().remove({ id: 'delete_custom_resource_item_id' })
 ```
 
 ### Common Methods
@@ -421,7 +421,7 @@ Return a copy of the entity options.
 ## GetCustomResourceEntity
 
 ```ts
-const get_custom_resource = client.get_custom_resource
+const get_custom_resource = client.GetCustomResource()
 ```
 
 ### Operations
@@ -431,7 +431,7 @@ const get_custom_resource = client.get_custom_resource
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.get_custom_resource.list()
+const results = await client.GetCustomResource().list()
 ```
 
 ### Common Methods
@@ -465,7 +465,7 @@ Return a copy of the entity options.
 ## GetCustomResourceItemByIdEntity
 
 ```ts
-const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
+const get_custom_resource_item_by_id = client.GetCustomResourceItemById()
 ```
 
 ### Operations
@@ -475,7 +475,7 @@ const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_custom_resource_item_by_id.load({ id: 'get_custom_resource_item_by_id_id' })
+const result = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
 ```
 
 ### Common Methods
@@ -509,7 +509,7 @@ Return a copy of the entity options.
 ## PatchCustomResourceItemEntity
 
 ```ts
-const patch_custom_resource_item = client.patch_custom_resource_item
+const patch_custom_resource_item = client.PatchCustomResourceItem()
 ```
 
 ### Operations
@@ -519,7 +519,7 @@ const patch_custom_resource_item = client.patch_custom_resource_item
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.patch_custom_resource_item.update({
+const result = await client.PatchCustomResourceItem().update({
   id: 'patch_custom_resource_item_id',
   // Fields to update
 })
@@ -556,7 +556,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.product
+const product = client.Product()
 ```
 
 ### Fields
@@ -574,7 +574,7 @@ const product = client.product
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.product.list()
+const results = await client.Product().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -582,7 +582,7 @@ const results = await client.product.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.product.load({ id: 'product_id' })
+const result = await client.Product().load({ id: 'product_id' })
 ```
 
 ### Common Methods
@@ -616,7 +616,7 @@ Return a copy of the entity options.
 ## StatusEntity
 
 ```ts
-const status = client.status
+const status = client.Status()
 ```
 
 ### Operations
@@ -626,7 +626,7 @@ const status = client.status
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.status.load({ id: 'status_id' })
+const result = await client.Status().load({ id: 'status_id' })
 ```
 
 ### Common Methods
@@ -660,7 +660,7 @@ Return a copy of the entity options.
 ## UpdateCustomResourceItemEntity
 
 ```ts
-const update_custom_resource_item = client.update_custom_resource_item
+const update_custom_resource_item = client.UpdateCustomResourceItem()
 ```
 
 ### Operations
@@ -670,7 +670,7 @@ const update_custom_resource_item = client.update_custom_resource_item
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.update_custom_resource_item.update({
+const result = await client.UpdateCustomResourceItem().update({
   id: 'update_custom_resource_item_id',
   // Fields to update
 })
@@ -707,7 +707,7 @@ Return a copy of the entity options.
 ## UserEntity
 
 ```ts
-const user = client.user
+const user = client.User()
 ```
 
 ### Fields
@@ -725,7 +725,7 @@ const user = client.user
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.user.list()
+const results = await client.User().list()
 ```
 
 ### Common Methods

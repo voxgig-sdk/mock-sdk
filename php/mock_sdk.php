@@ -233,10 +233,10 @@ class MockSDK
 
     private $_cart = null;
 
-    // Idiomatic facade: $client->cart()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Cart() (PHP method
-    // names are case-insensitive).
-    public function cart($data = null)
+    // Canonical facade: $client->Cart()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->cart()
+    // resolves here too.
+    public function Cart($data = null)
     {
         require_once __DIR__ . '/entity/cart_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class MockSDK
 
     private $_coupon = null;
 
-    // Idiomatic facade: $client->coupon()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Coupon() (PHP method
-    // names are case-insensitive).
-    public function coupon($data = null)
+    // Canonical facade: $client->Coupon()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->coupon()
+    // resolves here too.
+    public function Coupon($data = null)
     {
         require_once __DIR__ . '/entity/coupon_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class MockSDK
 
     private $_create_custom_resource_item = null;
 
-    // Idiomatic facade: $client->create_custom_resource_item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CreateCustomResourceItem() (PHP method
-    // names are case-insensitive).
-    public function create_custom_resource_item($data = null)
+    // Canonical facade: $client->CreateCustomResourceItem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->create_custom_resource_item()
+    // resolves here too.
+    public function CreateCustomResourceItem($data = null)
     {
         require_once __DIR__ . '/entity/create_custom_resource_item_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class MockSDK
 
     private $_delete_custom_resource_item = null;
 
-    // Idiomatic facade: $client->delete_custom_resource_item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias DeleteCustomResourceItem() (PHP method
-    // names are case-insensitive).
-    public function delete_custom_resource_item($data = null)
+    // Canonical facade: $client->DeleteCustomResourceItem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->delete_custom_resource_item()
+    // resolves here too.
+    public function DeleteCustomResourceItem($data = null)
     {
         require_once __DIR__ . '/entity/delete_custom_resource_item_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class MockSDK
 
     private $_get_custom_resource = null;
 
-    // Idiomatic facade: $client->get_custom_resource()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetCustomResource() (PHP method
-    // names are case-insensitive).
-    public function get_custom_resource($data = null)
+    // Canonical facade: $client->GetCustomResource()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_custom_resource()
+    // resolves here too.
+    public function GetCustomResource($data = null)
     {
         require_once __DIR__ . '/entity/get_custom_resource_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class MockSDK
 
     private $_get_custom_resource_item_by_id = null;
 
-    // Idiomatic facade: $client->get_custom_resource_item_by_id()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetCustomResourceItemById() (PHP method
-    // names are case-insensitive).
-    public function get_custom_resource_item_by_id($data = null)
+    // Canonical facade: $client->GetCustomResourceItemById()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_custom_resource_item_by_id()
+    // resolves here too.
+    public function GetCustomResourceItemById($data = null)
     {
         require_once __DIR__ . '/entity/get_custom_resource_item_by_id_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class MockSDK
 
     private $_patch_custom_resource_item = null;
 
-    // Idiomatic facade: $client->patch_custom_resource_item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PatchCustomResourceItem() (PHP method
-    // names are case-insensitive).
-    public function patch_custom_resource_item($data = null)
+    // Canonical facade: $client->PatchCustomResourceItem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->patch_custom_resource_item()
+    // resolves here too.
+    public function PatchCustomResourceItem($data = null)
     {
         require_once __DIR__ . '/entity/patch_custom_resource_item_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class MockSDK
 
     private $_product = null;
 
-    // Idiomatic facade: $client->product()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Product() (PHP method
-    // names are case-insensitive).
-    public function product($data = null)
+    // Canonical facade: $client->Product()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->product()
+    // resolves here too.
+    public function Product($data = null)
     {
         require_once __DIR__ . '/entity/product_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class MockSDK
 
     private $_status = null;
 
-    // Idiomatic facade: $client->status()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Status() (PHP method
-    // names are case-insensitive).
-    public function status($data = null)
+    // Canonical facade: $client->Status()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->status()
+    // resolves here too.
+    public function Status($data = null)
     {
         require_once __DIR__ . '/entity/status_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class MockSDK
 
     private $_update_custom_resource_item = null;
 
-    // Idiomatic facade: $client->update_custom_resource_item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UpdateCustomResourceItem() (PHP method
-    // names are case-insensitive).
-    public function update_custom_resource_item($data = null)
+    // Canonical facade: $client->UpdateCustomResourceItem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->update_custom_resource_item()
+    // resolves here too.
+    public function UpdateCustomResourceItem($data = null)
     {
         require_once __DIR__ . '/entity/update_custom_resource_item_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class MockSDK
 
     private $_user = null;
 
-    // Idiomatic facade: $client->user()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias User() (PHP method
-    // names are case-insensitive).
-    public function user($data = null)
+    // Canonical facade: $client->User()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->user()
+    // resolves here too.
+    public function User($data = null)
     {
         require_once __DIR__ . '/entity/user_entity.php';
         if ($data === null) {

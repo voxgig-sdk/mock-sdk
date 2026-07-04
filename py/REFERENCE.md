@@ -120,7 +120,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CartEntity
 
 ```python
-cart = client.cart
+cart = client.Cart()
 ```
 
 ### Fields
@@ -137,7 +137,9 @@ cart = client.cart
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.cart.list({})
+results = client.Cart().list({})
+for cart in results:
+    print(cart)
 ```
 
 ### Common Methods
@@ -172,7 +174,7 @@ Return the entity name.
 ## CouponEntity
 
 ```python
-coupon = client.coupon
+coupon = client.Coupon()
 ```
 
 ### Fields
@@ -190,7 +192,9 @@ coupon = client.coupon
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.coupon.list({})
+results = client.Coupon().list({})
+for coupon in results:
+    print(coupon)
 ```
 
 ### Common Methods
@@ -225,7 +229,7 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```python
-create_custom_resource_item = client.create_custom_resource_item
+create_custom_resource_item = client.CreateCustomResourceItem()
 ```
 
 ### Operations
@@ -235,7 +239,7 @@ create_custom_resource_item = client.create_custom_resource_item
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.create_custom_resource_item.create({
+result = client.CreateCustomResourceItem().create({
 })
 ```
 
@@ -271,7 +275,7 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```python
-delete_custom_resource_item = client.delete_custom_resource_item
+delete_custom_resource_item = client.DeleteCustomResourceItem()
 ```
 
 ### Operations
@@ -281,7 +285,7 @@ delete_custom_resource_item = client.delete_custom_resource_item
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.delete_custom_resource_item.remove({"id": "delete_custom_resource_item_id"})
+result = client.DeleteCustomResourceItem().remove({"id": "delete_custom_resource_item_id"})
 ```
 
 ### Common Methods
@@ -316,7 +320,7 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```python
-get_custom_resource = client.get_custom_resource
+get_custom_resource = client.GetCustomResource()
 ```
 
 ### Operations
@@ -326,7 +330,9 @@ get_custom_resource = client.get_custom_resource
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.get_custom_resource.list({})
+results = client.GetCustomResource().list({})
+for get_custom_resource in results:
+    print(get_custom_resource)
 ```
 
 ### Common Methods
@@ -361,7 +367,7 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```python
-get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
+get_custom_resource_item_by_id = client.GetCustomResourceItemById()
 ```
 
 ### Operations
@@ -371,7 +377,7 @@ get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_custom_resource_item_by_id.load({"id": "get_custom_resource_item_by_id_id"})
+result = client.GetCustomResourceItemById().load({"id": "get_custom_resource_item_by_id_id"})
 ```
 
 ### Common Methods
@@ -406,7 +412,7 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```python
-patch_custom_resource_item = client.patch_custom_resource_item
+patch_custom_resource_item = client.PatchCustomResourceItem()
 ```
 
 ### Operations
@@ -416,7 +422,7 @@ patch_custom_resource_item = client.patch_custom_resource_item
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.patch_custom_resource_item.update({
+result = client.PatchCustomResourceItem().update({
     "id": "patch_custom_resource_item_id",
     # Fields to update
 })
@@ -454,7 +460,7 @@ Return the entity name.
 ## ProductEntity
 
 ```python
-product = client.product
+product = client.Product()
 ```
 
 ### Fields
@@ -472,7 +478,9 @@ product = client.product
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.product.list({})
+results = client.Product().list({})
+for product in results:
+    print(product)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -480,7 +488,7 @@ results = client.product.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.product.load({"id": "product_id"})
+result = client.Product().load({"id": "product_id"})
 ```
 
 ### Common Methods
@@ -515,7 +523,7 @@ Return the entity name.
 ## StatusEntity
 
 ```python
-status = client.status
+status = client.Status()
 ```
 
 ### Operations
@@ -525,7 +533,7 @@ status = client.status
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.status.load({"id": "status_id"})
+result = client.Status().load({"id": "status_id"})
 ```
 
 ### Common Methods
@@ -560,7 +568,7 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```python
-update_custom_resource_item = client.update_custom_resource_item
+update_custom_resource_item = client.UpdateCustomResourceItem()
 ```
 
 ### Operations
@@ -570,7 +578,7 @@ update_custom_resource_item = client.update_custom_resource_item
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.update_custom_resource_item.update({
+result = client.UpdateCustomResourceItem().update({
     "id": "update_custom_resource_item_id",
     # Fields to update
 })
@@ -608,7 +616,7 @@ Return the entity name.
 ## UserEntity
 
 ```python
-user = client.user
+user = client.User()
 ```
 
 ### Fields
@@ -626,7 +634,9 @@ user = client.user
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.user.list({})
+results = client.User().list({})
+for user in results:
+    print(user)
 ```
 
 ### Common Methods

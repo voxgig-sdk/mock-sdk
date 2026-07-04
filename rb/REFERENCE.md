@@ -126,7 +126,7 @@ same parameters as `direct()`. Raises on error.
 ## CartEntity
 
 ```ruby
-cart = client.cart
+cart = client.Cart
 ```
 
 ### Fields
@@ -143,7 +143,7 @@ cart = client.cart
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.cart.list(nil)
+results = client.Cart.list(nil)
 ```
 
 ### Common Methods
@@ -179,7 +179,7 @@ Return the entity name.
 ## CouponEntity
 
 ```ruby
-coupon = client.coupon
+coupon = client.Coupon
 ```
 
 ### Fields
@@ -197,7 +197,7 @@ coupon = client.coupon
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.coupon.list(nil)
+results = client.Coupon.list(nil)
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```ruby
-create_custom_resource_item = client.create_custom_resource_item
+create_custom_resource_item = client.CreateCustomResourceItem
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ create_custom_resource_item = client.create_custom_resource_item
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.create_custom_resource_item.create({
+result = client.CreateCustomResourceItem.create({
 })
 ```
 
@@ -280,7 +280,7 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```ruby
-delete_custom_resource_item = client.delete_custom_resource_item
+delete_custom_resource_item = client.DeleteCustomResourceItem
 ```
 
 ### Operations
@@ -290,7 +290,7 @@ delete_custom_resource_item = client.delete_custom_resource_item
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.delete_custom_resource_item.remove({ "id" => "delete_custom_resource_item_id" })
+result = client.DeleteCustomResourceItem.remove({ "id" => "delete_custom_resource_item_id" })
 ```
 
 ### Common Methods
@@ -326,7 +326,7 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```ruby
-get_custom_resource = client.get_custom_resource
+get_custom_resource = client.GetCustomResource
 ```
 
 ### Operations
@@ -336,7 +336,7 @@ get_custom_resource = client.get_custom_resource
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.get_custom_resource.list(nil)
+results = client.GetCustomResource.list(nil)
 ```
 
 ### Common Methods
@@ -372,7 +372,7 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```ruby
-get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
+get_custom_resource_item_by_id = client.GetCustomResourceItemById
 ```
 
 ### Operations
@@ -382,7 +382,7 @@ get_custom_resource_item_by_id = client.get_custom_resource_item_by_id
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_custom_resource_item_by_id.load({ "id" => "get_custom_resource_item_by_id_id" })
+result = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id" })
 ```
 
 ### Common Methods
@@ -418,7 +418,7 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```ruby
-patch_custom_resource_item = client.patch_custom_resource_item
+patch_custom_resource_item = client.PatchCustomResourceItem
 ```
 
 ### Operations
@@ -428,7 +428,7 @@ patch_custom_resource_item = client.patch_custom_resource_item
 Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result = client.patch_custom_resource_item.update({
+result = client.PatchCustomResourceItem.update({
   "id" => "patch_custom_resource_item_id",
   # Fields to update
 })
@@ -467,7 +467,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.product
+product = client.Product
 ```
 
 ### Fields
@@ -485,7 +485,7 @@ product = client.product
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.product.list(nil)
+results = client.Product.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -493,7 +493,7 @@ results = client.product.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.product.load({ "id" => "product_id" })
+result = client.Product.load({ "id" => "product_id" })
 ```
 
 ### Common Methods
@@ -529,7 +529,7 @@ Return the entity name.
 ## StatusEntity
 
 ```ruby
-status = client.status
+status = client.Status
 ```
 
 ### Operations
@@ -539,7 +539,7 @@ status = client.status
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.status.load({ "id" => "status_id" })
+result = client.Status.load({ "id" => "status_id" })
 ```
 
 ### Common Methods
@@ -575,7 +575,7 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```ruby
-update_custom_resource_item = client.update_custom_resource_item
+update_custom_resource_item = client.UpdateCustomResourceItem
 ```
 
 ### Operations
@@ -585,7 +585,7 @@ update_custom_resource_item = client.update_custom_resource_item
 Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result = client.update_custom_resource_item.update({
+result = client.UpdateCustomResourceItem.update({
   "id" => "update_custom_resource_item_id",
   # Fields to update
 })
@@ -624,7 +624,7 @@ Return the entity name.
 ## UserEntity
 
 ```ruby
-user = client.user
+user = client.User
 ```
 
 ### Fields
@@ -642,7 +642,7 @@ user = client.user
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.user.list(nil)
+results = client.User.list(nil)
 ```
 
 ### Common Methods

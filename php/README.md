@@ -29,18 +29,16 @@ require_once 'mock_sdk.php';
 $client = new MockSDK();
 ```
 
-### 2. List carts
+### 2. List cart records
 
 ```php
 try {
-    $result = $client->cart()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Cart records — iterate directly.
+    $carts = $client->Cart()->list();
+    foreach ($carts as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = MockSDK::test();
+$client = MockSDK::test([
+    "entity" => ["cart" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->cart()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$cart = $client->Cart()->load(["id" => "test01"]);
+print_r($cart);
 ```
 
 ### Use a custom fetch function
@@ -180,8 +182,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `PatchCustomResourceItem` | `($data): PatchCustomResourceItemEntity` | Create a PatchCustomResourceItem entity instance. |
 | `Product` | `($data): ProductEntity` | Create a Product entity instance. |
 | `Status` | `($data): StatusEntity` | Create a Status entity instance. |
-| `UpdateCustomResourceItem` | `($data): UpdateCustomResourceItemEntity` | Create a UpdateCustomResourceItem entity instance. |
-| `User` | `($data): UserEntity` | Create a User entity instance. |
+| `UpdateCustomResourceItem` | `($data): UpdateCustomResourceItemEntity` | Create an UpdateCustomResourceItem entity instance. |
+| `User` | `($data): UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -338,7 +340,7 @@ API path: `/public/users`
 
 ### Cart
 
-Create an instance: `const cart = client.cart`
+Create an instance: `$cart = $client->Cart();`
 
 #### Operations
 
@@ -355,14 +357,15 @@ Create an instance: `const cart = client.cart`
 
 #### Example: List
 
-```ts
-const carts = await client.cart.list()
+```php
+// list() returns an array of Cart records (throws on error).
+$carts = $client->Cart()->list();
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.coupon`
+Create an instance: `$coupon = $client->Coupon();`
 
 #### Operations
 
@@ -380,14 +383,15 @@ Create an instance: `const coupon = client.coupon`
 
 #### Example: List
 
-```ts
-const coupons = await client.coupon.list()
+```php
+// list() returns an array of Coupon records (throws on error).
+$coupons = $client->Coupon()->list();
 ```
 
 
 ### CreateCustomResourceItem
 
-Create an instance: `const create_custom_resource_item = client.create_custom_resource_item`
+Create an instance: `$create_custom_resource_item = $client->CreateCustomResourceItem();`
 
 #### Operations
 
@@ -397,15 +401,15 @@ Create an instance: `const create_custom_resource_item = client.create_custom_re
 
 #### Example: Create
 
-```ts
-const create_custom_resource_item = await client.create_custom_resource_item.create({
-})
+```php
+$create_custom_resource_item = $client->CreateCustomResourceItem()->create([
+]);
 ```
 
 
 ### DeleteCustomResourceItem
 
-Create an instance: `const delete_custom_resource_item = client.delete_custom_resource_item`
+Create an instance: `$delete_custom_resource_item = $client->DeleteCustomResourceItem();`
 
 #### Operations
 
@@ -416,7 +420,7 @@ Create an instance: `const delete_custom_resource_item = client.delete_custom_re
 
 ### GetCustomResource
 
-Create an instance: `const get_custom_resource = client.get_custom_resource`
+Create an instance: `$get_custom_resource = $client->GetCustomResource();`
 
 #### Operations
 
@@ -426,14 +430,15 @@ Create an instance: `const get_custom_resource = client.get_custom_resource`
 
 #### Example: List
 
-```ts
-const get_custom_resources = await client.get_custom_resource.list()
+```php
+// list() returns an array of GetCustomResource records (throws on error).
+$get_custom_resources = $client->GetCustomResource()->list();
 ```
 
 
 ### GetCustomResourceItemById
 
-Create an instance: `const get_custom_resource_item_by_id = client.get_custom_resource_item_by_id`
+Create an instance: `$get_custom_resource_item_by_id = $client->GetCustomResourceItemById();`
 
 #### Operations
 
@@ -443,14 +448,15 @@ Create an instance: `const get_custom_resource_item_by_id = client.get_custom_re
 
 #### Example: Load
 
-```ts
-const get_custom_resource_item_by_id = await client.get_custom_resource_item_by_id.load({ id: 'get_custom_resource_item_by_id_id' })
+```php
+// load() returns the bare GetCustomResourceItemById record (throws on error).
+$get_custom_resource_item_by_id = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id"]);
 ```
 
 
 ### PatchCustomResourceItem
 
-Create an instance: `const patch_custom_resource_item = client.patch_custom_resource_item`
+Create an instance: `$patch_custom_resource_item = $client->PatchCustomResourceItem();`
 
 #### Operations
 
@@ -461,7 +467,7 @@ Create an instance: `const patch_custom_resource_item = client.patch_custom_reso
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `$product = $client->Product();`
 
 #### Operations
 
@@ -480,20 +486,22 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```php
+// load() returns the bare Product record (throws on error).
+$product = $client->Product()->load(["id" => "product_id"]);
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```php
+// list() returns an array of Product records (throws on error).
+$products = $client->Product()->list();
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.status`
+Create an instance: `$status = $client->Status();`
 
 #### Operations
 
@@ -503,14 +511,15 @@ Create an instance: `const status = client.status`
 
 #### Example: Load
 
-```ts
-const status = await client.status.load({ id: 'status_id' })
+```php
+// load() returns the bare Status record (throws on error).
+$status = $client->Status()->load(["id" => "status_id"]);
 ```
 
 
 ### UpdateCustomResourceItem
 
-Create an instance: `const update_custom_resource_item = client.update_custom_resource_item`
+Create an instance: `$update_custom_resource_item = $client->UpdateCustomResourceItem();`
 
 #### Operations
 
@@ -521,7 +530,7 @@ Create an instance: `const update_custom_resource_item = client.update_custom_re
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `$user = $client->User();`
 
 #### Operations
 
@@ -539,8 +548,9 @@ Create an instance: `const user = client.user`
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```php
+// list() returns an array of User records (throws on error).
+$users = $client->User()->list();
 ```
 
 
@@ -615,7 +625,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$cart = $client->cart();
+$cart = $client->Cart();
 $cart->load(["id" => "example_id"]);
 
 // $cart->dataGet() now returns the loaded cart data

@@ -4,142 +4,123 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Cart:
-    id: Optional[str] = None
-    item: Optional[list] = None
+class Cart(TypedDict, total=False):
+    id: str
+    item: list
 
 
-@dataclass
-class CartListMatch:
-    id: Optional[str] = None
-    item: Optional[list] = None
+class CartListMatch(TypedDict, total=False):
+    id: str
+    item: list
 
 
-@dataclass
-class Coupon:
-    code: Optional[str] = None
-    discount: Optional[float] = None
-    id: Optional[str] = None
-
-
-@dataclass
-class CouponListMatch:
-    code: Optional[str] = None
-    discount: Optional[float] = None
-    id: Optional[str] = None
-
-
-@dataclass
-class CreateCustomResourceItem:
-    pass
-
-
-@dataclass
-class CreateCustomResourceItemCreateData:
+class Coupon(TypedDict, total=False):
+    code: str
+    discount: float
     id: str
 
 
-@dataclass
-class DeleteCustomResourceItem:
+class CouponListMatch(TypedDict, total=False):
+    code: str
+    discount: float
+    id: str
+
+
+class CreateCustomResourceItem(TypedDict):
     pass
 
 
-@dataclass
-class DeleteCustomResourceItemRemoveMatch:
+class CreateCustomResourceItemCreateData(TypedDict):
+    id: str
+
+
+class DeleteCustomResourceItem(TypedDict):
+    pass
+
+
+class DeleteCustomResourceItemRemoveMatch(TypedDict):
     id: str
     resource: str
 
 
-@dataclass
-class GetCustomResource:
+class GetCustomResource(TypedDict):
     pass
 
 
-@dataclass
-class GetCustomResourceListMatch:
+class GetCustomResourceListMatch(TypedDict):
     id: str
 
 
-@dataclass
-class GetCustomResourceItemById:
+class GetCustomResourceItemById(TypedDict):
     pass
 
 
-@dataclass
-class GetCustomResourceItemByIdLoadMatch:
+class GetCustomResourceItemByIdLoadMatch(TypedDict):
     id: str
     resource: str
 
 
-@dataclass
-class PatchCustomResourceItem:
+class PatchCustomResourceItem(TypedDict):
     pass
 
 
-@dataclass
-class PatchCustomResourceItemUpdateData:
+class PatchCustomResourceItemUpdateData(TypedDict):
     id: str
     resource: str
 
 
-@dataclass
-class Product:
-    id: Optional[str] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
+class Product(TypedDict, total=False):
+    id: str
+    name: str
+    price: float
 
 
-@dataclass
-class ProductLoadMatch:
+class ProductLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ProductListMatch:
-    id: Optional[str] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
+class ProductListMatch(TypedDict, total=False):
+    id: str
+    name: str
+    price: float
 
 
-@dataclass
-class Status:
+class Status(TypedDict):
     pass
 
 
-@dataclass
-class StatusLoadMatch:
+class StatusLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class UpdateCustomResourceItem:
+class UpdateCustomResourceItem(TypedDict):
     pass
 
 
-@dataclass
-class UpdateCustomResourceItemUpdateData:
+class UpdateCustomResourceItemUpdateData(TypedDict):
     id: str
     resource: str
 
 
-@dataclass
-class User:
-    email: Optional[str] = None
-    id: Optional[str] = None
-    username: Optional[str] = None
+class User(TypedDict, total=False):
+    email: str
+    id: str
+    username: str
 
 
-@dataclass
-class UserListMatch:
-    email: Optional[str] = None
-    id: Optional[str] = None
-    username: Optional[str] = None
-
+class UserListMatch(TypedDict, total=False):
+    email: str
+    id: str
+    username: str
