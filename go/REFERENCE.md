@@ -137,8 +137,8 @@ cart := client.Cart(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
+| `id` | `string` | No |  |
+| `item` | `[]any` | No |  |
 
 ### Operations
 
@@ -184,9 +184,9 @@ coupon := client.Coupon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `id` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `float64` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -276,7 +276,7 @@ delete_custom_resource_item := client.DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.DeleteCustomResourceItem(nil).Remove(map[string]any{"id": "delete_custom_resource_item_id"}, nil)
+result, err := client.DeleteCustomResourceItem(nil).Remove(nil, nil)
 ```
 
 ### Common Methods
@@ -397,7 +397,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.PatchCustomResourceItem(nil).Update(map[string]any{
-    "id": "patch_custom_resource_item_id",
     // Fields to update
 }, nil)
 ```
@@ -436,9 +435,9 @@ product := client.Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float64` | No |  |
 
 ### Operations
 
@@ -536,7 +535,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.UpdateCustomResourceItem(nil).Update(map[string]any{
-    "id": "update_custom_resource_item_id",
     // Fields to update
 }, nil)
 ```
@@ -575,9 +573,9 @@ user := client.User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 

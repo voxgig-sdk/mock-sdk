@@ -4,6 +4,8 @@
 
 The PHP SDK for the Mock API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Cart()` — with named operations (`list`/`load`/`create`/`update`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,10 +38,41 @@ try {
     // list() returns an array of Cart records — iterate directly.
     $carts = $client->Cart()->list();
     foreach ($carts as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["item"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $carts = $client->Cart()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -63,7 +96,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -84,16 +120,13 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = MockSDK::test([
-    "entity" => ["cart" => ["test01" => ["id" => "test01"]]],
-]);
+$client = MockSDK::test();
 
-// load() returns the bare mock record (throws on error).
-$cart = $client->Cart()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$cart = $client->Cart()->list();
 print_r($cart);
 ```
 
@@ -192,7 +225,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `create` | `($reqdata, $ctrl): array` | Create a new entity. |
 | `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
 | `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
@@ -352,8 +385,8 @@ Create an instance: `$cart = $client->Cart();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$STRING`` |  |
-| `item` | ``$ARRAY`` |  |
+| `id` | `string` |  |
+| `item` | `array` |  |
 
 #### Example: List
 
@@ -377,9 +410,9 @@ Create an instance: `$coupon = $client->Coupon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `discount` | ``$NUMBER`` |  |
-| `id` | ``$STRING`` |  |
+| `code` | `string` |  |
+| `discount` | `float` |  |
+| `id` | `string` |  |
 
 #### Example: List
 
@@ -480,9 +513,9 @@ Create an instance: `$product = $client->Product();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `price` | ``$NUMBER`` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `price` | `float` |  |
 
 #### Example: Load
 
@@ -542,9 +575,9 @@ Create an instance: `$user = $client->User();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `username` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `username` | `string` |  |
 
 #### Example: List
 
@@ -554,12 +587,16 @@ $users = $client->User()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -576,8 +613,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -621,15 +659,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $cart = $client->Cart();
-$cart->load(["id" => "example_id"]);
+$cart->list();
 
-// $cart->dataGet() now returns the loaded cart data
-// $cart->matchGet() returns the last match criteria
+// $cart->data_get() now returns the cart data from the last list
+// $cart->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

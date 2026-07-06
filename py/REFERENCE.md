@@ -127,17 +127,17 @@ cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
+| `id` | `str` | No |  |
+| `item` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Cart().list({})
+results = client.Cart().list()
 for cart in results:
     print(cart)
 ```
@@ -181,18 +181,18 @@ coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `id` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `discount` | `float` | No |  |
+| `id` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Coupon().list({})
+results = client.Coupon().list()
 for coupon in results:
     print(coupon)
 ```
@@ -285,7 +285,7 @@ delete_custom_resource_item = client.DeleteCustomResourceItem()
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.DeleteCustomResourceItem().remove({"id": "delete_custom_resource_item_id"})
+result = client.DeleteCustomResourceItem().remove()
 ```
 
 ### Common Methods
@@ -325,12 +325,12 @@ get_custom_resource = client.GetCustomResource()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetCustomResource().list({})
+results = client.GetCustomResource().list()
 for get_custom_resource in results:
     print(get_custom_resource)
 ```
@@ -423,7 +423,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.PatchCustomResourceItem().update({
-    "id": "patch_custom_resource_item_id",
     # Fields to update
 })
 ```
@@ -467,18 +466,18 @@ product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `id` | `str` | No |  |
+| `name` | `str` | No |  |
+| `price` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Product().list({})
+results = client.Product().list()
 for product in results:
     print(product)
 ```
@@ -579,7 +578,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.UpdateCustomResourceItem().update({
-    "id": "update_custom_resource_item_id",
     # Fields to update
 })
 ```
@@ -623,18 +621,18 @@ user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `str` | No |  |
+| `id` | `str` | No |  |
+| `username` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.User().list({})
+results = client.User().list()
 for user in results:
     print(user)
 ```

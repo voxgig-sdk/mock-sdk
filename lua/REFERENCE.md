@@ -130,8 +130,8 @@ local cart = client:Cart(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
+| `id` | `string` | No |  |
+| `item` | `table` | No |  |
 
 ### Operations
 
@@ -183,9 +183,9 @@ local coupon = client:Coupon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `id` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `number` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -287,7 +287,7 @@ local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:DeleteCustomResourceItem():remove({ id = "delete_custom_resource_item_id" })
+local result, err = client:DeleteCustomResourceItem():remove()
 ```
 
 ### Common Methods
@@ -426,7 +426,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:PatchCustomResourceItem():update({
-  id = "patch_custom_resource_item_id",
   -- Fields to update
 })
 ```
@@ -471,9 +470,9 @@ local product = client:Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
 
 ### Operations
 
@@ -583,7 +582,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:UpdateCustomResourceItem():update({
-  id = "update_custom_resource_item_id",
   -- Fields to update
 })
 ```
@@ -628,9 +626,9 @@ local user = client:User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 

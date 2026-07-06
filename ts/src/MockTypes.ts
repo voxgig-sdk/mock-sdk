@@ -10,7 +10,10 @@ export interface Cart {
   item?: any[]
 }
 
-export type CartListMatch = Partial<Cart>
+export interface CartListMatch {
+  id?: string
+  item?: any[]
+}
 
 export interface Coupon {
   code?: string
@@ -18,7 +21,11 @@ export interface Coupon {
   id?: string
 }
 
-export type CouponListMatch = Partial<Coupon>
+export interface CouponListMatch {
+  code?: string
+  discount?: number
+  id?: string
+}
 
 export interface CreateCustomResourceItem {
 }
@@ -68,7 +75,11 @@ export interface ProductLoadMatch {
   id: string
 }
 
-export type ProductListMatch = Partial<Product>
+export interface ProductListMatch {
+  id?: string
+  name?: string
+  price?: number
+}
 
 export interface Status {
 }
@@ -91,5 +102,9 @@ export interface User {
   username?: string
 }
 
-export type UserListMatch = Partial<User>
+export interface UserListMatch {
+  email?: string
+  id?: string
+  username?: string
+}
 

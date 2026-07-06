@@ -8,7 +8,7 @@ Complete API reference for the Mock Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'mock_sdk'
+require_relative 'Mock_sdk'
 
 client = MockSDK.new(options)
 ```
@@ -133,17 +133,17 @@ cart = client.Cart
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
+| `id` | `String` | No |  |
+| `item` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Cart.list(nil)
+results = client.Cart.list
 ```
 
 ### Common Methods
@@ -186,18 +186,18 @@ coupon = client.Coupon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `id` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `discount` | `Float` | No |  |
+| `id` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Coupon.list(nil)
+results = client.Coupon.list
 ```
 
 ### Common Methods
@@ -290,7 +290,7 @@ delete_custom_resource_item = client.DeleteCustomResourceItem
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.DeleteCustomResourceItem.remove({ "id" => "delete_custom_resource_item_id" })
+result = client.DeleteCustomResourceItem.remove()
 ```
 
 ### Common Methods
@@ -331,12 +331,12 @@ get_custom_resource = client.GetCustomResource
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.GetCustomResource.list(nil)
+results = client.GetCustomResource.list
 ```
 
 ### Common Methods
@@ -429,7 +429,6 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.PatchCustomResourceItem.update({
-  "id" => "patch_custom_resource_item_id",
   # Fields to update
 })
 ```
@@ -474,18 +473,18 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `id` | `String` | No |  |
+| `name` | `String` | No |  |
+| `price` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Product.list(nil)
+results = client.Product.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -586,7 +585,6 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.UpdateCustomResourceItem.update({
-  "id" => "update_custom_resource_item_id",
   # Fields to update
 })
 ```
@@ -631,18 +629,18 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `String` | No |  |
+| `id` | `String` | No |  |
+| `username` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.User.list(nil)
+results = client.User.list
 ```
 
 ### Common Methods

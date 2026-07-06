@@ -236,8 +236,8 @@ const cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
+| `id` | `string` | No |  |
+| `item` | `any[]` | No |  |
 
 ### Operations
 
@@ -287,9 +287,9 @@ const coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `id` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `number` | No |  |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -387,7 +387,7 @@ const delete_custom_resource_item = client.DeleteCustomResourceItem()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.DeleteCustomResourceItem().remove({ id: 'delete_custom_resource_item_id' })
+const result = await client.DeleteCustomResourceItem().remove()
 ```
 
 ### Common Methods
@@ -520,7 +520,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.PatchCustomResourceItem().update({
-  id: 'patch_custom_resource_item_id',
   // Fields to update
 })
 ```
@@ -563,9 +562,9 @@ const product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
 
 ### Operations
 
@@ -626,7 +625,7 @@ const status = client.Status()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Status().load({ id: 'status_id' })
+const result = await client.Status().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -671,7 +670,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.UpdateCustomResourceItem().update({
-  id: 'update_custom_resource_item_id',
   // Fields to update
 })
 ```
@@ -714,9 +712,9 @@ const user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 

@@ -19,7 +19,7 @@ class Cart
     public ?array $item = null;
 }
 
-/** Match filter for Cart#list (any subset of Cart fields). */
+/** Request payload for Cart#list. */
 class CartListMatch
 {
     public ?string $id = null;
@@ -34,7 +34,7 @@ class Coupon
     public ?string $id = null;
 }
 
-/** Match filter for Coupon#list (any subset of Coupon fields). */
+/** Request payload for Coupon#list. */
 class CouponListMatch
 {
     public ?string $code = null;
@@ -114,7 +114,7 @@ class ProductLoadMatch
     public string $id;
 }
 
-/** Match filter for Product#list (any subset of Product fields). */
+/** Request payload for Product#list. */
 class ProductListMatch
 {
     public ?string $id = null;
@@ -153,7 +153,7 @@ class User
     public ?string $username = null;
 }
 
-/** Match filter for User#list (any subset of User fields). */
+/** Request payload for User#list. */
 class UserListMatch
 {
     public ?string $email = null;

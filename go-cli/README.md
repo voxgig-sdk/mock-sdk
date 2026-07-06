@@ -17,8 +17,6 @@ go build -o mock-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./mock-cli list cart
-./mock-cli load 1 cart
-./mock-cli load '{id:1}' cart
 
 # REPL
 ./mock-cli

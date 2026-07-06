@@ -221,67 +221,67 @@ class MockSDK:
 
 
     def Cart(self, data=None) -> "CartEntity":
-        """Entity factory: client.Cart().list({}) / client.Cart().load({"id": ...})."""
+        """Entity factory: client.Cart().list() / client.Cart().load({"id": ...})."""
         from entity.cart_entity import CartEntity
         return CartEntity(self, data)
 
 
     def Coupon(self, data=None) -> "CouponEntity":
-        """Entity factory: client.Coupon().list({}) / client.Coupon().load({"id": ...})."""
+        """Entity factory: client.Coupon().list() / client.Coupon().load({"id": ...})."""
         from entity.coupon_entity import CouponEntity
         return CouponEntity(self, data)
 
 
     def CreateCustomResourceItem(self, data=None) -> "CreateCustomResourceItemEntity":
-        """Entity factory: client.CreateCustomResourceItem().list({}) / client.CreateCustomResourceItem().load({"id": ...})."""
+        """Entity factory: client.CreateCustomResourceItem().list() / client.CreateCustomResourceItem().load({"id": ...})."""
         from entity.create_custom_resource_item_entity import CreateCustomResourceItemEntity
         return CreateCustomResourceItemEntity(self, data)
 
 
     def DeleteCustomResourceItem(self, data=None) -> "DeleteCustomResourceItemEntity":
-        """Entity factory: client.DeleteCustomResourceItem().list({}) / client.DeleteCustomResourceItem().load({"id": ...})."""
+        """Entity factory: client.DeleteCustomResourceItem().list() / client.DeleteCustomResourceItem().load({"id": ...})."""
         from entity.delete_custom_resource_item_entity import DeleteCustomResourceItemEntity
         return DeleteCustomResourceItemEntity(self, data)
 
 
     def GetCustomResource(self, data=None) -> "GetCustomResourceEntity":
-        """Entity factory: client.GetCustomResource().list({}) / client.GetCustomResource().load({"id": ...})."""
+        """Entity factory: client.GetCustomResource().list() / client.GetCustomResource().load({"id": ...})."""
         from entity.get_custom_resource_entity import GetCustomResourceEntity
         return GetCustomResourceEntity(self, data)
 
 
     def GetCustomResourceItemById(self, data=None) -> "GetCustomResourceItemByIdEntity":
-        """Entity factory: client.GetCustomResourceItemById().list({}) / client.GetCustomResourceItemById().load({"id": ...})."""
+        """Entity factory: client.GetCustomResourceItemById().list() / client.GetCustomResourceItemById().load({"id": ...})."""
         from entity.get_custom_resource_item_by_id_entity import GetCustomResourceItemByIdEntity
         return GetCustomResourceItemByIdEntity(self, data)
 
 
     def PatchCustomResourceItem(self, data=None) -> "PatchCustomResourceItemEntity":
-        """Entity factory: client.PatchCustomResourceItem().list({}) / client.PatchCustomResourceItem().load({"id": ...})."""
+        """Entity factory: client.PatchCustomResourceItem().list() / client.PatchCustomResourceItem().load({"id": ...})."""
         from entity.patch_custom_resource_item_entity import PatchCustomResourceItemEntity
         return PatchCustomResourceItemEntity(self, data)
 
 
     def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
+        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
     def Status(self, data=None) -> "StatusEntity":
-        """Entity factory: client.Status().list({}) / client.Status().load({"id": ...})."""
+        """Entity factory: client.Status().list() / client.Status().load({"id": ...})."""
         from entity.status_entity import StatusEntity
         return StatusEntity(self, data)
 
 
     def UpdateCustomResourceItem(self, data=None) -> "UpdateCustomResourceItemEntity":
-        """Entity factory: client.UpdateCustomResourceItem().list({}) / client.UpdateCustomResourceItem().load({"id": ...})."""
+        """Entity factory: client.UpdateCustomResourceItem().list() / client.UpdateCustomResourceItem().load({"id": ...})."""
         from entity.update_custom_resource_item_entity import UpdateCustomResourceItemEntity
         return UpdateCustomResourceItemEntity(self, data)
 
 
     def User(self, data=None) -> "UserEntity":
-        """Entity factory: client.User().list({}) / client.User().load({"id": ...})."""
+        """Entity factory: client.User().list() / client.User().load({"id": ...})."""
         from entity.user_entity import UserEntity
         return UserEntity(self, data)
 

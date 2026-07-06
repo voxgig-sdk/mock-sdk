@@ -11,6 +11,8 @@
 ---@field item? table
 
 ---@class CartListMatch
+---@field id? string
+---@field item? table
 
 ---@class Coupon
 ---@field code? string
@@ -18,6 +20,9 @@
 ---@field id? string
 
 ---@class CouponListMatch
+---@field code? string
+---@field discount? number
+---@field id? string
 
 ---@class CreateCustomResourceItem
 
@@ -56,6 +61,9 @@
 ---@field id string
 
 ---@class ProductListMatch
+---@field id? string
+---@field name? string
+---@field price? number
 
 ---@class Status
 
@@ -74,6 +82,9 @@
 ---@field username? string
 
 ---@class UserListMatch
+---@field email? string
+---@field id? string
+---@field username? string
 
 local M = {}
 
