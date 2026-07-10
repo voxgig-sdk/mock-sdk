@@ -16,9 +16,9 @@ main: {
           url: "https://api.jsoning.com/mock"
         }
       ]
+      summary: "This API allows users to create a customizable mock API for testing and prototyping."
       title: "Mock API"
       version: "1.0.0"
+      website: "https://jsoning.com"
     }
   }
-}
-

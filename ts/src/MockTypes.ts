@@ -85,7 +85,7 @@ export interface Status {
 }
 
 export interface StatusLoadMatch {
-  id: number
+  id?: number
 }
 
 export interface UpdateCustomResourceItem {

@@ -107,7 +107,7 @@ type Status struct {
 
 // StatusLoadMatch is the typed request payload for Status.LoadTyped.
 type StatusLoadMatch struct {
-	Id int `json:"id"`
+	Id *int `json:"id,omitempty"`
 }
 
 // UpdateCustomResourceItem is the typed data model for the update_custom_resource_item entity.

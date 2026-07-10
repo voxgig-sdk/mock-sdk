@@ -445,7 +445,7 @@ fmt.Println(coupons) // the array of records
 
 ### CreateCustomResourceItem
 
-Create an instance: `create_custom_resource_item := client.CreateCustomResourceItem(nil)`
+Create an instance: `createCustomResourceItem := client.CreateCustomResourceItem(nil)`
 
 #### Operations
 
@@ -457,13 +457,18 @@ Create an instance: `create_custom_resource_item := client.CreateCustomResourceI
 
 ```go
 result, err := client.CreateCustomResourceItem(nil).Create(map[string]any{
+    "id": "example_id",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
 ### DeleteCustomResourceItem
 
-Create an instance: `delete_custom_resource_item := client.DeleteCustomResourceItem(nil)`
+Create an instance: `deleteCustomResourceItem := client.DeleteCustomResourceItem(nil)`
 
 #### Operations
 
@@ -474,7 +479,7 @@ Create an instance: `delete_custom_resource_item := client.DeleteCustomResourceI
 
 ### GetCustomResource
 
-Create an instance: `get_custom_resource := client.GetCustomResource(nil)`
+Create an instance: `getCustomResource := client.GetCustomResource(nil)`
 
 #### Operations
 
@@ -485,17 +490,17 @@ Create an instance: `get_custom_resource := client.GetCustomResource(nil)`
 #### Example: List
 
 ```go
-get_custom_resources, err := client.GetCustomResource(nil).List(nil, nil)
+getCustomResources, err := client.GetCustomResource(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_custom_resources) // the array of records
+fmt.Println(getCustomResources) // the array of records
 ```
 
 
 ### GetCustomResourceItemById
 
-Create an instance: `get_custom_resource_item_by_id := client.GetCustomResourceItemById(nil)`
+Create an instance: `getCustomResourceItemById := client.GetCustomResourceItemById(nil)`
 
 #### Operations
 
@@ -506,17 +511,17 @@ Create an instance: `get_custom_resource_item_by_id := client.GetCustomResourceI
 #### Example: Load
 
 ```go
-get_custom_resource_item_by_id, err := client.GetCustomResourceItemById(nil).Load(map[string]any{"id": "get_custom_resource_item_by_id_id"}, nil)
+getCustomResourceItemById, err := client.GetCustomResourceItemById(nil).Load(map[string]any{"id": "get_custom_resource_item_by_id_id", "resource": "resource"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_custom_resource_item_by_id) // the loaded record
+fmt.Println(getCustomResourceItemById) // the loaded record
 ```
 
 
 ### PatchCustomResourceItem
 
-Create an instance: `patch_custom_resource_item := client.PatchCustomResourceItem(nil)`
+Create an instance: `patchCustomResourceItem := client.PatchCustomResourceItem(nil)`
 
 #### Operations
 
@@ -578,7 +583,7 @@ Create an instance: `status := client.Status(nil)`
 #### Example: Load
 
 ```go
-status, err := client.Status(nil).Load(map[string]any{"id": "status_id"}, nil)
+status, err := client.Status(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -588,7 +593,7 @@ fmt.Println(status) // the loaded record
 
 ### UpdateCustomResourceItem
 
-Create an instance: `update_custom_resource_item := client.UpdateCustomResourceItem(nil)`
+Create an instance: `updateCustomResourceItem := client.UpdateCustomResourceItem(nil)`
 
 #### Operations
 

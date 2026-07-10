@@ -195,7 +195,7 @@ end
 # Request payload for Status#load.
 #
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [Integer, nil]
 StatusLoadMatch = Struct.new(
   :id,
   keyword_init: true

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1121,14 +1118,17 @@
           "url": "https://jsoning.com/api/"
         },
         "description": "This API allows users to create a customizable mock API for testing and prototyping. Users can define resources and rules to specify how the API handles requests and responses. It is free and open-source, enabling easy setup for local installations.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Public Mock API Server",
             "url": "https://api.jsoning.com/mock"
           }
         ],
+        "summary": "This API allows users to create a customizable mock API for testing and prototyping.",
         "title": "Mock API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://jsoning.com"
       },
       "option": {},
       "target": {
@@ -1181,6 +1181,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1231,6 +1234,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

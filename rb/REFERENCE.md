@@ -244,6 +244,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.CreateCustomResourceItem.create({
+  "id" => "example_id", # String
 })
 ```
 
@@ -290,7 +291,7 @@ delete_custom_resource_item = client.DeleteCustomResourceItem
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.DeleteCustomResourceItem.remove()
+result = client.DeleteCustomResourceItem.remove({ "id" => "id", "resource" => "resource" })
 ```
 
 ### Common Methods
@@ -382,7 +383,7 @@ get_custom_resource_item_by_id = client.GetCustomResourceItemById
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id" })
+result = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id", "resource" => "resource" })
 ```
 
 ### Common Methods
@@ -429,6 +430,8 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.PatchCustomResourceItem.update({
+  "id" => "id",
+  "resource" => "resource",
   # Fields to update
 })
 ```
@@ -538,7 +541,7 @@ status = client.Status
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Status.load({ "id" => "status_id" })
+result = client.Status.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -585,6 +588,8 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.UpdateCustomResourceItem.update({
+  "id" => "id",
+  "resource" => "resource",
   # Fields to update
 })
 ```

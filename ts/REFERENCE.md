@@ -343,6 +343,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.CreateCustomResourceItem().create({
+  id: 'example_id',
 })
 ```
 
@@ -387,7 +388,7 @@ const delete_custom_resource_item = client.DeleteCustomResourceItem()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.DeleteCustomResourceItem().remove()
+const result = await client.DeleteCustomResourceItem().remove({ id: 'id', resource: 'resource' })
 ```
 
 ### Common Methods
@@ -475,7 +476,7 @@ const get_custom_resource_item_by_id = client.GetCustomResourceItemById()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
+const result = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id', resource: 'resource' })
 ```
 
 ### Common Methods
@@ -520,6 +521,8 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.PatchCustomResourceItem().update({
+  id: 'id',
+  resource: 'resource',
   // Fields to update
 })
 ```
@@ -670,6 +673,8 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.UpdateCustomResourceItem().update({
+  id: 'id',
+  resource: 'resource',
   // Fields to update
 })
 ```

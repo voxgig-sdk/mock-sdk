@@ -426,6 +426,7 @@ Create an instance: `create_custom_resource_item = client.CreateCustomResourceIt
 
 ```ruby
 create_custom_resource_item = client.CreateCustomResourceItem.create({
+  "id" => "example_id", # String
 })
 ```
 
@@ -473,7 +474,7 @@ Create an instance: `get_custom_resource_item_by_id = client.GetCustomResourceIt
 
 ```ruby
 # load returns the bare GetCustomResourceItemById record (raises on error).
-get_custom_resource_item_by_id = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id" })
+get_custom_resource_item_by_id = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id", "resource" => "resource" })
 ```
 
 
@@ -536,7 +537,7 @@ Create an instance: `status = client.Status`
 
 ```ruby
 # load returns the bare Status record (raises on error).
-status = client.Status.load({ "id" => "status_id" })
+status = client.Status.load({ "id" => 1 })
 ```
 
 

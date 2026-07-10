@@ -474,6 +474,7 @@ Create an instance: `const create_custom_resource_item = client.CreateCustomReso
 
 ```ts
 const create_custom_resource_item = await client.CreateCustomResourceItem().create({
+  id: 'example_id',
 })
 ```
 
@@ -519,7 +520,7 @@ Create an instance: `const get_custom_resource_item_by_id = client.GetCustomReso
 #### Example: Load
 
 ```ts
-const get_custom_resource_item_by_id = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id' })
+const get_custom_resource_item_by_id = await client.GetCustomResourceItemById().load({ id: 'get_custom_resource_item_by_id_id', resource: 'resource' })
 ```
 
 

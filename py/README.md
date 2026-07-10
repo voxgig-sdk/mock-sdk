@@ -430,6 +430,7 @@ Create an instance: `create_custom_resource_item = client.CreateCustomResourceIt
 
 ```python
 create_custom_resource_item = client.CreateCustomResourceItem().create({
+    "id": "example_id",  # str
 })
 ```
 
@@ -475,7 +476,7 @@ Create an instance: `get_custom_resource_item_by_id = client.GetCustomResourceIt
 #### Example: Load
 
 ```python
-get_custom_resource_item_by_id = client.GetCustomResourceItemById().load({"id": "get_custom_resource_item_by_id_id"})
+get_custom_resource_item_by_id = client.GetCustomResourceItemById().load({"id": "get_custom_resource_item_by_id_id", "resource": "resource"})
 ```
 
 
@@ -535,7 +536,7 @@ Create an instance: `status = client.Status()`
 #### Example: Load
 
 ```python
-status = client.Status().load({"id": "status_id"})
+status = client.Status().load({"id": 1})
 ```
 
 

@@ -420,6 +420,7 @@ Create an instance: `local create_custom_resource_item = client:CreateCustomReso
 
 ```lua
 local create_custom_resource_item, err = client:CreateCustomResourceItem():create({
+  id = "example_id", -- string
 })
 ```
 
@@ -465,7 +466,7 @@ Create an instance: `local get_custom_resource_item_by_id = client:GetCustomReso
 #### Example: Load
 
 ```lua
-local get_custom_resource_item_by_id, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id" })
+local get_custom_resource_item_by_id, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id", resource = "resource" })
 ```
 
 
@@ -525,7 +526,7 @@ Create an instance: `local status = client:Status(nil)`
 #### Example: Load
 
 ```lua
-local status, err = client:Status():load({ id = "status_id" })
+local status, err = client:Status():load({ id = 1 })
 ```
 
 

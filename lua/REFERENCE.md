@@ -241,6 +241,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:CreateCustomResourceItem():create({
+  id = --[[ string ]],
 })
 ```
 
@@ -287,7 +288,7 @@ local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:DeleteCustomResourceItem():remove()
+local result, err = client:DeleteCustomResourceItem():remove({ id = "id", resource = "resource" })
 ```
 
 ### Common Methods
@@ -379,7 +380,7 @@ local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id" })
+local result, err = client:GetCustomResourceItemById():load({ id = "get_custom_resource_item_by_id_id", resource = "resource" })
 ```
 
 ### Common Methods
@@ -426,6 +427,8 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:PatchCustomResourceItem():update({
+  id = "id",
+  resource = "resource",
   -- Fields to update
 })
 ```
@@ -535,7 +538,7 @@ local status = client:Status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Status():load({ id = "status_id" })
+local result, err = client:Status():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -582,6 +585,8 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:UpdateCustomResourceItem():update({
+  id = "id",
+  resource = "resource",
   -- Fields to update
 })
 ```

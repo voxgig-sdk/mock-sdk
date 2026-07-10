@@ -68,7 +68,7 @@
 ---@class Status
 
 ---@class StatusLoadMatch
----@field id number
+---@field id? number
 
 ---@class UpdateCustomResourceItem
 

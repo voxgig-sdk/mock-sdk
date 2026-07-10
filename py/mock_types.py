@@ -101,7 +101,7 @@ class Status(TypedDict):
     pass
 
 
-class StatusLoadMatch(TypedDict):
+class StatusLoadMatch(TypedDict, total=False):
     id: int
 
 

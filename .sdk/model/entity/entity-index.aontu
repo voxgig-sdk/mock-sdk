@@ -1,0 +1,13 @@
+# Entity Models
+
+@"cart.aontu"
+@"coupon.aontu"
+@"create_custom_resource_item.aontu"
+@"delete_custom_resource_item.aontu"
+@"get_custom_resource.aontu"
+@"get_custom_resource_item_by_id.aontu"
+@"patch_custom_resource_item.aontu"
+@"product.aontu"
+@"status.aontu"
+@"update_custom_resource_item.aontu"
+@"user.aontu"

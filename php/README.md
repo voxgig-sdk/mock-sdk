@@ -436,6 +436,7 @@ Create an instance: `$create_custom_resource_item = $client->CreateCustomResourc
 
 ```php
 $create_custom_resource_item = $client->CreateCustomResourceItem()->create([
+    "id" => null, // string
 ]);
 ```
 
@@ -483,7 +484,7 @@ Create an instance: `$get_custom_resource_item_by_id = $client->GetCustomResourc
 
 ```php
 // load() returns the bare GetCustomResourceItemById record (throws on error).
-$get_custom_resource_item_by_id = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id"]);
+$get_custom_resource_item_by_id = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id", "resource" => "resource"]);
 ```
 
 
@@ -546,7 +547,7 @@ Create an instance: `$status = $client->Status();`
 
 ```php
 // load() returns the bare Status record (throws on error).
-$status = $client->Status()->load(["id" => "status_id"]);
+$status = $client->Status()->load(["id" => 1]);
 ```
 
 

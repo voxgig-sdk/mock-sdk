@@ -131,6 +131,7 @@ same parameters as `Direct()`.
 
 ```go
 cart := client.Cart(nil)
+fmt.Println(cart.GetName()) // "cart"
 ```
 
 ### Fields
@@ -148,6 +149,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Cart(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -178,6 +183,7 @@ Return the entity name.
 
 ```go
 coupon := client.Coupon(nil)
+fmt.Println(coupon.GetName()) // "coupon"
 ```
 
 ### Fields
@@ -196,6 +202,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Coupon(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -225,7 +235,8 @@ Return the entity name.
 ## CreateCustomResourceItemEntity
 
 ```go
-create_custom_resource_item := client.CreateCustomResourceItem(nil)
+createCustomResourceItem := client.CreateCustomResourceItem(nil)
+fmt.Println(createCustomResourceItem.GetName()) // "create_custom_resource_item"
 ```
 
 ### Operations
@@ -236,7 +247,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.CreateCustomResourceItem(nil).Create(map[string]any{
+    "id": "example_id",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -266,7 +282,8 @@ Return the entity name.
 ## DeleteCustomResourceItemEntity
 
 ```go
-delete_custom_resource_item := client.DeleteCustomResourceItem(nil)
+deleteCustomResourceItem := client.DeleteCustomResourceItem(nil)
+fmt.Println(deleteCustomResourceItem.GetName()) // "delete_custom_resource_item"
 ```
 
 ### Operations
@@ -276,7 +293,11 @@ delete_custom_resource_item := client.DeleteCustomResourceItem(nil)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.DeleteCustomResourceItem(nil).Remove(nil, nil)
+result, err := client.DeleteCustomResourceItem(nil).Remove(map[string]any{"id": "id", "resource": "resource"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -306,7 +327,8 @@ Return the entity name.
 ## GetCustomResourceEntity
 
 ```go
-get_custom_resource := client.GetCustomResource(nil)
+getCustomResource := client.GetCustomResource(nil)
+fmt.Println(getCustomResource.GetName()) // "get_custom_resource"
 ```
 
 ### Operations
@@ -317,6 +339,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GetCustomResource(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -346,7 +372,8 @@ Return the entity name.
 ## GetCustomResourceItemByIdEntity
 
 ```go
-get_custom_resource_item_by_id := client.GetCustomResourceItemById(nil)
+getCustomResourceItemById := client.GetCustomResourceItemById(nil)
+fmt.Println(getCustomResourceItemById.GetName()) // "get_custom_resource_item_by_id"
 ```
 
 ### Operations
@@ -356,7 +383,11 @@ get_custom_resource_item_by_id := client.GetCustomResourceItemById(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetCustomResourceItemById(nil).Load(map[string]any{"id": "get_custom_resource_item_by_id_id"}, nil)
+result, err := client.GetCustomResourceItemById(nil).Load(map[string]any{"id": "get_custom_resource_item_by_id_id", "resource": "resource"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -386,7 +417,8 @@ Return the entity name.
 ## PatchCustomResourceItemEntity
 
 ```go
-patch_custom_resource_item := client.PatchCustomResourceItem(nil)
+patchCustomResourceItem := client.PatchCustomResourceItem(nil)
+fmt.Println(patchCustomResourceItem.GetName()) // "patch_custom_resource_item"
 ```
 
 ### Operations
@@ -397,8 +429,14 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.PatchCustomResourceItem(nil).Update(map[string]any{
+    "id": "id",
+    "resource": "resource",
     // Fields to update
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -429,6 +467,7 @@ Return the entity name.
 
 ```go
 product := client.Product(nil)
+fmt.Println(product.GetName()) // "product"
 ```
 
 ### Fields
@@ -447,6 +486,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Product(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -455,6 +498,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -485,6 +532,7 @@ Return the entity name.
 
 ```go
 status := client.Status(nil)
+fmt.Println(status.GetName()) // "status"
 ```
 
 ### Operations
@@ -494,7 +542,11 @@ status := client.Status(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Status(nil).Load(map[string]any{"id": "status_id"}, nil)
+result, err := client.Status(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -524,7 +576,8 @@ Return the entity name.
 ## UpdateCustomResourceItemEntity
 
 ```go
-update_custom_resource_item := client.UpdateCustomResourceItem(nil)
+updateCustomResourceItem := client.UpdateCustomResourceItem(nil)
+fmt.Println(updateCustomResourceItem.GetName()) // "update_custom_resource_item"
 ```
 
 ### Operations
@@ -535,8 +588,14 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.UpdateCustomResourceItem(nil).Update(map[string]any{
+    "id": "id",
+    "resource": "resource",
     // Fields to update
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -567,6 +626,7 @@ Return the entity name.
 
 ```go
 user := client.User(nil)
+fmt.Println(user.GetName()) // "user"
 ```
 
 ### Fields
@@ -585,6 +645,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.User(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
