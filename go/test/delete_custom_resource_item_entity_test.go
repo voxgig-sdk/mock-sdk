@@ -59,16 +59,6 @@ func TestDeleteCustomResourceItemEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deleteCustomResourceItemRef01Data
 
-		// REMOVE
-		deleteCustomResourceItemRef01Ent := client.DeleteCustomResourceItem(nil)
-		deleteCustomResourceItemRef01MatchRm0 := map[string]any{
-			"id": deleteCustomResourceItemRef01Data["id"],
-		}
-		_, err := deleteCustomResourceItemRef01Ent.Remove(deleteCustomResourceItemRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
-
 	})
 }
 

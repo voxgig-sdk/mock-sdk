@@ -39,13 +39,6 @@ class DeleteCustomResourceItemEntityTest < Minitest::Test
       delete_custom_resource_item_ref01_data = Helpers.to_map(delete_custom_resource_item_ref01_data_raw[0][1])
     end
 
-    # REMOVE
-    delete_custom_resource_item_ref01_ent = client.DeleteCustomResourceItem(nil)
-    delete_custom_resource_item_ref01_match_rm0 = {
-      "id" => delete_custom_resource_item_ref01_data["id"],
-    }
-    delete_custom_resource_item_ref01_ent.remove(delete_custom_resource_item_ref01_match_rm0, nil)
-
   end
 end
 

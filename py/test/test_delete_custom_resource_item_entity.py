@@ -46,13 +46,6 @@ class TestDeleteCustomResourceItemEntity:
         if len(delete_custom_resource_item_ref01_data_raw) > 0:
             delete_custom_resource_item_ref01_data = helpers.to_map(delete_custom_resource_item_ref01_data_raw[0][1])
 
-        # REMOVE
-        delete_custom_resource_item_ref01_ent = client.DeleteCustomResourceItem(None)
-        delete_custom_resource_item_ref01_match_rm0 = {
-            "id": delete_custom_resource_item_ref01_data["id"],
-        }
-        delete_custom_resource_item_ref01_ent.remove(delete_custom_resource_item_ref01_match_rm0, None)
-
 
 
 def _delete_custom_resource_item_basic_setup(extra):

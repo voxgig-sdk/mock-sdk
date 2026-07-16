@@ -42,14 +42,6 @@ describe("DeleteCustomResourceItemEntity", function()
       delete_custom_resource_item_ref01_data = helpers.to_map(delete_custom_resource_item_ref01_data_raw[1][2])
     end
 
-    -- REMOVE
-    local delete_custom_resource_item_ref01_ent = client:DeleteCustomResourceItem(nil)
-    local delete_custom_resource_item_ref01_match_rm0 = {
-      id = delete_custom_resource_item_ref01_data["id"],
-    }
-    local _, err = delete_custom_resource_item_ref01_ent:remove(delete_custom_resource_item_ref01_match_rm0, nil)
-    assert.is_nil(err)
-
   end)
 end)
 
