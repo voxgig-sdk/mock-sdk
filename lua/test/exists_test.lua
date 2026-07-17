@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Mock SDK exists test
 
 local sdk = require("mock_sdk")
 
