@@ -7,12 +7,12 @@
 
 export interface Cart {
   id?: string
-  item?: any[]
+  items?: any[]
 }
 
 export interface CartListMatch {
   id?: string
-  item?: any[]
+  items?: any[]
 }
 
 export interface Coupon {

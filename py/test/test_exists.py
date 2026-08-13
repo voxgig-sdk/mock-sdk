@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Mock SDK exists test
 
 import pytest
 from mock_sdk import MockSDK

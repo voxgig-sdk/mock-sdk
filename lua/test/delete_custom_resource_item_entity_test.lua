@@ -19,7 +19,7 @@ describe("DeleteCustomResourceItemEntity", function()
     local setup = delete_custom_resource_item_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "delete_custom_resource_item." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -65,7 +65,7 @@ function delete_custom_resource_item_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03", "resource01" },
+    { "delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

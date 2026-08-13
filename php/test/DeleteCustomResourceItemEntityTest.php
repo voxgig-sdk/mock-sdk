@@ -23,7 +23,7 @@ class DeleteCustomResourceItemEntityTest extends TestCase
         $setup = delete_custom_resource_item_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "delete_custom_resource_item." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -64,7 +64,7 @@ function delete_custom_resource_item_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03", "resource01"] as $k) {
+    foreach (["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

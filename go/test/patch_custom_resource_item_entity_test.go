@@ -69,7 +69,7 @@ func TestPatchCustomResourceItemEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		patchCustomResourceItemRef01ResdataUp0 := core.ToMapAny(patchCustomResourceItemRef01ResdataUp0Result)
+		patchCustomResourceItemRef01ResdataUp0 := core.ToMapAny(entityData(patchCustomResourceItemRef01ResdataUp0Result))
 		if patchCustomResourceItemRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

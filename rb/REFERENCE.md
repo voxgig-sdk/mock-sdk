@@ -134,7 +134,7 @@ cart = client.Cart
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `String` | No |  |
-| `item` | `Array` | No |  |
+| `items` | `Array` | No |  |
 
 ### Operations
 

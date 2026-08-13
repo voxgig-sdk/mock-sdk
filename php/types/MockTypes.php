@@ -16,14 +16,14 @@ declare(strict_types=1);
 class Cart
 {
     public ?string $id = null;
-    public ?array $item = null;
+    public ?array $items = null;
 }
 
 /** Request payload for Cart#list. */
 class CartListMatch
 {
     public ?string $id = null;
-    public ?array $item = null;
+    public ?array $items = null;
 }
 
 /** Coupon entity data model. */

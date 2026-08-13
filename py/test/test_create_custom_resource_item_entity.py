@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mock_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mock_sdk import MockSDK
-from core import helpers
+from mock_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -45,7 +45,7 @@ class TestCreateCustomResourceItemEntity:
             vs.getpath(setup["data"], "new.create_custom_resource_item"), "create_custom_resource_item_ref01"))
         create_custom_resource_item_ref01_data["resource"] = setup["idmap"]["resource01"]
 
-        create_custom_resource_item_ref01_data = helpers.to_map(create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, None))
+        create_custom_resource_item_ref01_data = helpers.to_map(runner.entity_data(create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, None)))
         assert create_custom_resource_item_ref01_data is not None
 
 

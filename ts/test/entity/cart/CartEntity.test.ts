@@ -63,7 +63,7 @@ describe('CartEntity', async () => {
     const cart_ref01_ent = client.Cart()
     const cart_ref01_match: any = {}
 
-    const cart_ref01_list = await cart_ref01_ent.list(cart_ref01_match)
+    const cart_ref01_list = (await cart_ref01_ent.list(cart_ref01_match)).map((e: any) => e.data())
 
 
   })

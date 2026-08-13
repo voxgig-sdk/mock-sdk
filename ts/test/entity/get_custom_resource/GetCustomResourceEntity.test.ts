@@ -64,7 +64,7 @@ describe('GetCustomResourceEntity', async () => {
     const get_custom_resource_ref01_match: any = {}
     get_custom_resource_ref01_match['resource'] = setup.idmap['resource01']
 
-    const get_custom_resource_ref01_list = await get_custom_resource_ref01_ent.list(get_custom_resource_ref01_match)
+    const get_custom_resource_ref01_list = (await get_custom_resource_ref01_ent.list(get_custom_resource_ref01_match)).map((e: any) => e.data())
 
 
   })

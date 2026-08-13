@@ -128,7 +128,7 @@ cart = client.Cart()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `str` | No |  |
-| `item` | `list` | No |  |
+| `items` | `list` | No |  |
 
 ### Operations
 
@@ -331,7 +331,7 @@ get_custom_resource = client.GetCustomResource()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetCustomResource().list()
+results = client.GetCustomResource().list({"id": "example"})
 for get_custom_resource in results:
     print(get_custom_resource)
 ```

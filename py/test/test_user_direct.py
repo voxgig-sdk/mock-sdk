@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mock_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mock_sdk import MockSDK
-from core import helpers
+from mock_sdk.core import helpers
 from test import runner
 
 

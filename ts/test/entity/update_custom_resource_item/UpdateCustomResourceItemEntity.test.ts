@@ -64,7 +64,7 @@ describe('UpdateCustomResourceItemEntity', async () => {
     const update_custom_resource_item_ref01_data_up0: any = {}
     update_custom_resource_item_ref01_data_up0 ['resource'] = setup.idmap['resource']
 
-    const update_custom_resource_item_ref01_resdata_up0 = await update_custom_resource_item_ref01_ent.update(update_custom_resource_item_ref01_data_up0)
+    const update_custom_resource_item_ref01_resdata_up0 = (await update_custom_resource_item_ref01_ent.update(update_custom_resource_item_ref01_data_up0)).data()
     assert(null != update_custom_resource_item_ref01_resdata_up0)
 
 

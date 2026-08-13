@@ -16,11 +16,11 @@
 import pytest
 
 from mock_sdk import MockSDK
-from core.error import MockError
-from core.result import MockResult
-from core.response import MockResponse
-from core.spec import MockSpec
-from feature.base_feature import MockBaseFeature
+from mock_sdk.core.error import MockError
+from mock_sdk.core.result import MockResult
+from mock_sdk.core.response import MockResponse
+from mock_sdk.core.spec import MockSpec
+from mock_sdk.feature.base_feature import MockBaseFeature
 
 
 def _client():

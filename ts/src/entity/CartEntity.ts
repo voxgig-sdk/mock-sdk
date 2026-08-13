@@ -37,7 +37,7 @@ class CartEntity extends MockEntityBase<Cart> {
 
 
 
-  async list(this: any, reqmatch?: CartListMatch, ctrl?: Control): Promise<Cart[]> {
+  async list(this: any, reqmatch?: CartListMatch, ctrl?: Control): Promise<CartEntity[]> {
 
     const utility = this._utility
 

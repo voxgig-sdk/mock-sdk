@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MockControl
-from core.error import MockError
-from core.result import MockResult
-from core.spec import MockSpec
+from mock_sdk.config import make_config
+from mock_sdk.features import _make_feature
+from mock_sdk.core.control import MockControl
+from mock_sdk.core.error import MockError
+from mock_sdk.core.result import MockResult
+from mock_sdk.core.spec import MockSpec
 
 
 # True when this SDK was generated with the named feature.

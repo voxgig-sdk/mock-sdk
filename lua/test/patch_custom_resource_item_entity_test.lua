@@ -50,7 +50,7 @@ describe("PatchCustomResourceItemEntity", function()
 
     local patch_custom_resource_item_ref01_resdata_up0_result, err = patch_custom_resource_item_ref01_ent:update(patch_custom_resource_item_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(patch_custom_resource_item_ref01_resdata_up0_result)
+    local patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(type(patch_custom_resource_item_ref01_resdata_up0_result) == 'table' and patch_custom_resource_item_ref01_resdata_up0_result.data_get and patch_custom_resource_item_ref01_resdata_up0_result:data_get() or patch_custom_resource_item_ref01_resdata_up0_result)
     assert.is_not_nil(patch_custom_resource_item_ref01_resdata_up0)
 
   end)

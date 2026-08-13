@@ -49,7 +49,7 @@ class MockConfig
             ],
             [
               'active' => true,
-              'name' => 'item',
+              'name' => 'items',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
@@ -64,6 +64,7 @@ class MockConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/carts',
                   'parts' => [
@@ -118,6 +119,7 @@ class MockConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/coupons',
                   'parts' => [
@@ -162,6 +164,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/{resource}',
                   'parts' => [
@@ -223,6 +226,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/{resource}/{id}',
                   'parts' => [
@@ -272,6 +276,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{resource}',
                   'parts' => [
@@ -333,6 +338,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{resource}/{id}',
                   'parts' => [
@@ -391,6 +397,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/{resource}/{id}',
                   'parts' => [
@@ -450,6 +457,7 @@ class MockConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/products',
                   'parts' => [
@@ -485,6 +493,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/products/{id}',
                   'parts' => [
@@ -534,6 +543,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/status/{code}',
                   'parts' => [
@@ -560,6 +570,7 @@ class MockConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/status',
                   'parts' => [
@@ -613,6 +624,7 @@ class MockConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/{resource}/{id}',
                   'parts' => [
@@ -672,6 +684,7 @@ class MockConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public/users',
                   'parts' => [

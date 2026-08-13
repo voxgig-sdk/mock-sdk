@@ -133,7 +133,7 @@ $cart = $client->Cart();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `item` | `array` | No |  |
+| `items` | `array` | No |  |
 
 ### Operations
 

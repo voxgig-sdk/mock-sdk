@@ -46,7 +46,7 @@ class PatchCustomResourceItemEntityTest < Minitest::Test
     }
 
     patch_custom_resource_item_ref01_resdata_up0_result = patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, nil)
-    patch_custom_resource_item_ref01_resdata_up0 = Helpers.to_map(patch_custom_resource_item_ref01_resdata_up0_result)
+    patch_custom_resource_item_ref01_resdata_up0 = Helpers.to_map(patch_custom_resource_item_ref01_resdata_up0_result.respond_to?(:data_get) ? patch_custom_resource_item_ref01_resdata_up0_result.data_get : patch_custom_resource_item_ref01_resdata_up0_result)
     assert !patch_custom_resource_item_ref01_resdata_up0.nil?
 
   end

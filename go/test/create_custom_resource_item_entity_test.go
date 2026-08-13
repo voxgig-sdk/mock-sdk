@@ -59,7 +59,7 @@ func TestCreateCustomResourceItemEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		createCustomResourceItemRef01Data = core.ToMapAny(createCustomResourceItemRef01DataResult)
+		createCustomResourceItemRef01Data = core.ToMapAny(entityData(createCustomResourceItemRef01DataResult))
 		if createCustomResourceItemRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

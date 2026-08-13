@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mock_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mock_sdk import MockSDK
-from core import helpers
+from mock_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -52,7 +52,7 @@ class TestPatchCustomResourceItemEntity:
             "resource": setup["idmap"]["resource"],
         }
 
-        patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, None))
+        patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(runner.entity_data(patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, None)))
         assert patch_custom_resource_item_ref01_resdata_up0 is not None
 
 

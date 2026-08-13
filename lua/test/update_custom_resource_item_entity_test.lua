@@ -50,7 +50,7 @@ describe("UpdateCustomResourceItemEntity", function()
 
     local update_custom_resource_item_ref01_resdata_up0_result, err = update_custom_resource_item_ref01_ent:update(update_custom_resource_item_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local update_custom_resource_item_ref01_resdata_up0 = helpers.to_map(update_custom_resource_item_ref01_resdata_up0_result)
+    local update_custom_resource_item_ref01_resdata_up0 = helpers.to_map(type(update_custom_resource_item_ref01_resdata_up0_result) == 'table' and update_custom_resource_item_ref01_resdata_up0_result.data_get and update_custom_resource_item_ref01_resdata_up0_result:data_get() or update_custom_resource_item_ref01_resdata_up0_result)
     assert.is_not_nil(update_custom_resource_item_ref01_resdata_up0)
 
   end)

@@ -11,7 +11,7 @@ main: kit: entity: cart: {
       type: "`$STRING`"
     }
     {
-      name: "item"
+      name: "items"
       req: false
       type: "`$ARRAY`"
     }

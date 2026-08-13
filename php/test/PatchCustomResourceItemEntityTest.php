@@ -53,7 +53,7 @@ class PatchCustomResourceItemEntityTest extends TestCase
         ];
 
         $patch_custom_resource_item_ref01_resdata_up0_result = $patch_custom_resource_item_ref01_ent->update($patch_custom_resource_item_ref01_data_up0_up, null);
-        $patch_custom_resource_item_ref01_resdata_up0 = Helpers::to_map($patch_custom_resource_item_ref01_resdata_up0_result);
+        $patch_custom_resource_item_ref01_resdata_up0 = Helpers::to_map(is_object($patch_custom_resource_item_ref01_resdata_up0_result) && method_exists($patch_custom_resource_item_ref01_resdata_up0_result, 'data_get') ? $patch_custom_resource_item_ref01_resdata_up0_result->data_get() : $patch_custom_resource_item_ref01_resdata_up0_result);
         $this->assertNotNull($patch_custom_resource_item_ref01_resdata_up0);
 
     }

@@ -43,7 +43,7 @@ local carts, err = client:Cart():list()
 if err then error(err) end
 
 for _, item in ipairs(carts) do
-  print(item["id"], item["item"])
+  print(item["id"], item["items"])
 end
 ```
 
@@ -233,9 +233,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local cart, err = client:Cart():load()
+    local get_custom_resource_item_by_id, err = client:GetCustomResourceItemById():load({ id = "example_id" })
     if err then error(err) end
-    -- cart is the loaded record
+    -- get_custom_resource_item_by_id is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -247,7 +247,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 
 Operations: List.
 
@@ -372,7 +372,7 @@ Create an instance: `local cart = client:Cart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `item` | `table` |  |
+| `items` | `table` |  |
 
 #### Example: List
 

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Mock',
   }
 
 
@@ -93,7 +93,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "item",
+          "name": "items",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -108,6 +108,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/public/carts",
               "parts": [
@@ -162,6 +163,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/public/coupons",
               "parts": [
@@ -206,6 +208,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/{resource}",
               "parts": [
@@ -267,6 +270,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/{resource}/{id}",
               "parts": [
@@ -316,6 +320,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{resource}",
               "parts": [
@@ -377,6 +382,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{resource}/{id}",
               "parts": [
@@ -435,6 +441,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/{resource}/{id}",
               "parts": [
@@ -494,6 +501,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/public/products",
               "parts": [
@@ -529,6 +537,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/public/products/{id}",
               "parts": [
@@ -578,6 +587,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/public/status/{code}",
               "parts": [
@@ -604,6 +614,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/public/status",
               "parts": [
@@ -657,6 +668,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PUT",
               "orig": "/{resource}/{id}",
               "parts": [
@@ -716,6 +728,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/public/users",
               "parts": [

@@ -35,7 +35,9 @@ const client = new MockSDK()
 
 ### 2. List cart records
 
-`list()` resolves to an array of Cart objects — iterate it directly:
+`list()` resolves to an array of Cart ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const carts = await client.Cart().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = MockSDK.test()
 
 const cart = await client.Cart().list()
-// cart is a bare entity populated with mock response data
+// cart is the entity, populated with mock response data
+// — call cart.data() for the record itself
 console.log(cart)
 ```
 
@@ -301,7 +304,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 
 Operations: list.
 
@@ -426,7 +429,7 @@ Create an instance: `const cart = client.Cart()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `item` | `any[]` |  |
+| `items` | `any[]` |  |
 
 #### Example: List
 
@@ -503,7 +506,7 @@ Create an instance: `const get_custom_resource = client.GetCustomResource()`
 #### Example: List
 
 ```ts
-const get_custom_resources = await client.GetCustomResource().list()
+const get_custom_resources = await client.GetCustomResource().list({ id: "example" })
 ```
 
 

@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MockSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MockSDK.test({
+  entity: {
+    cart: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const carts = await client.Cart().list()
-// carts is an array of bare Cart records populated with mock data
+// carts is an array of Cart entities, populated with mock data
+// — call carts[0].data() for the record itself
 console.log(carts)
 ```
 
@@ -110,7 +119,7 @@ import { MockSDK } from '@voxgig-sdk/mock'
 
 const client = new MockSDK()
 
-// List all carts (returns Cart[])
+// List all carts (returns CartEntity[] — .data() for the record)
 const carts = await client.Cart().list()
 for (const cart of carts) {
   console.log(cart)
@@ -353,6 +362,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://jsoning.com/api/](https://jsoning.com/api/)
 

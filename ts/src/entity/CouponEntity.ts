@@ -37,7 +37,7 @@ class CouponEntity extends MockEntityBase<Coupon> {
 
 
 
-  async list(this: any, reqmatch?: CouponListMatch, ctrl?: Control): Promise<Coupon[]> {
+  async list(this: any, reqmatch?: CouponListMatch, ctrl?: Control): Promise<CouponEntity[]> {
 
     const utility = this._utility
 

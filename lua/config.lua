@@ -43,7 +43,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "item",
+            ["name"] = "items",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -58,6 +58,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/carts",
                 ["parts"] = {
@@ -112,6 +113,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/coupons",
                 ["parts"] = {
@@ -156,6 +158,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/{resource}",
                 ["parts"] = {
@@ -217,6 +220,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/{resource}/{id}",
                 ["parts"] = {
@@ -266,6 +270,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{resource}",
                 ["parts"] = {
@@ -327,6 +332,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{resource}/{id}",
                 ["parts"] = {
@@ -385,6 +391,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/{resource}/{id}",
                 ["parts"] = {
@@ -444,6 +451,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/products",
                 ["parts"] = {
@@ -479,6 +487,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/products/{id}",
                 ["parts"] = {
@@ -528,6 +537,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/status/{code}",
                 ["parts"] = {
@@ -554,6 +564,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/status",
                 ["parts"] = {
@@ -607,6 +618,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/{resource}/{id}",
                 ["parts"] = {
@@ -666,6 +678,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/public/users",
                 ["parts"] = {

@@ -63,7 +63,7 @@ describe('CouponEntity', async () => {
     const coupon_ref01_ent = client.Coupon()
     const coupon_ref01_match: any = {}
 
-    const coupon_ref01_list = await coupon_ref01_ent.list(coupon_ref01_match)
+    const coupon_ref01_list = (await coupon_ref01_ent.list(coupon_ref01_match)).map((e: any) => e.data())
 
 
   })

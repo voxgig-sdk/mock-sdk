@@ -39,7 +39,7 @@ describe('DeleteCustomResourceItemEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.MOCK_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'delete_custom_resource_item.' + op, live)) return
     }
 

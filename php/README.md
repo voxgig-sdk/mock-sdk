@@ -38,7 +38,7 @@ try {
     // list() returns an array of Cart records — iterate directly.
     $carts = $client->Cart()->list();
     foreach ($carts as $item) {
-        echo $item["id"] . " " . $item["item"] . "\n";
+        echo $item["id"] . " " . $item["items"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = MockSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $cart = $client->Cart()->list();
 print_r($cart);
 ```
@@ -238,7 +239,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -261,7 +262,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 
 Operations: List.
 
@@ -386,7 +387,7 @@ Create an instance: `$cart = $client->Cart();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `item` | `array` |  |
+| `items` | `array` |  |
 
 #### Example: List
 
@@ -483,7 +484,7 @@ Create an instance: `$get_custom_resource_item_by_id = $client->GetCustomResourc
 #### Example: Load
 
 ```php
-// load() returns the bare GetCustomResourceItemById record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetCustomResourceItemById record (throws on error).
 $get_custom_resource_item_by_id = $client->GetCustomResourceItemById()->load(["id" => "get_custom_resource_item_by_id_id", "resource" => "resource"]);
 ```
 
@@ -521,7 +522,7 @@ Create an instance: `$product = $client->Product();`
 #### Example: Load
 
 ```php
-// load() returns the bare Product record (throws on error).
+// load() returns the ENTITY — call data_get() for the Product record (throws on error).
 $product = $client->Product()->load(["id" => "product_id"]);
 ```
 
@@ -546,7 +547,7 @@ Create an instance: `$status = $client->Status();`
 #### Example: Load
 
 ```php
-// load() returns the bare Status record (throws on error).
+// load() returns the ENTITY — call data_get() for the Status record (throws on error).
 $status = $client->Status()->load(["id" => 1]);
 ```
 

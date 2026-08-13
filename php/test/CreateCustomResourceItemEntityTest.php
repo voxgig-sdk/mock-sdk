@@ -45,7 +45,7 @@ class CreateCustomResourceItemEntityTest extends TestCase
         $create_custom_resource_item_ref01_data["resource"] = $setup["idmap"]["resource01"];
 
         $create_custom_resource_item_ref01_data_result = $create_custom_resource_item_ref01_ent->create($create_custom_resource_item_ref01_data, null);
-        $create_custom_resource_item_ref01_data = Helpers::to_map($create_custom_resource_item_ref01_data_result);
+        $create_custom_resource_item_ref01_data = Helpers::to_map(is_object($create_custom_resource_item_ref01_data_result) && method_exists($create_custom_resource_item_ref01_data_result, 'data_get') ? $create_custom_resource_item_ref01_data_result->data_get() : $create_custom_resource_item_ref01_data_result);
         $this->assertNotNull($create_custom_resource_item_ref01_data);
 
     }

@@ -16,7 +16,7 @@ class DeleteCustomResourceItemEntityTest < Minitest::Test
     setup = delete_custom_resource_item_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "delete_custom_resource_item." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -56,7 +56,7 @@ def delete_custom_resource_item_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03", "resource01"],
+    ["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

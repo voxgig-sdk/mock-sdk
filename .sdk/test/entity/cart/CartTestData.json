@@ -3,22 +3,22 @@
     "cart": {
       "CART00": {
         "id": "CART00",
-        "item": []
+        "items": []
       },
       "CART01": {
         "id": "CART01",
-        "item": []
+        "items": []
       },
       "CART02": {
         "id": "CART02",
-        "item": []
+        "items": []
       }
     }
   },
   "new": {
     "cart": {
       "cart_ref01": {
-        "item": []
+        "items": []
       }
     }
   }

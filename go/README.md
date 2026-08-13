@@ -276,7 +276,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"id"` |  |
-| `"item"` |  |
+| `"items"` |  |
 
 Operations: List.
 
@@ -401,7 +401,7 @@ Create an instance: `cart := client.Cart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `item` | `[]any` |  |
+| `items` | `[]any` |  |
 
 #### Example: List
 

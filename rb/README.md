@@ -37,7 +37,7 @@ begin
   # list returns an Array of Cart records — iterate directly.
   carts = client.Cart.list
   carts.each do |item|
-    puts "#{item["id"]} #{item["item"]}"
+    puts "#{item["id"]} #{item["items"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = MockSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 cart = client.Cart.list()
 puts cart
 ```
@@ -251,7 +252,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 
 Operations: List.
 
@@ -376,7 +377,7 @@ Create an instance: `cart = client.Cart`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
-| `item` | `Array` |  |
+| `items` | `Array` |  |
 
 #### Example: List
 
@@ -473,7 +474,7 @@ Create an instance: `get_custom_resource_item_by_id = client.GetCustomResourceIt
 #### Example: Load
 
 ```ruby
-# load returns the bare GetCustomResourceItemById record (raises on error).
+# load returns the ENTITY — call data_get for the GetCustomResourceItemById record (raises on error).
 get_custom_resource_item_by_id = client.GetCustomResourceItemById.load({ "id" => "get_custom_resource_item_by_id_id", "resource" => "resource" })
 ```
 
@@ -511,7 +512,7 @@ Create an instance: `product = client.Product`
 #### Example: Load
 
 ```ruby
-# load returns the bare Product record (raises on error).
+# load returns the ENTITY — call data_get for the Product record (raises on error).
 product = client.Product.load({ "id" => "product_id" })
 ```
 
@@ -536,7 +537,7 @@ Create an instance: `status = client.Status`
 #### Example: Load
 
 ```ruby
-# load returns the bare Status record (raises on error).
+# load returns the ENTITY — call data_get for the Status record (raises on error).
 status = client.Status.load({ "id" => 1 })
 ```
 

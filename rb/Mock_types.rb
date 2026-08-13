@@ -13,11 +13,11 @@
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] item
+# @!attribute [rw] items
 #   @return [Array, nil]
 Cart = Struct.new(
   :id,
-  :item,
+  :items,
   keyword_init: true
 )
 
@@ -26,11 +26,11 @@ Cart = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] item
+# @!attribute [rw] items
 #   @return [Array, nil]
 CartListMatch = Struct.new(
   :id,
-  :item,
+  :items,
   keyword_init: true
 )
 

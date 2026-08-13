@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MockUtility.registrar = ->(u) {
   u.prepare_params = MockUtilities::PrepareParams
   u.prepare_path = MockUtilities::PreparePath
   u.prepare_query = MockUtilities::PrepareQuery
+  u.graphql_body = MockUtilities::GraphqlBody
+  u.graphql_errors = MockUtilities::GraphqlErrors
   u.result_basic = MockUtilities::ResultBasic
   u.result_body = MockUtilities::ResultBody
   u.result_headers = MockUtilities::ResultHeaders

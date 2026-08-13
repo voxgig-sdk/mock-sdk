@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MockSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 cart = client.Cart().list()
 # cart contains the mock response record
 ```
@@ -234,7 +235,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -257,7 +258,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 
 Operations: List.
 
@@ -382,7 +383,7 @@ Create an instance: `cart = client.Cart()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `str` |  |
-| `item` | `list` |  |
+| `items` | `list` |  |
 
 #### Example: List
 
@@ -459,7 +460,7 @@ Create an instance: `get_custom_resource = client.GetCustomResource()`
 #### Example: List
 
 ```python
-get_custom_resources = client.GetCustomResource().list()
+get_custom_resources = client.GetCustomResource().list({"id": "example"})
 ```
 
 

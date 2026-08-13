@@ -37,7 +37,7 @@ class GetCustomResourceEntity extends MockEntityBase<GetCustomResource> {
 
 
 
-  async list(this: any, reqmatch?: GetCustomResourceListMatch, ctrl?: Control): Promise<GetCustomResource[]> {
+  async list(this: any, reqmatch?: GetCustomResourceListMatch, ctrl?: Control): Promise<GetCustomResourceEntity[]> {
 
     const utility = this._utility
 

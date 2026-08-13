@@ -63,7 +63,7 @@ describe('CreateCustomResourceItemEntity', async () => {
     let create_custom_resource_item_ref01_data = setup.data.new.create_custom_resource_item['create_custom_resource_item_ref01']
     create_custom_resource_item_ref01_data['resource'] = setup.idmap['resource01']
 
-    create_custom_resource_item_ref01_data = await create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data)
+    create_custom_resource_item_ref01_data = (await create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data)).data()
     assert(null != create_custom_resource_item_ref01_data)
 
 

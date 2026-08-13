@@ -38,7 +38,7 @@ class CreateCustomResourceItemEntityTest < Minitest::Test
     create_custom_resource_item_ref01_data["resource"] = setup[:idmap]["resource01"]
 
     create_custom_resource_item_ref01_data_result = create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, nil)
-    create_custom_resource_item_ref01_data = Helpers.to_map(create_custom_resource_item_ref01_data_result)
+    create_custom_resource_item_ref01_data = Helpers.to_map(create_custom_resource_item_ref01_data_result.respond_to?(:data_get) ? create_custom_resource_item_ref01_data_result.data_get : create_custom_resource_item_ref01_data_result)
     assert !create_custom_resource_item_ref01_data.nil?
 
   end

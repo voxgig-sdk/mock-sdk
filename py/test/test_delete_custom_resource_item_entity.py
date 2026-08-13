@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mock_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mock_sdk import MockSDK
-from core import helpers
+from mock_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -27,7 +27,7 @@ class TestDeleteCustomResourceItemEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "delete_custom_resource_item." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -64,7 +64,7 @@ def _delete_custom_resource_item_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03", "resource01"],
+        ["delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

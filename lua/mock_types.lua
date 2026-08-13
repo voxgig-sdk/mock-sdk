@@ -8,11 +8,11 @@
 
 ---@class Cart
 ---@field id? string
----@field item? table
+---@field items? table
 
 ---@class CartListMatch
 ---@field id? string
----@field item? table
+---@field items? table
 
 ---@class Coupon
 ---@field code? string

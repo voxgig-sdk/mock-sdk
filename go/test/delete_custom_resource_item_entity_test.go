@@ -32,7 +32,7 @@ func TestDeleteCustomResourceItemEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "delete_custom_resource_item." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestDeleteCustomResourceItemEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set MOCK_TEST_DELETE_CUSTOM_RESOURCE_ITEM_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		deleteCustomResourceItemRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.delete_custom_resource_item", setup.data)))
 		var deleteCustomResourceItemRef01Data map[string]any
@@ -87,7 +85,7 @@ func delete_custom_resource_itemBasicSetup(extra map[string]any) *entityTestSetu
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03", "resource01"},
+		[]any{"delete_custom_resource_item01", "delete_custom_resource_item02", "delete_custom_resource_item03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -237,7 +237,7 @@ const cart = client.Cart()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `item` | `any[]` | No |  |
+| `items` | `any[]` | No |  |
 
 ### Operations
 
@@ -432,7 +432,7 @@ const get_custom_resource = client.GetCustomResource()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetCustomResource().list()
+const results = await client.GetCustomResource().list({ id: "example" })
 ```
 
 ### Common Methods
