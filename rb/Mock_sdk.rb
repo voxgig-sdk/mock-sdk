@@ -28,7 +28,7 @@ class MockSDK
     utility = MockUtility.new
     @_utility = utility
 
-    config = MockConfig.make_config
+    config = MockConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

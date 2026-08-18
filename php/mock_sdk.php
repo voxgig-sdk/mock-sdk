@@ -40,7 +40,7 @@ class MockSDK
         $utility = new MockUtility();
         $this->_utility = $utility;
 
-        $config = MockConfig::make_config();
+        $config = MockConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

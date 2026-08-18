@@ -130,7 +130,7 @@ class Status
 /** Request payload for Status#load. */
 class StatusLoadMatch
 {
-    public ?int $id = null;
+    public int $id;
 }
 
 /** UpdateCustomResourceItem entity data model. */
