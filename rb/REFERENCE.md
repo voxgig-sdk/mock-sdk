@@ -133,8 +133,8 @@ cart = client.Cart
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `String` | No |  |
-| `items` | `Array` | No |  |
+| `id` | `String` | No | Cart ID |
+| `items` | `Array` | No | Items in the cart |
 
 ### Operations
 
@@ -186,9 +186,9 @@ coupon = client.Coupon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `String` | No |  |
-| `discount` | `Float` | No |  |
-| `id` | `String` | No |  |
+| `code` | `String` | No | Coupon code |
+| `discount` | `Float` | No | Discount amount or percentage |
+| `id` | `String` | No | Coupon ID |
 
 ### Operations
 
@@ -476,9 +476,9 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `String` | No |  |
-| `name` | `String` | No |  |
-| `price` | `Float` | No |  |
+| `id` | `String` | No | Product ID |
+| `name` | `String` | No | Product name |
+| `price` | `Float` | No | Product price |
 
 ### Operations
 
@@ -634,9 +634,9 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | No |  |
-| `id` | `String` | No |  |
-| `username` | `String` | No |  |
+| `email` | `String` | No | User email address |
+| `id` | `String` | No | User ID |
+| `username` | `String` | No | Username |
 
 ### Operations
 

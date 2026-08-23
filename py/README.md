@@ -257,8 +257,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
 
 Operations: List.
 
@@ -268,9 +268,9 @@ API path: `/public/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `id` |  |
+| `code` | Coupon code |
+| `discount` | Discount amount or percentage |
+| `id` | Coupon ID |
 
 Operations: List.
 
@@ -325,9 +325,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -355,9 +355,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `id` |  |
-| `username` |  |
+| `email` | User email address |
+| `id` | User ID |
+| `username` | Username |
 
 Operations: List.
 
@@ -382,8 +382,8 @@ Create an instance: `cart = client.Cart()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `str` |  |
-| `items` | `list` |  |
+| `id` | `str` | Cart ID |
+| `items` | `list` | Items in the cart |
 
 #### Example: List
 
@@ -406,9 +406,9 @@ Create an instance: `coupon = client.Coupon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `str` |  |
-| `discount` | `float` |  |
-| `id` | `str` |  |
+| `code` | `str` | Coupon code |
+| `discount` | `float` | Discount amount or percentage |
+| `id` | `str` | Coupon ID |
 
 #### Example: List
 
@@ -507,9 +507,9 @@ Create an instance: `product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `str` |  |
-| `name` | `str` |  |
-| `price` | `float` |  |
+| `id` | `str` | Product ID |
+| `name` | `str` | Product name |
+| `price` | `float` | Product price |
 
 #### Example: Load
 
@@ -566,9 +566,9 @@ Create an instance: `user = client.User()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `str` |  |
-| `id` | `str` |  |
-| `username` | `str` |  |
+| `email` | `str` | User email address |
+| `id` | `str` | User ID |
+| `username` | `str` | Username |
 
 #### Example: List
 

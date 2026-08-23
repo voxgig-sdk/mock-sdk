@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -303,8 +303,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
 
 Operations: list.
 
@@ -314,9 +314,9 @@ API path: `/public/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `id` |  |
+| `code` | Coupon code |
+| `discount` | Discount amount or percentage |
+| `id` | Coupon ID |
 
 Operations: list.
 
@@ -371,9 +371,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: list, load.
 
@@ -401,9 +401,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `id` |  |
-| `username` |  |
+| `email` | User email address |
+| `id` | User ID |
+| `username` | Username |
 
 Operations: list.
 
@@ -428,8 +428,8 @@ Create an instance: `const cart = client.Cart()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `items` | `any[]` |  |
+| `id` | `string` | Cart ID |
+| `items` | `any[]` | Items in the cart |
 
 #### Example: List
 
@@ -452,9 +452,9 @@ Create an instance: `const coupon = client.Coupon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `number` |  |
-| `id` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `number` | Discount amount or percentage |
+| `id` | `string` | Coupon ID |
 
 #### Example: List
 
@@ -553,9 +553,9 @@ Create an instance: `const product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
+| `id` | `string` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `number` | Product price |
 
 #### Example: Load
 
@@ -612,9 +612,9 @@ Create an instance: `const user = client.User()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `id` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `id` | `string` | User ID |
+| `username` | `string` | Username |
 
 #### Example: List
 

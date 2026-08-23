@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Mock",
+      slug = "mock",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -39,10 +42,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["short"] = "Cart ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "items",
+            ["short"] = "Items in the cart",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -78,14 +83,17 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "code",
+            ["short"] = "Coupon code",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "discount",
+            ["short"] = "Discount amount or percentage",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Coupon ID",
             ["type"] = "`$STRING`",
           },
         },
@@ -373,14 +381,17 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["short"] = "Product ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Product name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "price",
+            ["short"] = "Product price",
             ["type"] = "`$NUMBER`",
           },
         },
@@ -569,14 +580,17 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "email",
+            ["short"] = "User email address",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "User ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "username",
+            ["short"] = "Username",
             ["type"] = "`$STRING`",
           },
         },

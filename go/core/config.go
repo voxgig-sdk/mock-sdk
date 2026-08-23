@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Mock",
+			"slug": "mock",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -43,10 +46,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Cart ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "items",
+						"short": "Items in the cart",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -82,14 +87,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "code",
+						"short": "Coupon code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "discount",
+						"short": "Discount amount or percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Coupon ID",
 						"type": "`$STRING`",
 					},
 				},
@@ -377,14 +385,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Product ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Product name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "price",
+						"short": "Product price",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -573,14 +584,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "email",
+						"short": "User email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "User ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "username",
+						"short": "Username",
 						"type": "`$STRING`",
 					},
 				},

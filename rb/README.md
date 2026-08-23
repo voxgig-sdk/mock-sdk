@@ -251,8 +251,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
 
 Operations: List.
 
@@ -262,9 +262,9 @@ API path: `/public/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `id` |  |
+| `code` | Coupon code |
+| `discount` | Discount amount or percentage |
+| `id` | Coupon ID |
 
 Operations: List.
 
@@ -319,9 +319,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -349,9 +349,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `id` |  |
-| `username` |  |
+| `email` | User email address |
+| `id` | User ID |
+| `username` | Username |
 
 Operations: List.
 
@@ -376,8 +376,8 @@ Create an instance: `cart = client.Cart`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `String` |  |
-| `items` | `Array` |  |
+| `id` | `String` | Cart ID |
+| `items` | `Array` | Items in the cart |
 
 #### Example: List
 
@@ -401,9 +401,9 @@ Create an instance: `coupon = client.Coupon`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `String` |  |
-| `discount` | `Float` |  |
-| `id` | `String` |  |
+| `code` | `String` | Coupon code |
+| `discount` | `Float` | Discount amount or percentage |
+| `id` | `String` | Coupon ID |
 
 #### Example: List
 
@@ -505,9 +505,9 @@ Create an instance: `product = client.Product`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `String` |  |
-| `name` | `String` |  |
-| `price` | `Float` |  |
+| `id` | `String` | Product ID |
+| `name` | `String` | Product name |
+| `price` | `Float` | Product price |
 
 #### Example: Load
 
@@ -567,9 +567,9 @@ Create an instance: `user = client.User`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `String` |  |
-| `id` | `String` |  |
-| `username` | `String` |  |
+| `email` | `String` | User email address |
+| `id` | `String` | User ID |
+| `username` | `String` | Username |
 
 #### Example: List
 

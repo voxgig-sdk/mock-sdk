@@ -246,8 +246,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
 
 Operations: List.
 
@@ -257,9 +257,9 @@ API path: `/public/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `id` |  |
+| `code` | Coupon code |
+| `discount` | Discount amount or percentage |
+| `id` | Coupon ID |
 
 Operations: List.
 
@@ -314,9 +314,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -344,9 +344,9 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `id` |  |
-| `username` |  |
+| `email` | User email address |
+| `id` | User ID |
+| `username` | Username |
 
 Operations: List.
 
@@ -371,8 +371,8 @@ Create an instance: `local cart = client:Cart(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `items` | `table` |  |
+| `id` | `string` | Cart ID |
+| `items` | `table` | Items in the cart |
 
 #### Example: List
 
@@ -395,9 +395,9 @@ Create an instance: `local coupon = client:Coupon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `number` |  |
-| `id` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `number` | Discount amount or percentage |
+| `id` | `string` | Coupon ID |
 
 #### Example: List
 
@@ -496,9 +496,9 @@ Create an instance: `local product = client:Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
+| `id` | `string` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `number` | Product price |
 
 #### Example: Load
 
@@ -555,9 +555,9 @@ Create an instance: `local user = client:User(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `id` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `id` | `string` | User ID |
+| `username` | `string` | Username |
 
 #### Example: List
 

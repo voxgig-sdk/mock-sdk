@@ -36,12 +36,14 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Cart ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "items",
               "req": false,
+              "short": "Items in the cart",
               "type": "`$ARRAY`"
             }
           ],
@@ -88,18 +90,21 @@
               "active": true,
               "name": "code",
               "req": false,
+              "short": "Coupon code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "discount",
               "req": false,
+              "short": "Discount amount or percentage",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Coupon ID",
               "type": "`$STRING`"
             }
           ],
@@ -431,18 +436,21 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Product ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Product name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "price",
               "req": false,
+              "short": "Product price",
               "type": "`$NUMBER`"
             }
           ],
@@ -658,18 +666,21 @@
               "active": true,
               "name": "email",
               "req": false,
+              "short": "User email address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "User ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "username",
               "req": false,
+              "short": "Username",
               "type": "`$STRING`"
             }
           ],

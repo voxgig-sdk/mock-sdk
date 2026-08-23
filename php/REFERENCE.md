@@ -132,8 +132,8 @@ $cart = $client->Cart();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | No |  |
-| `items` | `array` | No |  |
+| `id` | `string` | No | Cart ID |
+| `items` | `array` | No | Items in the cart |
 
 ### Operations
 
@@ -185,9 +185,9 @@ $coupon = $client->Coupon();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `discount` | `float` | No |  |
-| `id` | `string` | No |  |
+| `code` | `string` | No | Coupon code |
+| `discount` | `float` | No | Discount amount or percentage |
+| `id` | `string` | No | Coupon ID |
 
 ### Operations
 
@@ -475,9 +475,9 @@ $product = $client->Product();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `price` | `float` | No |  |
+| `id` | `string` | No | Product ID |
+| `name` | `string` | No | Product name |
+| `price` | `float` | No | Product price |
 
 ### Operations
 
@@ -633,9 +633,9 @@ $user = $client->User();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
-| `id` | `string` | No |  |
-| `username` | `string` | No |  |
+| `email` | `string` | No | User email address |
+| `id` | `string` | No | User ID |
+| `username` | `string` | No | Username |
 
 ### Operations
 

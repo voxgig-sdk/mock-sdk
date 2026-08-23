@@ -19,6 +19,9 @@ module MockConfig
     {
       "main" => {
         "name" => "Mock",
+        "slug" => "mock",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -51,10 +54,12 @@ module MockConfig
           "fields" => [
             {
               "name" => "id",
+              "short" => "Cart ID",
               "type" => "`$STRING`",
             },
             {
               "name" => "items",
+              "short" => "Items in the cart",
               "type" => "`$ARRAY`",
             },
           ],
@@ -90,14 +95,17 @@ module MockConfig
           "fields" => [
             {
               "name" => "code",
+              "short" => "Coupon code",
               "type" => "`$STRING`",
             },
             {
               "name" => "discount",
+              "short" => "Discount amount or percentage",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "id",
+              "short" => "Coupon ID",
               "type" => "`$STRING`",
             },
           ],
@@ -385,14 +393,17 @@ module MockConfig
           "fields" => [
             {
               "name" => "id",
+              "short" => "Product ID",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Product name",
               "type" => "`$STRING`",
             },
             {
               "name" => "price",
+              "short" => "Product price",
               "type" => "`$NUMBER`",
             },
           ],
@@ -581,14 +592,17 @@ module MockConfig
           "fields" => [
             {
               "name" => "email",
+              "short" => "User email address",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "User ID",
               "type" => "`$STRING`",
             },
             {
               "name" => "username",
+              "short" => "Username",
               "type" => "`$STRING`",
             },
           ],

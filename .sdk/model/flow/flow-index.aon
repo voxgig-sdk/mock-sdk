@@ -1,0 +1,13 @@
+# Flows
+
+@"BasicCartFlow.aon"
+@"BasicCouponFlow.aon"
+@"BasicCreateCustomResourceItemFlow.aon"
+@"BasicDeleteCustomResourceItemFlow.aon"
+@"BasicGetCustomResourceFlow.aon"
+@"BasicGetCustomResourceItemByIdFlow.aon"
+@"BasicPatchCustomResourceItemFlow.aon"
+@"BasicProductFlow.aon"
+@"BasicStatusFlow.aon"
+@"BasicUpdateCustomResourceItemFlow.aon"
+@"BasicUserFlow.aon"

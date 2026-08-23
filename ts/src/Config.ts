@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Mock',
+        slug: "mock",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -86,10 +97,12 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "short": "Cart ID",
           "type": "`$STRING`"
         },
         {
           "name": "items",
+          "short": "Items in the cart",
           "type": "`$ARRAY`"
         }
       ],
@@ -125,14 +138,17 @@ class Config {
       "fields": [
         {
           "name": "code",
+          "short": "Coupon code",
           "type": "`$STRING`"
         },
         {
           "name": "discount",
+          "short": "Discount amount or percentage",
           "type": "`$NUMBER`"
         },
         {
           "name": "id",
+          "short": "Coupon ID",
           "type": "`$STRING`"
         }
       ],
@@ -420,14 +436,17 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "short": "Product ID",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Product name",
           "type": "`$STRING`"
         },
         {
           "name": "price",
+          "short": "Product price",
           "type": "`$NUMBER`"
         }
       ],
@@ -616,14 +635,17 @@ class Config {
       "fields": [
         {
           "name": "email",
+          "short": "User email address",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "User ID",
           "type": "`$STRING`"
         },
         {
           "name": "username",
+          "short": "Username",
           "type": "`$STRING`"
         }
       ],
