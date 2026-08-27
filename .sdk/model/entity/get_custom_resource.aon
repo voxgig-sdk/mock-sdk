@@ -4,6 +4,19 @@ main: kit: entity: get_custom_resource: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "get_custom_resource"
   op: {
     list: {

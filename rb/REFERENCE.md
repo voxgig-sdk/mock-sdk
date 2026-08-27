@@ -236,6 +236,12 @@ Return the entity name.
 create_custom_resource_item = client.CreateCustomResourceItem
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -284,6 +290,12 @@ Return the entity name.
 delete_custom_resource_item = client.DeleteCustomResourceItem
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -329,6 +341,12 @@ Return the entity name.
 ```ruby
 get_custom_resource = client.GetCustomResource
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -376,6 +394,12 @@ Return the entity name.
 get_custom_resource_item_by_id = client.GetCustomResourceItemById
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -421,6 +445,12 @@ Return the entity name.
 ```ruby
 patch_custom_resource_item = client.PatchCustomResourceItem
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -534,6 +564,12 @@ Return the entity name.
 status = client.Status
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -579,6 +615,12 @@ Return the entity name.
 ```ruby
 update_custom_resource_item = client.UpdateCustomResourceItem
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 

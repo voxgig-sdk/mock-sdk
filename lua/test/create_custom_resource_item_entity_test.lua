@@ -44,6 +44,7 @@ describe("CreateCustomResourceItemEntity", function()
     assert.is_nil(err)
     create_custom_resource_item_ref01_data = helpers.to_map(type(create_custom_resource_item_ref01_data_result) == 'table' and create_custom_resource_item_ref01_data_result.data_get and create_custom_resource_item_ref01_data_result:data_get() or create_custom_resource_item_ref01_data_result)
     assert.is_not_nil(create_custom_resource_item_ref01_data)
+    assert.is_not_nil(create_custom_resource_item_ref01_data["id"])
 
   end)
 end)

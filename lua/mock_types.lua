@@ -25,28 +25,33 @@
 ---@field id? string
 
 ---@class CreateCustomResourceItem
+---@field id? string
 
 ---@class CreateCustomResourceItemCreateData
 ---@field id string
 
 ---@class DeleteCustomResourceItem
+---@field id? string
 
 ---@class DeleteCustomResourceItemRemoveMatch
 ---@field id string
 ---@field resource string
 
 ---@class GetCustomResource
+---@field id? string
 
 ---@class GetCustomResourceListMatch
 ---@field id string
 
 ---@class GetCustomResourceItemById
+---@field id? string
 
 ---@class GetCustomResourceItemByIdLoadMatch
 ---@field id string
 ---@field resource string
 
 ---@class PatchCustomResourceItem
+---@field id? string
 
 ---@class PatchCustomResourceItemUpdateData
 ---@field id string
@@ -66,11 +71,13 @@
 ---@field price? number
 
 ---@class Status
+---@field id? string
 
 ---@class StatusLoadMatch
 ---@field id number
 
 ---@class UpdateCustomResourceItem
+---@field id? string
 
 ---@class UpdateCustomResourceItemUpdateData
 ---@field id string

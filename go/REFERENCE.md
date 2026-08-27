@@ -239,6 +239,12 @@ createCustomResourceItem := client.CreateCustomResourceItem(nil)
 fmt.Println(createCustomResourceItem.GetName()) // "create_custom_resource_item"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -286,6 +292,12 @@ deleteCustomResourceItem := client.DeleteCustomResourceItem(nil)
 fmt.Println(deleteCustomResourceItem.GetName()) // "delete_custom_resource_item"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -330,6 +342,12 @@ Return the entity name.
 getCustomResource := client.GetCustomResource(nil)
 fmt.Println(getCustomResource.GetName()) // "get_custom_resource"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -376,6 +394,12 @@ getCustomResourceItemById := client.GetCustomResourceItemById(nil)
 fmt.Println(getCustomResourceItemById.GetName()) // "get_custom_resource_item_by_id"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -420,6 +444,12 @@ Return the entity name.
 patchCustomResourceItem := client.PatchCustomResourceItem(nil)
 fmt.Println(patchCustomResourceItem.GetName()) // "patch_custom_resource_item"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -535,6 +565,12 @@ status := client.Status(nil)
 fmt.Println(status.GetName()) // "status"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -579,6 +615,12 @@ Return the entity name.
 updateCustomResourceItem := client.UpdateCustomResourceItem(nil)
 fmt.Println(updateCustomResourceItem.GetName()) // "update_custom_resource_item"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

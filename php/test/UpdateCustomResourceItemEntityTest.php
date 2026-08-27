@@ -49,12 +49,14 @@ class UpdateCustomResourceItemEntityTest extends TestCase
         // UPDATE
         $update_custom_resource_item_ref01_ent = $client->UpdateCustomResourceItem(null);
         $update_custom_resource_item_ref01_data_up0_up = [
+            "id" => $update_custom_resource_item_ref01_data["id"],
             "resource" => $setup["idmap"]["resource"],
         ];
 
         $update_custom_resource_item_ref01_resdata_up0_result = $update_custom_resource_item_ref01_ent->update($update_custom_resource_item_ref01_data_up0_up, null);
         $update_custom_resource_item_ref01_resdata_up0 = Helpers::to_map(is_object($update_custom_resource_item_ref01_resdata_up0_result) && method_exists($update_custom_resource_item_ref01_resdata_up0_result, 'data_get') ? $update_custom_resource_item_ref01_resdata_up0_result->data_get() : $update_custom_resource_item_ref01_resdata_up0_result);
         $this->assertNotNull($update_custom_resource_item_ref01_resdata_up0);
+        $this->assertEquals($update_custom_resource_item_ref01_resdata_up0["id"], $update_custom_resource_item_ref01_data_up0_up["id"]);
 
     }
 }

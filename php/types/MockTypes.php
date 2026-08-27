@@ -45,6 +45,7 @@ class CouponListMatch
 /** CreateCustomResourceItem entity data model. */
 class CreateCustomResourceItem
 {
+    public ?string $id = null;
 }
 
 /** Request payload for CreateCustomResourceItem#create. */
@@ -56,6 +57,7 @@ class CreateCustomResourceItemCreateData
 /** DeleteCustomResourceItem entity data model. */
 class DeleteCustomResourceItem
 {
+    public ?string $id = null;
 }
 
 /** Request payload for DeleteCustomResourceItem#remove. */
@@ -68,6 +70,7 @@ class DeleteCustomResourceItemRemoveMatch
 /** GetCustomResource entity data model. */
 class GetCustomResource
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GetCustomResource#list. */
@@ -79,6 +82,7 @@ class GetCustomResourceListMatch
 /** GetCustomResourceItemById entity data model. */
 class GetCustomResourceItemById
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GetCustomResourceItemById#load. */
@@ -91,6 +95,7 @@ class GetCustomResourceItemByIdLoadMatch
 /** PatchCustomResourceItem entity data model. */
 class PatchCustomResourceItem
 {
+    public ?string $id = null;
 }
 
 /** Request payload for PatchCustomResourceItem#update. */
@@ -125,6 +130,7 @@ class ProductListMatch
 /** Status entity data model. */
 class Status
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Status#load. */
@@ -136,6 +142,7 @@ class StatusLoadMatch
 /** UpdateCustomResourceItem entity data model. */
 class UpdateCustomResourceItem
 {
+    public ?string $id = null;
 }
 
 /** Request payload for UpdateCustomResourceItem#update. */

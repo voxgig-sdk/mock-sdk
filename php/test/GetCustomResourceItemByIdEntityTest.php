@@ -48,9 +48,13 @@ class GetCustomResourceItemByIdEntityTest extends TestCase
 
         // LOAD
         $get_custom_resource_item_by_id_ref01_ent = $client->GetCustomResourceItemById(null);
-        $get_custom_resource_item_by_id_ref01_match_dt0 = [];
+        $get_custom_resource_item_by_id_ref01_match_dt0 = [
+            "id" => $get_custom_resource_item_by_id_ref01_data["id"],
+        ];
         $get_custom_resource_item_by_id_ref01_data_dt0_loaded = $get_custom_resource_item_by_id_ref01_ent->load($get_custom_resource_item_by_id_ref01_match_dt0, null);
-        $this->assertNotNull($get_custom_resource_item_by_id_ref01_data_dt0_loaded);
+        $get_custom_resource_item_by_id_ref01_data_dt0_load_result = Helpers::to_map(is_object($get_custom_resource_item_by_id_ref01_data_dt0_loaded) && method_exists($get_custom_resource_item_by_id_ref01_data_dt0_loaded, 'data_get') ? $get_custom_resource_item_by_id_ref01_data_dt0_loaded->data_get() : $get_custom_resource_item_by_id_ref01_data_dt0_loaded);
+        $this->assertNotNull($get_custom_resource_item_by_id_ref01_data_dt0_load_result);
+        $this->assertEquals($get_custom_resource_item_by_id_ref01_data_dt0_load_result["id"], $get_custom_resource_item_by_id_ref01_data["id"]);
 
     }
 }

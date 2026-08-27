@@ -61,13 +61,19 @@ func TestGetCustomResourceItemByIdEntity(t *testing.T) {
 
 		// LOAD
 		getCustomResourceItemByIdRef01Ent := client.GetCustomResourceItemById(nil)
-		getCustomResourceItemByIdRef01MatchDt0 := map[string]any{}
+		getCustomResourceItemByIdRef01MatchDt0 := map[string]any{
+			"id": getCustomResourceItemByIdRef01Data["id"],
+		}
 		getCustomResourceItemByIdRef01DataDt0Loaded, err := getCustomResourceItemByIdRef01Ent.Load(getCustomResourceItemByIdRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if getCustomResourceItemByIdRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		getCustomResourceItemByIdRef01DataDt0LoadResult := core.ToMapAny(entityData(getCustomResourceItemByIdRef01DataDt0Loaded))
+		if getCustomResourceItemByIdRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if getCustomResourceItemByIdRef01DataDt0LoadResult["id"] != getCustomResourceItemByIdRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

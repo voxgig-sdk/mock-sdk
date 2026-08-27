@@ -42,12 +42,14 @@ class UpdateCustomResourceItemEntityTest < Minitest::Test
     # UPDATE
     update_custom_resource_item_ref01_ent = client.UpdateCustomResourceItem(nil)
     update_custom_resource_item_ref01_data_up0_up = {
+      "id" => update_custom_resource_item_ref01_data["id"],
       "resource" => setup[:idmap]["resource"],
     }
 
     update_custom_resource_item_ref01_resdata_up0_result = update_custom_resource_item_ref01_ent.update(update_custom_resource_item_ref01_data_up0_up, nil)
     update_custom_resource_item_ref01_resdata_up0 = Helpers.to_map(update_custom_resource_item_ref01_resdata_up0_result.respond_to?(:data_get) ? update_custom_resource_item_ref01_resdata_up0_result.data_get : update_custom_resource_item_ref01_resdata_up0_result)
     assert !update_custom_resource_item_ref01_resdata_up0.nil?
+    assert_equal update_custom_resource_item_ref01_resdata_up0["id"], update_custom_resource_item_ref01_data_up0_up["id"]
 
   end
 end

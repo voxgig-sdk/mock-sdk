@@ -49,11 +49,13 @@ class TestPatchCustomResourceItemEntity:
         # UPDATE
         patch_custom_resource_item_ref01_ent = client.PatchCustomResourceItem(None)
         patch_custom_resource_item_ref01_data_up0_up = {
+            "id": patch_custom_resource_item_ref01_data["id"],
             "resource": setup["idmap"]["resource"],
         }
 
         patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(runner.entity_data(patch_custom_resource_item_ref01_ent.update(patch_custom_resource_item_ref01_data_up0_up, None)))
         assert patch_custom_resource_item_ref01_resdata_up0 is not None
+        assert patch_custom_resource_item_ref01_resdata_up0["id"] == patch_custom_resource_item_ref01_data_up0_up["id"]
 
 
 

@@ -235,6 +235,12 @@ Return the entity name.
 $create_custom_resource_item = $client->CreateCustomResourceItem();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -283,6 +289,12 @@ Return the entity name.
 $delete_custom_resource_item = $client->DeleteCustomResourceItem();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -328,6 +340,12 @@ Return the entity name.
 ```php
 $get_custom_resource = $client->GetCustomResource();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -375,6 +393,12 @@ Return the entity name.
 $get_custom_resource_item_by_id = $client->GetCustomResourceItemById();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -420,6 +444,12 @@ Return the entity name.
 ```php
 $patch_custom_resource_item = $client->PatchCustomResourceItem();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -533,6 +563,12 @@ Return the entity name.
 $status = $client->Status();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -578,6 +614,12 @@ Return the entity name.
 ```php
 $update_custom_resource_item = $client->UpdateCustomResourceItem();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

@@ -233,6 +233,12 @@ Return the entity name.
 local create_custom_resource_item = client:CreateCustomResourceItem(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -281,6 +287,12 @@ Return the entity name.
 local delete_custom_resource_item = client:DeleteCustomResourceItem(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -326,6 +338,12 @@ Return the entity name.
 ```lua
 local get_custom_resource = client:GetCustomResource(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -373,6 +391,12 @@ Return the entity name.
 local get_custom_resource_item_by_id = client:GetCustomResourceItemById(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -418,6 +442,12 @@ Return the entity name.
 ```lua
 local patch_custom_resource_item = client:PatchCustomResourceItem(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -531,6 +561,12 @@ Return the entity name.
 local status = client:Status(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -576,6 +612,12 @@ Return the entity name.
 ```lua
 local update_custom_resource_item = client:UpdateCustomResourceItem(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

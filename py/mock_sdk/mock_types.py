@@ -38,16 +38,16 @@ class CouponListMatch(TypedDict, total=False):
     id: str
 
 
-class CreateCustomResourceItem(TypedDict):
-    pass
+class CreateCustomResourceItem(TypedDict, total=False):
+    id: str
 
 
 class CreateCustomResourceItemCreateData(TypedDict):
     id: str
 
 
-class DeleteCustomResourceItem(TypedDict):
-    pass
+class DeleteCustomResourceItem(TypedDict, total=False):
+    id: str
 
 
 class DeleteCustomResourceItemRemoveMatch(TypedDict):
@@ -55,16 +55,16 @@ class DeleteCustomResourceItemRemoveMatch(TypedDict):
     resource: str
 
 
-class GetCustomResource(TypedDict):
-    pass
+class GetCustomResource(TypedDict, total=False):
+    id: str
 
 
 class GetCustomResourceListMatch(TypedDict):
     id: str
 
 
-class GetCustomResourceItemById(TypedDict):
-    pass
+class GetCustomResourceItemById(TypedDict, total=False):
+    id: str
 
 
 class GetCustomResourceItemByIdLoadMatch(TypedDict):
@@ -72,8 +72,8 @@ class GetCustomResourceItemByIdLoadMatch(TypedDict):
     resource: str
 
 
-class PatchCustomResourceItem(TypedDict):
-    pass
+class PatchCustomResourceItem(TypedDict, total=False):
+    id: str
 
 
 class PatchCustomResourceItemUpdateData(TypedDict):
@@ -97,16 +97,16 @@ class ProductListMatch(TypedDict, total=False):
     price: float
 
 
-class Status(TypedDict):
-    pass
+class Status(TypedDict, total=False):
+    id: str
 
 
 class StatusLoadMatch(TypedDict):
     id: int
 
 
-class UpdateCustomResourceItem(TypedDict):
-    pass
+class UpdateCustomResourceItem(TypedDict, total=False):
+    id: str
 
 
 class UpdateCustomResourceItemUpdateData(TypedDict):

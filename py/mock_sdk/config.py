@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -147,7 +148,12 @@ def make_config():
         },
       },
       "create_custom_resource_item": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "create_custom_resource_item",
         "op": {
           "create": {
@@ -195,7 +201,12 @@ def make_config():
         },
       },
       "delete_custom_resource_item": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "delete_custom_resource_item",
         "op": {
           "remove": {
@@ -247,7 +258,12 @@ def make_config():
         },
       },
       "get_custom_resource": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "get_custom_resource",
         "op": {
           "list": {
@@ -295,7 +311,12 @@ def make_config():
         },
       },
       "get_custom_resource_item_by_id": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "get_custom_resource_item_by_id",
         "op": {
           "load": {
@@ -347,7 +368,12 @@ def make_config():
         },
       },
       "patch_custom_resource_item": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "patch_custom_resource_item",
         "op": {
           "update": {
@@ -481,7 +507,12 @@ def make_config():
         },
       },
       "status": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "status",
         "op": {
           "load": {
@@ -546,7 +577,12 @@ def make_config():
         },
       },
       "update_custom_resource_item": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "update_custom_resource_item",
         "op": {
           "update": {

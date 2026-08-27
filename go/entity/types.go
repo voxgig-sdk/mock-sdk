@@ -40,6 +40,7 @@ type CouponListMatch struct {
 
 // CreateCustomResourceItem is the typed data model for the create_custom_resource_item entity.
 type CreateCustomResourceItem struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // CreateCustomResourceItemCreateData is the typed request payload for CreateCustomResourceItem.CreateTyped.
@@ -49,6 +50,7 @@ type CreateCustomResourceItemCreateData struct {
 
 // DeleteCustomResourceItem is the typed data model for the delete_custom_resource_item entity.
 type DeleteCustomResourceItem struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DeleteCustomResourceItemRemoveMatch is the typed request payload for DeleteCustomResourceItem.RemoveTyped.
@@ -59,6 +61,7 @@ type DeleteCustomResourceItemRemoveMatch struct {
 
 // GetCustomResource is the typed data model for the get_custom_resource entity.
 type GetCustomResource struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GetCustomResourceListMatch is the typed request payload for GetCustomResource.ListTyped.
@@ -68,6 +71,7 @@ type GetCustomResourceListMatch struct {
 
 // GetCustomResourceItemById is the typed data model for the get_custom_resource_item_by_id entity.
 type GetCustomResourceItemById struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GetCustomResourceItemByIdLoadMatch is the typed request payload for GetCustomResourceItemById.LoadTyped.
@@ -78,6 +82,7 @@ type GetCustomResourceItemByIdLoadMatch struct {
 
 // PatchCustomResourceItem is the typed data model for the patch_custom_resource_item entity.
 type PatchCustomResourceItem struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PatchCustomResourceItemUpdateData is the typed request payload for PatchCustomResourceItem.UpdateTyped.
@@ -107,6 +112,7 @@ type ProductListMatch struct {
 
 // Status is the typed data model for the status entity.
 type Status struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // StatusLoadMatch is the typed request payload for Status.LoadTyped.
@@ -116,6 +122,7 @@ type StatusLoadMatch struct {
 
 // UpdateCustomResourceItem is the typed data model for the update_custom_resource_item entity.
 type UpdateCustomResourceItem struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // UpdateCustomResourceItemUpdateData is the typed request payload for UpdateCustomResourceItem.UpdateTyped.

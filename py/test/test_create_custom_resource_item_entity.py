@@ -47,6 +47,7 @@ class TestCreateCustomResourceItemEntity:
 
         create_custom_resource_item_ref01_data = helpers.to_map(runner.entity_data(create_custom_resource_item_ref01_ent.create(create_custom_resource_item_ref01_data, None)))
         assert create_custom_resource_item_ref01_data is not None
+        assert create_custom_resource_item_ref01_data["id"] is not None
 
 
 

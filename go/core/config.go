@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -130,7 +131,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"create_custom_resource_item": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "create_custom_resource_item",
 				"op": map[string]any{
 					"create": map[string]any{
@@ -178,7 +184,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"delete_custom_resource_item": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "delete_custom_resource_item",
 				"op": map[string]any{
 					"remove": map[string]any{
@@ -230,7 +241,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"get_custom_resource": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "get_custom_resource",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -278,7 +294,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"get_custom_resource_item_by_id": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "get_custom_resource_item_by_id",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -330,7 +351,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"patch_custom_resource_item": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "patch_custom_resource_item",
 				"op": map[string]any{
 					"update": map[string]any{
@@ -464,7 +490,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"status": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "status",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -529,7 +560,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"update_custom_resource_item": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "update_custom_resource_item",
 				"op": map[string]any{
 					"update": map[string]any{

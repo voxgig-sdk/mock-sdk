@@ -335,6 +335,12 @@ Return a copy of the entity options.
 const create_custom_resource_item = client.CreateCustomResourceItem()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -381,6 +387,12 @@ Return a copy of the entity options.
 const delete_custom_resource_item = client.DeleteCustomResourceItem()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -424,6 +436,12 @@ Return a copy of the entity options.
 ```ts
 const get_custom_resource = client.GetCustomResource()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -469,6 +487,12 @@ Return a copy of the entity options.
 const get_custom_resource_item_by_id = client.GetCustomResourceItemById()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -512,6 +536,12 @@ Return a copy of the entity options.
 ```ts
 const patch_custom_resource_item = client.PatchCustomResourceItem()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -621,6 +651,12 @@ Return a copy of the entity options.
 const status = client.Status()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -664,6 +700,12 @@ Return a copy of the entity options.
 ```ts
 const update_custom_resource_item = client.UpdateCustomResourceItem()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

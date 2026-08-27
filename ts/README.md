@@ -326,6 +326,7 @@ API path: `/public/coupons`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: create.
 
@@ -335,6 +336,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: remove.
 
@@ -344,6 +346,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: list.
 
@@ -353,6 +356,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -362,6 +366,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: update.
 
@@ -383,6 +388,7 @@ API path: `/public/products`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -392,6 +398,7 @@ API path: `/public/status/{code}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: update.
 
@@ -473,6 +480,12 @@ Create an instance: `const create_custom_resource_item = client.CreateCustomReso
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```ts
@@ -492,6 +505,12 @@ Create an instance: `const delete_custom_resource_item = client.DeleteCustomReso
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### GetCustomResource
 
@@ -502,6 +521,12 @@ Create an instance: `const get_custom_resource = client.GetCustomResource()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: List
 
@@ -520,6 +545,12 @@ Create an instance: `const get_custom_resource_item_by_id = client.GetCustomReso
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -536,6 +567,12 @@ Create an instance: `const patch_custom_resource_item = client.PatchCustomResour
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Product
@@ -580,6 +617,12 @@ Create an instance: `const status = client.Status()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -596,6 +639,12 @@ Create an instance: `const update_custom_resource_item = client.UpdateCustomReso
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### User

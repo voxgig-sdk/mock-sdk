@@ -284,6 +284,7 @@ API path: `/public/coupons`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
@@ -293,6 +294,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -302,6 +304,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: List.
 
@@ -311,6 +314,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -320,6 +324,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -341,6 +346,7 @@ API path: `/public/products`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -350,6 +356,7 @@ API path: `/public/status/{code}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -433,6 +440,12 @@ Create an instance: `$create_custom_resource_item = $client->CreateCustomResourc
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```php
@@ -452,6 +465,12 @@ Create an instance: `$delete_custom_resource_item = $client->DeleteCustomResourc
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### GetCustomResource
 
@@ -462,6 +481,12 @@ Create an instance: `$get_custom_resource = $client->GetCustomResource();`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: List
 
@@ -481,6 +506,12 @@ Create an instance: `$get_custom_resource_item_by_id = $client->GetCustomResourc
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```php
@@ -498,6 +529,12 @@ Create an instance: `$patch_custom_resource_item = $client->PatchCustomResourceI
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Product
@@ -544,6 +581,12 @@ Create an instance: `$status = $client->Status();`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```php
@@ -561,6 +604,12 @@ Create an instance: `$update_custom_resource_item = $client->UpdateCustomResourc
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### User

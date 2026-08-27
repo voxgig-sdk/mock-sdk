@@ -63,6 +63,9 @@ func TestCreateCustomResourceItemEntity(t *testing.T) {
 		if createCustomResourceItemRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if createCustomResourceItemRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 	})
 }

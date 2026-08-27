@@ -69,8 +69,13 @@ CouponListMatch = Struct.new(
 )
 
 # CreateCustomResourceItem entity data model.
-class CreateCustomResourceItem
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+CreateCustomResourceItem = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for CreateCustomResourceItem#create.
 #
@@ -82,8 +87,13 @@ CreateCustomResourceItemCreateData = Struct.new(
 )
 
 # DeleteCustomResourceItem entity data model.
-class DeleteCustomResourceItem
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DeleteCustomResourceItem = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for DeleteCustomResourceItem#remove.
 #
@@ -99,8 +109,13 @@ DeleteCustomResourceItemRemoveMatch = Struct.new(
 )
 
 # GetCustomResource entity data model.
-class GetCustomResource
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GetCustomResource = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GetCustomResource#list.
 #
@@ -112,8 +127,13 @@ GetCustomResourceListMatch = Struct.new(
 )
 
 # GetCustomResourceItemById entity data model.
-class GetCustomResourceItemById
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GetCustomResourceItemById = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GetCustomResourceItemById#load.
 #
@@ -129,8 +149,13 @@ GetCustomResourceItemByIdLoadMatch = Struct.new(
 )
 
 # PatchCustomResourceItem entity data model.
-class PatchCustomResourceItem
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+PatchCustomResourceItem = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for PatchCustomResourceItem#update.
 #
@@ -189,8 +214,13 @@ ProductListMatch = Struct.new(
 )
 
 # Status entity data model.
-class Status
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Status = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Status#load.
 #
@@ -202,8 +232,13 @@ StatusLoadMatch = Struct.new(
 )
 
 # UpdateCustomResourceItem entity data model.
-class UpdateCustomResourceItem
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+UpdateCustomResourceItem = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for UpdateCustomResourceItem#update.
 #

@@ -4,6 +4,19 @@ main: kit: entity: update_custom_resource_item: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "update_custom_resource_item"
   op: {
     update: {

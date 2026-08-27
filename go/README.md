@@ -298,6 +298,7 @@ API path: `/public/coupons`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Create.
 
@@ -307,6 +308,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Remove.
 
@@ -316,6 +318,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: List.
 
@@ -325,6 +328,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -334,6 +338,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Update.
 
@@ -355,6 +360,7 @@ API path: `/public/products`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -364,6 +370,7 @@ API path: `/public/status/{code}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Update.
 
@@ -453,6 +460,12 @@ Create an instance: `createCustomResourceItem := client.CreateCustomResourceItem
 | --- | --- |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```go
@@ -476,6 +489,12 @@ Create an instance: `deleteCustomResourceItem := client.DeleteCustomResourceItem
 | --- | --- |
 | `Remove(match, ctrl)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### GetCustomResource
 
@@ -486,6 +505,12 @@ Create an instance: `getCustomResource := client.GetCustomResource(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: List
 
@@ -508,6 +533,12 @@ Create an instance: `getCustomResourceItemById := client.GetCustomResourceItemBy
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -528,6 +559,12 @@ Create an instance: `patchCustomResourceItem := client.PatchCustomResourceItem(n
 | Method | Description |
 | --- | --- |
 | `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Product
@@ -580,6 +617,12 @@ Create an instance: `status := client.Status(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -600,6 +643,12 @@ Create an instance: `updateCustomResourceItem := client.UpdateCustomResourceItem
 | Method | Description |
 | --- | --- |
 | `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### User

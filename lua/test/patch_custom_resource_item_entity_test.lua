@@ -45,6 +45,7 @@ describe("PatchCustomResourceItemEntity", function()
     -- UPDATE
     local patch_custom_resource_item_ref01_ent = client:PatchCustomResourceItem(nil)
     local patch_custom_resource_item_ref01_data_up0_up = {
+      id = patch_custom_resource_item_ref01_data["id"],
       ["resource"] = setup.idmap["resource"],
     }
 
@@ -52,6 +53,7 @@ describe("PatchCustomResourceItemEntity", function()
     assert.is_nil(err)
     local patch_custom_resource_item_ref01_resdata_up0 = helpers.to_map(type(patch_custom_resource_item_ref01_resdata_up0_result) == 'table' and patch_custom_resource_item_ref01_resdata_up0_result.data_get and patch_custom_resource_item_ref01_resdata_up0_result:data_get() or patch_custom_resource_item_ref01_resdata_up0_result)
     assert.is_not_nil(patch_custom_resource_item_ref01_resdata_up0)
+    assert.are.equal(patch_custom_resource_item_ref01_resdata_up0["id"], patch_custom_resource_item_ref01_data_up0_up["id"])
 
   end)
 end)

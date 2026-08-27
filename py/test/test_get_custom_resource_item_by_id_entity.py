@@ -48,9 +48,13 @@ class TestGetCustomResourceItemByIdEntity:
 
         # LOAD
         get_custom_resource_item_by_id_ref01_ent = client.GetCustomResourceItemById(None)
-        get_custom_resource_item_by_id_ref01_match_dt0 = {}
+        get_custom_resource_item_by_id_ref01_match_dt0 = {
+            "id": get_custom_resource_item_by_id_ref01_data["id"],
+        }
         get_custom_resource_item_by_id_ref01_data_dt0_loaded = get_custom_resource_item_by_id_ref01_ent.load(get_custom_resource_item_by_id_ref01_match_dt0, None)
-        assert get_custom_resource_item_by_id_ref01_data_dt0_loaded is not None
+        get_custom_resource_item_by_id_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(get_custom_resource_item_by_id_ref01_data_dt0_loaded))
+        assert get_custom_resource_item_by_id_ref01_data_dt0_load_result is not None
+        assert get_custom_resource_item_by_id_ref01_data_dt0_load_result["id"] == get_custom_resource_item_by_id_ref01_data["id"]
 
 
 

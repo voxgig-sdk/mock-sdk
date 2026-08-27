@@ -28,6 +28,7 @@ module MockConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -138,7 +139,12 @@ module MockConfig
           },
         },
         "create_custom_resource_item" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "create_custom_resource_item",
           "op" => {
             "create" => {
@@ -186,7 +192,12 @@ module MockConfig
           },
         },
         "delete_custom_resource_item" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "delete_custom_resource_item",
           "op" => {
             "remove" => {
@@ -238,7 +249,12 @@ module MockConfig
           },
         },
         "get_custom_resource" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "get_custom_resource",
           "op" => {
             "list" => {
@@ -286,7 +302,12 @@ module MockConfig
           },
         },
         "get_custom_resource_item_by_id" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "get_custom_resource_item_by_id",
           "op" => {
             "load" => {
@@ -338,7 +359,12 @@ module MockConfig
           },
         },
         "patch_custom_resource_item" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "patch_custom_resource_item",
           "op" => {
             "update" => {
@@ -472,7 +498,12 @@ module MockConfig
           },
         },
         "status" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "status",
           "op" => {
             "load" => {
@@ -537,7 +568,12 @@ module MockConfig
           },
         },
         "update_custom_resource_item" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "update_custom_resource_item",
           "op" => {
             "update" => {

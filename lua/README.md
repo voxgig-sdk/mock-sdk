@@ -269,6 +269,7 @@ API path: `/public/coupons`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
@@ -278,6 +279,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -287,6 +289,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: List.
 
@@ -296,6 +299,7 @@ API path: `/{resource}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -305,6 +309,7 @@ API path: `/{resource}/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -326,6 +331,7 @@ API path: `/public/products`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -335,6 +341,7 @@ API path: `/public/status/{code}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -416,6 +423,12 @@ Create an instance: `local create_custom_resource_item = client:CreateCustomReso
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -435,6 +448,12 @@ Create an instance: `local delete_custom_resource_item = client:DeleteCustomReso
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### GetCustomResource
 
@@ -445,6 +464,12 @@ Create an instance: `local get_custom_resource = client:GetCustomResource(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: List
 
@@ -463,6 +488,12 @@ Create an instance: `local get_custom_resource_item_by_id = client:GetCustomReso
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -479,6 +510,12 @@ Create an instance: `local patch_custom_resource_item = client:PatchCustomResour
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Product
@@ -523,6 +560,12 @@ Create an instance: `local status = client:Status(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -539,6 +582,12 @@ Create an instance: `local update_custom_resource_item = client:UpdateCustomReso
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### User

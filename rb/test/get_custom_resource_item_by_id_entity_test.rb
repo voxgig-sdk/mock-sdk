@@ -41,9 +41,13 @@ class GetCustomResourceItemByIdEntityTest < Minitest::Test
 
     # LOAD
     get_custom_resource_item_by_id_ref01_ent = client.GetCustomResourceItemById(nil)
-    get_custom_resource_item_by_id_ref01_match_dt0 = {}
+    get_custom_resource_item_by_id_ref01_match_dt0 = {
+      "id" => get_custom_resource_item_by_id_ref01_data["id"],
+    }
     get_custom_resource_item_by_id_ref01_data_dt0_loaded = get_custom_resource_item_by_id_ref01_ent.load(get_custom_resource_item_by_id_ref01_match_dt0, nil)
-    assert !get_custom_resource_item_by_id_ref01_data_dt0_loaded.nil?
+    get_custom_resource_item_by_id_ref01_data_dt0_load_result = Helpers.to_map(get_custom_resource_item_by_id_ref01_data_dt0_loaded.respond_to?(:data_get) ? get_custom_resource_item_by_id_ref01_data_dt0_loaded.data_get : get_custom_resource_item_by_id_ref01_data_dt0_loaded)
+    assert !get_custom_resource_item_by_id_ref01_data_dt0_load_result.nil?
+    assert_equal get_custom_resource_item_by_id_ref01_data_dt0_load_result["id"], get_custom_resource_item_by_id_ref01_data["id"]
 
   end
 end

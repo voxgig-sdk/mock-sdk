@@ -28,6 +28,7 @@ export interface CouponListMatch {
 }
 
 export interface CreateCustomResourceItem {
+  id?: string
 }
 
 export interface CreateCustomResourceItemCreateData {
@@ -35,6 +36,7 @@ export interface CreateCustomResourceItemCreateData {
 }
 
 export interface DeleteCustomResourceItem {
+  id?: string
 }
 
 export interface DeleteCustomResourceItemRemoveMatch {
@@ -43,6 +45,7 @@ export interface DeleteCustomResourceItemRemoveMatch {
 }
 
 export interface GetCustomResource {
+  id?: string
 }
 
 export interface GetCustomResourceListMatch {
@@ -50,6 +53,7 @@ export interface GetCustomResourceListMatch {
 }
 
 export interface GetCustomResourceItemById {
+  id?: string
 }
 
 export interface GetCustomResourceItemByIdLoadMatch {
@@ -58,6 +62,7 @@ export interface GetCustomResourceItemByIdLoadMatch {
 }
 
 export interface PatchCustomResourceItem {
+  id?: string
 }
 
 export interface PatchCustomResourceItemUpdateData {
@@ -82,6 +87,7 @@ export interface ProductListMatch {
 }
 
 export interface Status {
+  id?: string
 }
 
 export interface StatusLoadMatch {
@@ -89,6 +95,7 @@ export interface StatusLoadMatch {
 }
 
 export interface UpdateCustomResourceItem {
+  id?: string
 }
 
 export interface UpdateCustomResourceItemUpdateData {

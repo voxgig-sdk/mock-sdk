@@ -62,6 +62,7 @@ func TestPatchCustomResourceItemEntity(t *testing.T) {
 		// UPDATE
 		patchCustomResourceItemRef01Ent := client.PatchCustomResourceItem(nil)
 		patchCustomResourceItemRef01DataUp0Up := map[string]any{
+			"id": patchCustomResourceItemRef01Data["id"],
 			"resource": setup.idmap["resource"],
 		}
 
@@ -72,6 +73,9 @@ func TestPatchCustomResourceItemEntity(t *testing.T) {
 		patchCustomResourceItemRef01ResdataUp0 := core.ToMapAny(entityData(patchCustomResourceItemRef01ResdataUp0Result))
 		if patchCustomResourceItemRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if patchCustomResourceItemRef01ResdataUp0["id"] != patchCustomResourceItemRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 
 	})
