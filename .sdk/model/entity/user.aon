@@ -6,6 +6,7 @@ main: kit: entity: user: {
 
   fields: [
     {
+      format: "email"
       name: "email"
       req: false
       short: "User email address"
@@ -38,9 +39,13 @@ main: kit: entity: user: {
         {
           method: "GET"
           orig: "/public/users"
-          parts: [
-            "public"
-            "users"
+          segments: [
+            {
+              lit: "public"
+            }
+            {
+              lit: "users"
+            }
           ]
           transform: {
             req: "`reqdata`"

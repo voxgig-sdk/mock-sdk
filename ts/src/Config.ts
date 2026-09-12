@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -107,6 +118,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "cart",
       "op": {
         "list": {
@@ -118,15 +133,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/carts",
-              "parts": [
-                "public",
-                "carts"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "carts"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "carts"
+              ]
             }
           ]
         }
@@ -153,6 +176,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "coupon",
       "op": {
         "list": {
@@ -164,15 +191,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/coupons",
-              "parts": [
-                "public",
-                "coupons"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "coupons"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "coupons"
+              ]
             }
           ]
         }
@@ -188,6 +223,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "create_custom_resource_item",
       "op": {
         "create": {
@@ -209,14 +248,16 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/{resource}",
-              "parts": [
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "resource": "id"
                 }
               },
+              "segments": [
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -225,7 +266,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{id}"
+              ]
             }
           ]
         }
@@ -241,6 +285,15 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "resource",
+          "id"
+        ],
+        "sep": "/"
+      },
       "name": "delete_custom_resource_item",
       "op": {
         "remove": {
@@ -269,9 +322,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/{resource}/{id}",
-              "parts": [
-                "{resource}",
-                "{id}"
+              "segments": [
+                {
+                  "var": "resource"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -282,7 +339,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{resource}",
+                "{id}"
+              ]
             }
           ]
         }
@@ -298,6 +359,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "get_custom_resource",
       "op": {
         "list": {
@@ -319,14 +384,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{resource}",
-              "parts": [
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "resource": "id"
                 }
               },
+              "segments": [
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -335,7 +402,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{id}"
+              ]
             }
           ]
         }
@@ -351,6 +421,15 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "resource",
+          "id"
+        ],
+        "sep": "/"
+      },
       "name": "get_custom_resource_item_by_id",
       "op": {
         "load": {
@@ -379,9 +458,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{resource}/{id}",
-              "parts": [
-                "{resource}",
-                "{id}"
+              "segments": [
+                {
+                  "var": "resource"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -392,7 +475,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{resource}",
+                "{id}"
+              ]
             }
           ]
         }
@@ -408,6 +495,15 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "resource",
+          "id"
+        ],
+        "sep": "/"
+      },
       "name": "patch_custom_resource_item",
       "op": {
         "update": {
@@ -436,9 +532,13 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/{resource}/{id}",
-              "parts": [
-                "{resource}",
-                "{id}"
+              "segments": [
+                {
+                  "var": "resource"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -449,7 +549,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{resource}",
+                "{id}"
+              ]
             }
           ]
         }
@@ -471,11 +575,16 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "price",
           "short": "Product price",
           "type": "`$NUMBER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "product",
       "op": {
         "list": {
@@ -487,15 +596,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/products",
-              "parts": [
-                "public",
-                "products"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "products"
+              ]
             }
           ]
         },
@@ -518,10 +635,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/products/{id}",
-              "parts": [
-                "public",
-                "products",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "products"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -531,7 +654,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "products",
+                "{id}"
+              ]
             }
           ]
         }
@@ -547,6 +675,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "status",
       "op": {
         "load": {
@@ -568,16 +700,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/status/{code}",
-              "parts": [
-                "public",
-                "status",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "code": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "status"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -586,22 +724,35 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "status",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/public/status",
-              "parts": [
-                "public",
-                "status"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "status"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "status"
+              ]
             }
           ]
         }
@@ -617,6 +768,15 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "resource",
+          "id"
+        ],
+        "sep": "/"
+      },
       "name": "update_custom_resource_item",
       "op": {
         "update": {
@@ -645,9 +805,13 @@ class Config {
               "kind": "http",
               "method": "PUT",
               "orig": "/{resource}/{id}",
-              "parts": [
-                "{resource}",
-                "{id}"
+              "segments": [
+                {
+                  "var": "resource"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -658,7 +822,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{resource}",
+                "{id}"
+              ]
             }
           ]
         }
@@ -670,6 +838,7 @@ class Config {
     "user": {
       "fields": [
         {
+          "format": "email",
           "name": "email",
           "short": "User email address",
           "type": "`$STRING`"
@@ -685,6 +854,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "user",
       "op": {
         "list": {
@@ -696,15 +869,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/public/users",
-              "parts": [
-                "public",
-                "users"
+              "segments": [
+                {
+                  "lit": "public"
+                },
+                {
+                  "lit": "users"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "public",
+                "users"
+              ]
             }
           ]
         }
@@ -720,6 +901,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

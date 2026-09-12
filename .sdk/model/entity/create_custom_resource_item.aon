@@ -36,14 +36,16 @@ main: kit: entity: create_custom_resource_item: {
           }
           method: "POST"
           orig: "/{resource}"
-          parts: [
-            "{id}"
-          ]
           rename: {
             param: {
               resource: "id"
             }
           }
+          segments: [
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

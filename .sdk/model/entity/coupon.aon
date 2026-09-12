@@ -38,9 +38,13 @@ main: kit: entity: coupon: {
         {
           method: "GET"
           orig: "/public/coupons"
-          parts: [
-            "public"
-            "coupons"
+          segments: [
+            {
+              lit: "public"
+            }
+            {
+              lit: "coupons"
+            }
           ]
           transform: {
             req: "`reqdata`"

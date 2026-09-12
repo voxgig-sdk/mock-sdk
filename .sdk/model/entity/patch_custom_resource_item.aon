@@ -15,6 +15,11 @@ main: kit: entity: patch_custom_resource_item: {
   id: {
     field: "id"
     name: "id"
+    parts: [
+      "resource"
+      "id"
+    ]
+    sep: "/"
   }
 
   name: "patch_custom_resource_item"
@@ -43,9 +48,13 @@ main: kit: entity: patch_custom_resource_item: {
           }
           method: "PATCH"
           orig: "/{resource}/{id}"
-          parts: [
-            "{resource}"
-            "{id}"
+          segments: [
+            {
+              var: "resource"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

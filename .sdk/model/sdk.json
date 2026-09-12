@@ -63,9 +63,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/carts",
-                  "parts": [
-                    "public",
-                    "carts"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "carts"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -124,9 +128,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/coupons",
-                  "parts": [
-                    "public",
-                    "coupons"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "coupons"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -181,14 +189,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/{resource}",
-                  "parts": [
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "resource": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -221,7 +231,12 @@
           ],
           "id": {
             "field": "id",
-            "name": "id"
+            "name": "id",
+            "parts": [
+              "resource",
+              "id"
+            ],
+            "sep": "/"
           },
           "name": "delete_custom_resource_item",
           "op": {
@@ -254,9 +269,13 @@
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/{resource}/{id}",
-                  "parts": [
-                    "{resource}",
-                    "{id}"
+                  "segments": [
+                    {
+                      "var": "resource"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -316,14 +335,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{resource}",
-                  "parts": [
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "resource": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -356,7 +377,12 @@
           ],
           "id": {
             "field": "id",
-            "name": "id"
+            "name": "id",
+            "parts": [
+              "resource",
+              "id"
+            ],
+            "sep": "/"
           },
           "name": "get_custom_resource_item_by_id",
           "op": {
@@ -389,9 +415,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{resource}/{id}",
-                  "parts": [
-                    "{resource}",
-                    "{id}"
+                  "segments": [
+                    {
+                      "var": "resource"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -426,7 +456,12 @@
           ],
           "id": {
             "field": "id",
-            "name": "id"
+            "name": "id",
+            "parts": [
+              "resource",
+              "id"
+            ],
+            "sep": "/"
           },
           "name": "patch_custom_resource_item",
           "op": {
@@ -459,9 +494,13 @@
                   "kind": "http",
                   "method": "PATCH",
                   "orig": "/{resource}/{id}",
-                  "parts": [
-                    "{resource}",
-                    "{id}"
+                  "segments": [
+                    {
+                      "var": "resource"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -503,6 +542,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "price",
               "req": false,
               "short": "Product price",
@@ -525,9 +565,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/products",
-                  "parts": [
-                    "public",
-                    "products"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "products"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -558,10 +602,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/products/{id}",
-                  "parts": [
-                    "public",
-                    "products",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "products"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -620,16 +670,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/status/{code}",
-                  "parts": [
-                    "public",
-                    "status",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "code": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "status"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -646,9 +702,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/status",
-                  "parts": [
-                    "public",
-                    "status"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "status"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -678,7 +738,12 @@
           ],
           "id": {
             "field": "id",
-            "name": "id"
+            "name": "id",
+            "parts": [
+              "resource",
+              "id"
+            ],
+            "sep": "/"
           },
           "name": "update_custom_resource_item",
           "op": {
@@ -711,9 +776,13 @@
                   "kind": "http",
                   "method": "PUT",
                   "orig": "/{resource}/{id}",
-                  "parts": [
-                    "{resource}",
-                    "{id}"
+                  "segments": [
+                    {
+                      "var": "resource"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -741,6 +810,7 @@
           "fields": [
             {
               "active": true,
+              "format": "email",
               "name": "email",
               "req": false,
               "short": "User email address",
@@ -777,9 +847,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/public/users",
-                  "parts": [
-                    "public",
-                    "users"
+                  "segments": [
+                    {
+                      "lit": "public"
+                    },
+                    {
+                      "lit": "users"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -859,8 +933,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1266,6 +1343,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1291,6 +1371,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1342,6 +1426,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1366,6 +1451,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1417,6 +1503,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1441,6 +1528,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1481,6 +1569,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1506,6 +1597,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1540,6 +1634,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1565,6 +1662,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1605,6 +1705,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1630,6 +1733,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1675,6 +1781,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1700,6 +1809,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1717,11 +1829,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1750,6 +1857,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1774,6 +1884,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

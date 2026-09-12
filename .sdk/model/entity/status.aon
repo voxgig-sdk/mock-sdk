@@ -36,16 +36,22 @@ main: kit: entity: status: {
           }
           method: "GET"
           orig: "/public/status/{code}"
-          parts: [
-            "public"
-            "status"
-            "{id}"
-          ]
           rename: {
             param: {
               code: "id"
             }
           }
+          segments: [
+            {
+              lit: "public"
+            }
+            {
+              lit: "status"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -59,9 +65,13 @@ main: kit: entity: status: {
         {
           method: "GET"
           orig: "/public/status"
-          parts: [
-            "public"
-            "status"
+          segments: [
+            {
+              lit: "public"
+            }
+            {
+              lit: "status"
+            }
           ]
           transform: {
             req: "`reqdata`"

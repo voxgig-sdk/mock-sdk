@@ -64,6 +64,10 @@ module MockConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "cart",
           "op" => {
             "list" => {
@@ -75,15 +79,23 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/carts",
-                  "parts" => [
-                    "public",
-                    "carts",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "carts",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "carts",
+                  ],
                 },
               ],
             },
@@ -110,6 +122,10 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "coupon",
           "op" => {
             "list" => {
@@ -121,15 +137,23 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/coupons",
-                  "parts" => [
-                    "public",
-                    "coupons",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "coupons",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "coupons",
+                  ],
                 },
               ],
             },
@@ -145,6 +169,10 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "create_custom_resource_item",
           "op" => {
             "create" => {
@@ -166,14 +194,16 @@ module MockConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/{resource}",
-                  "parts" => [
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "resource" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -183,6 +213,9 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -198,6 +231,15 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "resource",
+              "id",
+            ],
+            "sep" => "/",
+          },
           "name" => "delete_custom_resource_item",
           "op" => {
             "remove" => {
@@ -226,9 +268,13 @@ module MockConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/{resource}/{id}",
-                  "parts" => [
-                    "{resource}",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "var" => "resource",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -240,6 +286,10 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{resource}",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -255,6 +305,10 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "get_custom_resource",
           "op" => {
             "list" => {
@@ -276,14 +330,16 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{resource}",
-                  "parts" => [
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "resource" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -293,6 +349,9 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -308,6 +367,15 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "resource",
+              "id",
+            ],
+            "sep" => "/",
+          },
           "name" => "get_custom_resource_item_by_id",
           "op" => {
             "load" => {
@@ -336,9 +404,13 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{resource}/{id}",
-                  "parts" => [
-                    "{resource}",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "var" => "resource",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -350,6 +422,10 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{resource}",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -365,6 +441,15 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "resource",
+              "id",
+            ],
+            "sep" => "/",
+          },
           "name" => "patch_custom_resource_item",
           "op" => {
             "update" => {
@@ -393,9 +478,13 @@ module MockConfig
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/{resource}/{id}",
-                  "parts" => [
-                    "{resource}",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "var" => "resource",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -407,6 +496,10 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{resource}",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -428,11 +521,16 @@ module MockConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "price",
               "short" => "Product price",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "product",
           "op" => {
             "list" => {
@@ -444,15 +542,23 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/products",
-                  "parts" => [
-                    "public",
-                    "products",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "products",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "products",
+                  ],
                 },
               ],
             },
@@ -475,10 +581,16 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/products/{id}",
-                  "parts" => [
-                    "public",
-                    "products",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -489,6 +601,11 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "products",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -504,6 +621,10 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "status",
           "op" => {
             "load" => {
@@ -525,16 +646,22 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/status/{code}",
-                  "parts" => [
-                    "public",
-                    "status",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "code" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "status",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -544,21 +671,34 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "status",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/status",
-                  "parts" => [
-                    "public",
-                    "status",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "status",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "status",
+                  ],
                 },
               ],
             },
@@ -574,6 +714,15 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "resource",
+              "id",
+            ],
+            "sep" => "/",
+          },
           "name" => "update_custom_resource_item",
           "op" => {
             "update" => {
@@ -602,9 +751,13 @@ module MockConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/{resource}/{id}",
-                  "parts" => [
-                    "{resource}",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "var" => "resource",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -616,6 +769,10 @@ module MockConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{resource}",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -627,6 +784,7 @@ module MockConfig
         "user" => {
           "fields" => [
             {
+              "format" => "email",
               "name" => "email",
               "short" => "User email address",
               "type" => "`$STRING`",
@@ -642,6 +800,10 @@ module MockConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "user",
           "op" => {
             "list" => {
@@ -653,15 +815,23 @@ module MockConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public/users",
-                  "parts" => [
-                    "public",
-                    "users",
+                  "segments" => [
+                    {
+                      "lit" => "public",
+                    },
+                    {
+                      "lit" => "users",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "public",
+                    "users",
+                  ],
                 },
               ],
             },

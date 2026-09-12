@@ -52,7 +52,7 @@ func TestCreateCustomResourceItemEntity(t *testing.T) {
 		// CREATE
 		createCustomResourceItemRef01Ent := client.CreateCustomResourceItem(nil)
 		createCustomResourceItemRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "create_custom_resource_item"}, setup.data), "create_custom_resource_item_ref01"))
+			vs.GetPath(setup.data, []any{"new", "create_custom_resource_item"}), "create_custom_resource_item_ref01"))
 		createCustomResourceItemRef01Data["resource"] = setup.idmap["resource01"]
 
 		createCustomResourceItemRef01DataResult, err := createCustomResourceItemRef01Ent.Create(createCustomResourceItemRef01Data, nil)
@@ -94,7 +94,7 @@ func create_custom_resource_itemBasicSetup(extra map[string]any) *entityTestSetu
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"create_custom_resource_item01", "create_custom_resource_item02", "create_custom_resource_item03", "resource01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -122,10 +122,22 @@ func create_custom_resource_itemBasicSetup(extra map[string]any) *entityTestSetu
 	}
 
 	if env["MOCK_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewMockSDK(core.ToMapAny(mergedOpts))
 	}

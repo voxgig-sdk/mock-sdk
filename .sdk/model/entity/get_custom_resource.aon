@@ -36,14 +36,16 @@ main: kit: entity: get_custom_resource: {
           }
           method: "GET"
           orig: "/{resource}"
-          parts: [
-            "{id}"
-          ]
           rename: {
             param: {
               resource: "id"
             }
           }
+          segments: [
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

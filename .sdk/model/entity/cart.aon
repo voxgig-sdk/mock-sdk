@@ -32,9 +32,13 @@ main: kit: entity: cart: {
         {
           method: "GET"
           orig: "/public/carts"
-          parts: [
-            "public"
-            "carts"
+          segments: [
+            {
+              lit: "public"
+            }
+            {
+              lit: "carts"
+            }
           ]
           transform: {
             req: "`reqdata`"
