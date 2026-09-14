@@ -105,7 +105,7 @@ local results, err = client:Cart():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
+| TypeScript | `@voxgig-sdk/mock-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
 | Python | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
 | PHP | `voxgig-sdk/mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/mock-sdk/go` | `go get github.com/voxgig-sdk/mock-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Cart():list()
 ### TypeScript
 
 ```ts
-import { MockSDK } from '@voxgig-sdk/mock'
+import { MockSDK } from '@voxgig-sdk/mock-sdk'
 
 const client = new MockSDK()
 

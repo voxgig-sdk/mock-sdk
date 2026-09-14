@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MockSDK } from '@voxgig-sdk/mock'
+import { MockSDK } from '@voxgig-sdk/mock-sdk'
 
 const client = new MockSDK()
 ```
@@ -754,7 +754,7 @@ mock/
 Import the SDK from the package root:
 
 ```ts
-import { MockSDK } from '@voxgig-sdk/mock'
+import { MockSDK } from '@voxgig-sdk/mock-sdk'
 ```
 
 ### Entity state

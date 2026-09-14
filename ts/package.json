@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/mock",
+  "name": "@voxgig-sdk/mock-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Mock public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
