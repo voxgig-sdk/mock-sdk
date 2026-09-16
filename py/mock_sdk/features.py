@@ -1,12 +1,18 @@
 # Mock SDK feature factory
 
 from mock_sdk.feature.base_feature import MockBaseFeature
+from mock_sdk.feature.ratelimit_feature import MockRatelimitFeature
+from mock_sdk.feature.retry_feature import MockRetryFeature
 from mock_sdk.feature.test_feature import MockTestFeature
+from mock_sdk.feature.timeout_feature import MockTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: MockBaseFeature(),
+    "ratelimit": lambda: MockRatelimitFeature(),
+    "retry": lambda: MockRetryFeature(),
     "test": lambda: MockTestFeature(),
+    "timeout": lambda: MockTimeoutFeature(),
 }
 
 

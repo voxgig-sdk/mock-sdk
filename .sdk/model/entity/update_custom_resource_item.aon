@@ -46,6 +46,12 @@ main: kit: entity: update_custom_resource_item: {
               }
             ]
           }
+          contract: {
+            id: "PUT /{resource}/{id}"
+            json: "{\"operationId\":\"updateCustomResourceItem\",\"parameters\":[{\"description\":\"Name of the custom resource\",\"in\":\"path\",\"name\":\"resource\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"ID of the item\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Item updated successfully\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "PUT"
           orig: "/{resource}/{id}"
           segments: [

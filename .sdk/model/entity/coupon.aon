@@ -36,6 +36,12 @@ main: kit: entity: coupon: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /public/coupons"
+            json: "{\"operationId\":\"getPublicCoupons\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"description\":\"Coupon code\",\"type\":\"string\"},\"discount\":{\"description\":\"Discount amount or percentage\",\"type\":\"number\"},\"id\":{\"description\":\"Coupon ID\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of coupons\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/coupons"
           segments: [

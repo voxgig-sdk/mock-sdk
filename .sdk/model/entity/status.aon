@@ -34,6 +34,12 @@ main: kit: entity: status: {
               }
             ]
           }
+          contract: {
+            id: "GET /public/status/{code}"
+            json: "{\"operationId\":\"simulateStatusCode\",\"parameters\":[{\"description\":\"HTTP status code to simulate (e.g., 401, 404, 500)\",\"in\":\"path\",\"name\":\"code\",\"required\":true,\"schema\":{\"maximum\":599,\"minimum\":100,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Response with the requested status code\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"example\":{\"error\":\"demo error\"},\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized error simulation\"},\"404\":{\"description\":\"Not found error simulation\"},\"500\":{\"description\":\"Internal server error simulation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/status/{code}"
           rename: {
@@ -63,6 +69,12 @@ main: kit: entity: status: {
           }
         }
         {
+          contract: {
+            id: "GET /public/status"
+            json: "{\"operationId\":\"getStatusInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Successful response with status information\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/status"
           segments: [

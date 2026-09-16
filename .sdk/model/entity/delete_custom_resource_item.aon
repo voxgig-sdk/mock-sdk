@@ -46,6 +46,12 @@ main: kit: entity: delete_custom_resource_item: {
               }
             ]
           }
+          contract: {
+            id: "DELETE /{resource}/{id}"
+            json: "{\"operationId\":\"deleteCustomResourceItem\",\"parameters\":[{\"description\":\"Name of the custom resource\",\"in\":\"path\",\"name\":\"resource\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"ID of the item\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Item deleted successfully\"},\"204\":{\"description\":\"Item deleted successfully (no content)\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "DELETE"
           orig: "/{resource}/{id}"
           segments: [

@@ -25,5 +25,105 @@
         "price": 122
       }
     }
+  },
+  "requests": {
+    "GET /public/products": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPublicProducts",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "example": {
+                      "id": "1",
+                      "name": "T-shirt",
+                      "price": 19.99
+                    },
+                    "properties": {
+                      "id": {
+                        "description": "Product ID",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Product name",
+                        "type": "string"
+                      },
+                      "price": {
+                        "description": "Product price",
+                        "format": "float",
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of products"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /public/products/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPublicProductById",
+        "parameters": [
+          {
+            "description": "Product ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "1",
+                    "name": "T-shirt",
+                    "price": 19.99
+                  },
+                  "properties": {
+                    "id": {
+                      "description": "Product ID",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Product name",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Product price",
+                      "format": "float",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with product details"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

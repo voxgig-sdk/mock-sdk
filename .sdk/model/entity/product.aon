@@ -37,6 +37,12 @@ main: kit: entity: product: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /public/products"
+            json: "{\"operationId\":\"getPublicProducts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"example\":{\"id\":\"1\",\"name\":\"T-shirt\",\"price\":19.99},\"properties\":{\"id\":{\"description\":\"Product ID\",\"type\":\"string\"},\"name\":{\"description\":\"Product name\",\"type\":\"string\"},\"price\":{\"description\":\"Product price\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of products\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/products"
           segments: [
@@ -68,6 +74,12 @@ main: kit: entity: product: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /public/products/{id}"
+            json: "{\"operationId\":\"getPublicProductById\",\"parameters\":[{\"description\":\"Product ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":{\"id\":\"1\",\"name\":\"T-shirt\",\"price\":19.99},\"properties\":{\"id\":{\"description\":\"Product ID\",\"type\":\"string\"},\"name\":{\"description\":\"Product name\",\"type\":\"string\"},\"price\":{\"description\":\"Product price\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with product details\"},\"404\":{\"description\":\"Product not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/public/products/{id}"

@@ -19,5 +19,60 @@
     "patch_custom_resource_item": {
       "patch_custom_resource_item_ref01": {}
     }
+  },
+  "requests": {
+    "PATCH /{resource}/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "patchCustomResourceItem",
+        "parameters": [
+          {
+            "description": "Name of the custom resource",
+            "in": "path",
+            "name": "resource",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "ID of the item",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Item partially updated successfully"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -16,5 +16,41 @@
     "get_custom_resource": {
       "get_custom_resource_ref01": {}
     }
+  },
+  "requests": {
+    "GET /{resource}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCustomResource",
+        "parameters": [
+          {
+            "description": "Name of the custom resource",
+            "in": "path",
+            "name": "resource",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of items"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

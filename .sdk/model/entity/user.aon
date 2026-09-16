@@ -37,6 +37,12 @@ main: kit: entity: user: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /public/users"
+            json: "{\"operationId\":\"getPublicUsers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"example\":{\"email\":\"johndoe@example.com\",\"id\":\"1\",\"username\":\"johndoe\"},\"properties\":{\"email\":{\"description\":\"User email address\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"description\":\"User ID\",\"type\":\"string\"},\"username\":{\"description\":\"Username\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of users\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/users"
           segments: [

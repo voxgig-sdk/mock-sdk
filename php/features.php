@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Mock SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class MockFeatures
@@ -14,8 +17,14 @@ class MockFeatures
         switch ($name) {
             case "base":
                 return new MockBaseFeature();
+            case "ratelimit":
+                return new MockRatelimitFeature();
+            case "retry":
+                return new MockRetryFeature();
             case "test":
                 return new MockTestFeature();
+            case "timeout":
+                return new MockTimeoutFeature();
             default:
                 return new MockBaseFeature();
         }
@@ -31,7 +40,10 @@ class MockFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

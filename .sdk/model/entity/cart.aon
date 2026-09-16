@@ -30,6 +30,12 @@ main: kit: entity: cart: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /public/carts"
+            json: "{\"operationId\":\"getPublicCarts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Cart ID\",\"type\":\"string\"},\"items\":{\"description\":\"Items in the cart\",\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of carts\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/public/carts"
           segments: [

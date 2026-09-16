@@ -16,5 +16,48 @@
     "create_custom_resource_item": {
       "create_custom_resource_item_ref01": {}
     }
+  },
+  "requests": {
+    "POST /{resource}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createCustomResourceItem",
+        "parameters": [
+          {
+            "description": "Name of the custom resource",
+            "in": "path",
+            "name": "resource",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Item created successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

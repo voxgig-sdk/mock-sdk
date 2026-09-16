@@ -25,5 +25,51 @@
         "username": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /public/users": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPublicUsers",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "example": {
+                      "email": "johndoe@example.com",
+                      "id": "1",
+                      "username": "johndoe"
+                    },
+                    "properties": {
+                      "email": {
+                        "description": "User email address",
+                        "format": "email",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "User ID",
+                        "type": "string"
+                      },
+                      "username": {
+                        "description": "Username",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of users"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

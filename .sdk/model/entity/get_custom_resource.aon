@@ -34,6 +34,12 @@ main: kit: entity: get_custom_resource: {
               }
             ]
           }
+          contract: {
+            id: "GET /{resource}"
+            json: "{\"operationId\":\"getCustomResource\",\"parameters\":[{\"description\":\"Name of the custom resource\",\"in\":\"path\",\"name\":\"resource\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of items\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/{resource}"
           rename: {
