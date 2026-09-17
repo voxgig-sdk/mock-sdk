@@ -105,12 +105,12 @@ local results, err = client:Cart():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mock-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
-| Python | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
-| PHP | `voxgig-sdk/mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
+| TypeScript | `@voxgig-sdk/mock-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/tags) |
+| Python | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/tags) |
+| PHP | `voxgig-sdk/mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/mock-sdk/go` | `go get github.com/voxgig-sdk/mock-sdk/go@latest` |
-| Ruby | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
-| Lua | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/releases) |
+| Ruby | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/tags) |
+| Lua | `voxgig-sdk-mock` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mock-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/mock-sdk/go-cli` | `go install github.com/voxgig-sdk/mock-sdk/go-cli/cmd/mock@latest` |
 | Go MCP server | `github.com/voxgig-sdk/mock-sdk/go-mcp` | `go get github.com/voxgig-sdk/mock-sdk/go-mcp@latest` |
 

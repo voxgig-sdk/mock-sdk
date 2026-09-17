@@ -127,39 +127,39 @@ class Config {
 
     entity: {
       
-      cart: {
-      },
-
-      coupon: {
-      },
-
-      create_custom_resource_item: {
-      },
-
-      delete_custom_resource_item: {
-      },
-
-      get_custom_resource: {
-      },
-
-      get_custom_resource_item_by_id: {
-      },
-
-      patch_custom_resource_item: {
-      },
-
-      product: {
-      },
-
-      status: {
-      },
-
-      update_custom_resource_item: {
-      },
-
-      user: {
-      },
-
+        cart: {
+        },
+  
+        coupon: {
+        },
+  
+        create_custom_resource_item: {
+        },
+  
+        delete_custom_resource_item: {
+        },
+  
+        get_custom_resource: {
+        },
+  
+        get_custom_resource_item_by_id: {
+        },
+  
+        patch_custom_resource_item: {
+        },
+  
+        product: {
+        },
+  
+        status: {
+        },
+  
+        update_custom_resource_item: {
+        },
+  
+        user: {
+        },
+  
     }
   }
 
